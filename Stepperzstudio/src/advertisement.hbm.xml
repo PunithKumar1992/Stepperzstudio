@@ -251,6 +251,25 @@
 	
 	
 	</class>
+	<class name="Adminregistration" table="adminregistration">
+	<id name="admin_id" type="int">
+	<column name="admin_id"></column>
+	<generator class="increment"></generator>
+	</id>
+	<property name="admin_name">
+	<column name="admin_name"></column>
+	</property>
+	<property name="admin_email">
+	<column name="admin_email"></column>
+	</property>
+	<property name="admin_phone">
+	<column name="admin_phone"></column>
+	</property>
+	<property name="admin_password">
+	<column name="admin_password"></column>
+	</property>
+	
+	</class>
 	
 	
 	

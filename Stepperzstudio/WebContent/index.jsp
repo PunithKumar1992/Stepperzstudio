@@ -411,9 +411,9 @@ for(int i=0;i<adscount;i++)
 		<center><h3 class="title-w3" style="color:black">Time-Table</h3>
 			<br>
 		<div style="width:100%">
-         <a href="sadashiv_timetable.html"> <img src="images/timetable_icon.png" alt="stepperszstudio"></a>
-		 <a href="kalyan_timetable.html"> <img src="images/timetable_icon.png" alt="stepperszstudio"></a>
-		  <a href="malleshwaram_timetable.html"> <img src="images/timetable_icon.png" alt="stepperszstudio"></a><br><br>
+         <a href="sadashiv_timetable.html"> <img src="images/sadhashivnagartimeicon.png" alt="stepperszstudio"></a>
+		 <a href="kalyan_timetable.html"> <img src="images/kalyannagartimeicon.png" alt="stepperszstudio"></a>
+		  <a href="malleshwaram_timetable.html"> <img src="images/malleshwaramtimeicon.png" alt="stepperszstudio"></a><br><br>
 		  
 		   </div></center>
 				<div class="clearfix"> </div>
