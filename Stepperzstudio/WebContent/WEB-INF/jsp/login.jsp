@@ -53,7 +53,7 @@ httpres.setDateHeader("Expires", 0); // Proxies.
 		
 			<input type="text" class="ggg" name="username" placeholder="UserName" required="">
 			<input type="password" class="ggg" name="password1" placeholder="PASSWORD" required="">
-			<h6>Forgot&nbsp;&nbsp;<a href="forgotusername.html">User Name</a> <a href="#"> Password?</a></h6>
+			<h6>Forgot&nbsp;&nbsp;<a href="forgotcredentials.html">User Name|Password?</a></h6>
 				<div class="clearfix"></div>
 				<label class="error">${error}</label>
 				<input type="submit" value="Sign In" name="login">

@@ -49,9 +49,10 @@ httpres.setDateHeader("Expires", 0); // Proxies.
 <div class="log-w3">
 <div class="w3layouts-main">
 	<h2>Recover User Name</h2>
-		<form action="admindashboard.html" method="post">
+		<form action="recovery.html" method="post">
 		
-			<input type="email" class="ggg" name="Email" placeholder="Email" required="">
+			<input type="email" class="ggg" name="email" placeholder="Email" required="">
+			<label class="error">${recerr}</label>
 			<input type="submit" value="Submit" name="Submit">
 </div>
 </div>

@@ -28,16 +28,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="adminjs/jquery2.0.3.min.js"></script>
 <script src="adminjs/raphael-min.js"></script>
 <script src="adminjs/morris.js"></script>
+<style type="text/css">
+.error{
+color:white;
+size:2px;
+
+
+}
+
+</style>
 </head>
 <body>
 <div class="reg-w3">
 <div class="w3layouts-main">
 	<h2>Register Now</h2>
 		<form:form action="adminregistration.html" method="post" modelAttribute="adminreg">
-		<form:input path="admin_name" class="ggg" placeholder="NAME" required=""/>
-		<form:input path="admin_email" class="ggg" placeholder="E-MAIL" required=""/>
-		<form:input path="admin_phone" class="ggg" placeholder="PHONE" required=""/>
-		<form:password path="admin_password"  class="ggg" placeholder="PASSWORD" required=""/>
+		
+		<form:input path="admin_name" class="ggg" placeholder="NAME" />
+		<form:errors path="admin_name" cssClass="error"></form:errors>
+		
+		<form:input path="admin_email" class="ggg" placeholder="E-MAIL" />
+		<form:errors path="admin_email" cssClass="error"></form:errors>
+	
+		<form:input path="admin_phone" class="ggg" placeholder="PHONE" />
+		<form:errors path="admin_phone" cssClass="error"></form:errors>
+		
+		<form:password path="admin_password"  class="ggg" placeholder="PASSWORD" />
+		<form:errors path="admin_password" cssClass="error"></form:errors>
+		
 		<input type="submit" value="Register">
 		
 		</form:form>

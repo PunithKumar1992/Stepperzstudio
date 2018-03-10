@@ -1,23 +1,33 @@
 package com.appfone.stepperz.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.appfone.stepperz.Daoimpl.AdminLoginDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdminbannerDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminregistrationDaoimpl;
+import com.appfone.stepperz.Daoimpl.BannerDaoimpl;
 import com.appfone.stepperz.Daoimpl.CareerDaoimpl;
 import com.appfone.stepperz.Daoimpl.FeedbackDaoimpl;
+import com.appfone.stepperz.Daoimpl.RecoveryDaoimpl;
 import com.appfone.stepperz.Daoimpl.RegistrationDaoimpl;
 import com.appfone.stepperz.pojo.Adminregistration;
+import com.appfone.stepperz.pojo.Banner;
 import com.appfone.stepperz.pojo.Career;
 import com.appfone.stepperz.pojo.Feedback;
 import com.appfone.stepperz.pojo.Registration;
@@ -33,6 +43,13 @@ public class StepperzController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("KayanNagarGal");
 		return mv;
+	}
+	
+	@InitBinder
+	public void initBinder(WebDataBinder  dataBinder)
+	{
+		StringTrimmerEditor editor=new StringTrimmerEditor(true);
+		dataBinder.registerCustomEditor(String.class, editor);
 	}
 
 	
@@ -203,20 +220,31 @@ public class StepperzController {
 	}
 	
 	@RequestMapping(value="/adminregistration")
-	public ModelAndView  adminregprocessController(@ModelAttribute("adminreg")Adminregistration adminregg )
+	public ModelAndView  adminregprocessController(@Valid @ModelAttribute("adminreg") Adminregistration adminregg,BindingResult result )
 	{
-		System.out.println(adminregg.getAdmin_name());
-		System.out.println(adminregg.getAdmin_email());
+		System.out.println(result);
 		System.out.println("in controller");
 		
+		if(result.hasErrors())
+		{
+			System.out.println("errors");
+			ModelAndView mv=new  ModelAndView();
+			mv.setViewName("adminregistration");
+			return mv;
+			
+		}
+		else
+		{
+			System.out.println("no errors");
 		AdminregistrationDaoimpl saveAdmin=new AdminregistrationDaoimpl();
 		saveAdmin.saveAdmin(adminregg);
 		ModelAndView mv=new  ModelAndView();
 		mv.setViewName("login");
 		return mv;
+		}
 	}
 	@RequestMapping(value="/admindashboard")
-	public ModelAndView admindashboardController(@RequestParam Map<String, String>reqparam,HttpServletRequest request)
+	public String admindashboardController(@RequestParam Map<String, String>reqparam,HttpServletRequest request)
 	{
 		String user=reqparam.get("username");
 		String pass= reqparam.get("password1");
@@ -231,8 +259,31 @@ public class StepperzController {
 		session.setAttribute("activeuser", user);
 		String activeuser=user;
 		mv.addObject("activeuser", activeuser);
-		return mv;
+		return "redirect:/adminloginsuccess.html";
 		}
+		/*ModelAndView mv = new ModelAndView();
+		mv.setViewName("login");
+		String err="Username or Password Missmatch";
+		mv.addObject("error", err);*/
+		return "redirect:/adminloginfailure.html";
+	}
+	
+	
+	@RequestMapping(value="/adminloginsuccess")
+	public ModelAndView adminloginsuccessController()
+	{
+		System.out.println("in controller");
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Adminindex");
+		return mv;
+	}
+	
+	@RequestMapping(value="/adminloginfailure")
+	public ModelAndView adminloginfailureController()
+	{
+		System.out.println("in controller");
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("login");
 		String err="Username or Password Missmatch";
@@ -244,11 +295,19 @@ public class StepperzController {
 	public ModelAndView adminbannerController()
 	{
 		System.out.println("in controller");
-		
+		AdminbannerDaoimpl bannerlist=new AdminbannerDaoimpl();
+		List list = bannerlist.getbanners();
 		ModelAndView mv = new ModelAndView();
+		Banner banner = new Banner();
+		mv.addObject("banner", banner);
 		mv.setViewName("banner");
+		mv.addObject("bannerlist", list);
 		return mv;
 	}
+	
+	
+	
+	
 	
 	@RequestMapping(value="/bashboard")
 	public ModelAndView DashboardController()
@@ -266,6 +325,40 @@ public class StepperzController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("forgotusername");
 		return mv;
+	}
+	
+	@RequestMapping(value="/forgotcredentials")
+	public ModelAndView forgotcredentialsController()
+	{
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("recoverycredentials");
+		return mv;
+	}
+	
+	@RequestMapping(value="/recovery")
+	public ModelAndView recoveryController(@RequestParam("email")String email)
+	{
+		RecoveryDaoimpl recovery=new RecoveryDaoimpl();
+		int res=recovery.checkMailidtosend(email);
+		if(res==1)
+		{
+			String username=recovery.getusername(email);
+			String password=recovery.getpassword(email);
+			String subject ="login credentials Recovery ";
+			String msg="Dear Admin your username and password is as follows \n \n \n Username :" +username +"\n Password is :"+password +"\n \n \n Please don't reply to this message this is computer generated";
+		Emailutility.send(email, subject, msg);
+			ModelAndView mv = new ModelAndView();
+		mv.setViewName("popup");
+		return mv;
+		}
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("recoverycredentials");
+		String recerror="please enter the registred email id";
+		mv.addObject("recerr", recerror);
+		return mv;
+		
+		
 	}
 	
 }

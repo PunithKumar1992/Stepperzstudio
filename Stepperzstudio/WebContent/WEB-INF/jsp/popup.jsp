@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>open bootstrap modal  on page load </title>
+  <title>Stepperz Studio</title>
   
   
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
@@ -28,7 +28,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		 <button type="button" class="btn btn-default" data-dismiss="modal">Sign In</button>
+		 <button type="button" class="btn btn-default" data-dismiss="modal" onclick=window.location.href="admin.html">Sign In</button>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
   <script>
    $(window).load(function(){        
    $('#myModal').modal('show');
-    });
+    })
   </script>
 
 

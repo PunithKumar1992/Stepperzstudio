@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <head>
 <title>StepperzStudio::Admin</title>
@@ -19,6 +21,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="admincss/font.css" type="text/css"/>
 <link href="admincss/font-awesome.css" rel="stylesheet"> 
 <link rel="stylesheet" href="admincss/morris.css" type="text/css"/>
+<link rel="stylesheet" href="admincss/lightbox.css">
 <!-- calendar -->
 <link rel="stylesheet" href="admincss/monthly.css">
 <!-- //calendar -->
@@ -33,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="index.html" class="logo">
+    <a href="bashboard.html" class="logo">
         <img src="adminimages/logo.png" alt="stepper" style="width:90%;margin-top:-9%;">
     </a>
     <div class="sidebar-toggle-box">
@@ -73,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="bashboard.html">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
@@ -115,7 +118,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
                 <li>
-                    <a href="banner.html">
+                    <a href="adminbanner.html">
                          <i class="fa fa-glass"></i>
                         <span>Banner</span>
                     </a>
@@ -177,23 +180,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </header>
                         <div class="panel-body">
                             <div >
-                                <form>
-                                <div class="col-md-3">
-                                  
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter title">
+                               <form:form action="savebanner.html" method="post" modelAttribute="banner">
+                               <div class="col-md-3">
+                               <form:input path="banner_title" class="form-control" placeholder="Enter title"/>
                                 </div>
-                                <div class="col-md-3">
-                                   
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter description">
-                                </div>
-                                <div class="col-md-3">
+                                 <div class="col-md-3">
+                                   <form:input path="banner_desc" class="form-control" placeholder="Enter description"/>
+                               			</div>
+                               			<div class="col-md-3">
                                    
                                     <input type="file" id="exampleInputFile" placeholder="File input">
                                 </div>
                                 <div class="col-md-3">
-                                    <button type="submit" class="btn btn-info" style="margin-top:-2%">Submit</button>
+                                    <input type="submit" class="btn btn-info" value="ADD" style="margin-top:-2%"/>
                                 </div>
-                                </form>
+                               
+                               
+                               
+                               
+                               </form:form>
                             </div>
                         </div>
                     </section>
@@ -217,16 +222,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           </tr>
         </thead>
         <tbody>
-    
+    <c:forEach var ="list" items="${bannerlist}" >
 	 <tr>
            
-            <td>1</td>
-            <td><span class="text-ellipsis">{item.PrHelpText1}</span></td>
+            <td>${list.banner_title}</td>
+            <td><span class="text-ellipsis">${list.banner_desc}</span></td>
             <td>
-			<a class="example-image-link" href="adminimages/g1.jpg" data-lightbox="example-set" >		
-	<img src="adminimages/g1.jpg" alt="" width="70%"/>
+			<a class="example-image-link" href="images/banner/${list.banner_img}" data-lightbox="example-set" >		
+	<img src="images/banner/${list.banner_img}" alt="" width="70%"/>
 	</a>
-	 <script src="js/lightbox-plus-jquery.min.js"> </script>
+	 <script src="adminjs/lightbox-plus-jquery.min.js"> </script>
 			<!-- //gallery -->
 			</td>
 			<td>
@@ -240,53 +245,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  </td>
 		 
            </tr>
-		   <tr>
-           
-            <td>1</td>
-            <td><span class="text-ellipsis">{item.PrHelpText1}</span></td>
-            <td>
-			<a class="example-image-link" href="adminimages/g1.jpg" data-lightbox="example-set" >		
-	<img src="adminimages/g1.jpg" alt="" width="70%"/>
-	</a>
-	 <script src="js/lightbox-plus-jquery.min.js"> </script>
-			<!-- //gallery -->
-			</td>
-			<td>
-		  <input type="button" value="edit">
-		  
-		  </td>
-		
-		  <td>
-		  <input type="button" value="delete">
-		  
-		  </td>
 		 
-           </tr>
-		   <tr>
-           
-            <td>1</td>
-            <td><span class="text-ellipsis">{item.PrHelpText1}</span></td>
-            <td>
-			<a class="example-image-link" href="adminimages/g1.jpg" data-lightbox="example-set" >		
-	<img src="adminimages/g1.jpg" alt="" width="70%"/>
-	</a>
-	 <script src="js/lightbox-plus-jquery.min.js"> </script>
-			<!-- //gallery -->
-			</td>
-			<td>
-		  <input type="button" value="edit">
-		  
-		  </td>
-		
-		  <td>
-		  <input type="button" value="delete">
-		  
-		  </td>
-		 
-           </tr>
-		 
-		  
-		
+</c:forEach>
 		 
         </tbody>
       </table>
@@ -312,8 +272,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="adminjs/jquery.scrollTo.js"></script>
 <!-- morris JavaScript -->	
-<script>
-	$(document).ready(function() {
+	<!-- $(document).ready(function() {
 		//BOX BUTTON SHOW AND CLOSE
 	   jQuery('.small-graph-box').hover(function() {
 		  jQuery(this).find('.box-button').fadeIn('fast');
@@ -323,7 +282,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	   jQuery('.small-graph-box .box-close').click(function() {
 		  jQuery(this).closest('.small-graph-box').fadeOut(200);
 		  return false;
-	   })
+	   }) -->
 
 </body>
 </html>
