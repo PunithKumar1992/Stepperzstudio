@@ -1,21 +1,39 @@
 package com.appfone.stepperz.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
+import org.hibernate.Hibernate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.appfone.stepperz.Daoimpl.AdminLoginDaoimpl;
@@ -35,6 +53,10 @@ import com.appfone.stepperz.util.Emailutility;
 
 @Controller
 public class StepperzController {
+	@Autowired
+	ServletContext context; 
+	
+	
 	
 	@RequestMapping(value="/KayanNagarGal")
 	public ModelAndView KayanNagarGalController()
@@ -361,4 +383,52 @@ public class StepperzController {
 		
 	}
 	
+	
+	@RequestMapping(value="/savebanner")
+	public String savebannerController(@ModelAttribute("banner")Banner banner)
+	{
+		InputStream inputStream = null;  
+		  OutputStream outputStream = null;  
+		  MultipartFile file = banner.getFile(); 
+		  System.out.println(file);
+		   
+		  String fileName = file.getOriginalFilename();  
+		  System.out.println("filename is " +fileName);
+		  banner.setBanner_img(fileName);
+		  String relativepath = "images/banner/"+fileName;
+		   String abspath=context.getRealPath(relativepath);
+		   String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"banner"+ File.separator;
+		   System.out.println("uploadpath is" +uploadPath);
+		   File targetFile = new File(uploadPath, fileName);  
+		  try {
+			file.transferTo(targetFile);
+			System.out.println("transfer starts");
+		} catch (IllegalStateException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		  AdminbannerDaoimpl savebanner = new AdminbannerDaoimpl();
+		  savebanner.Savebanner(banner);
+		return "redirect:/adminbanner.html";
+	}
+	
+	@RequestMapping(value="/deletebanner")
+	public String deletebannerController(@RequestParam("bannerid")int bannerid,@RequestParam("bannerimg")String bannerimg)
+	{
+		System.out.println("banner id is" +bannerid);
+		System.out.println("banner image is " +bannerimg);
+		AdminbannerDaoimpl deletebanner = new AdminbannerDaoimpl();
+		deletebanner.deletebanner(bannerid, bannerimg);
+		
+		   String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"banner"+ File.separator;
+		
+		File file= new File(uploadPath,bannerimg);
+		file.delete();
+		
+		
+		return "redirect:/adminbanner.html";
+	}
 }

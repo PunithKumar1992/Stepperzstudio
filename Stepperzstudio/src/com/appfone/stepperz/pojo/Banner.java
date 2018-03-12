@@ -1,10 +1,14 @@
 package com.appfone.stepperz.pojo;
 
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class Banner {
 	private int banner_id;
 	private String banner_title;
 	private String banner_desc;
 	private String banner_img;
+	private MultipartFile file;
 	public int getBanner_id() {
 		return banner_id;
 	}
@@ -28,6 +32,18 @@ public class Banner {
 	}
 	public void setBanner_img(String banner_img) {
 		this.banner_img = banner_img;
+	}
+	
+	
+	
+	
+	
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	@Override
 	public String toString() {

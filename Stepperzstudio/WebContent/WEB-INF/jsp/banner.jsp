@@ -180,7 +180,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </header>
                         <div class="panel-body">
                             <div >
-                               <form:form action="savebanner.html" method="post" modelAttribute="banner">
+                               <form:form action="savebanner.html" enctype="multipart/form-data"  method="post" modelAttribute="banner">
                                <div class="col-md-3">
                                <form:input path="banner_title" class="form-control" placeholder="Enter title"/>
                                 </div>
@@ -189,10 +189,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                			</div>
                                			<div class="col-md-3">
                                    
-                                    <input type="file" id="exampleInputFile" placeholder="File input">
+                                    <input type="file" name="file" id="fileUpload" onchange="Upload();" accept=".jpg,.png,jpeg" />
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="submit" class="btn btn-info" value="ADD" style="margin-top:-2%"/>
+                                    <input type="submit" class="btn btn-info" value="ADD" style="margin-top:-2%" id="sub"  disabled/>
                                 </div>
                                
                                
@@ -222,7 +222,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           </tr>
         </thead>
         <tbody>
+        
+        
+        
+       
     <c:forEach var ="list" items="${bannerlist}" >
+    <c:url var="deletebanner" value="deletebanner.html">
+    <c:param name="bannerid"  value="${list.banner_id}"></c:param>
+    <c:param name="bannerimg" value="${list.banner_img}"></c:param>
+    </c:url>
 	 <tr>
            
             <td>${list.banner_title}</td>
@@ -240,7 +248,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  </td>
 		
 		  <td>
-		  <input type="button" value="delete">
+		  <button type="button" value="delete" onclick=window.location.href="${deletebanner}">delete</button>
 		  
 		  </td>
 		 
@@ -271,18 +279,62 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="adminjs/jquery.nicescroll.js"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="adminjs/jquery.scrollTo.js"></script>
-<!-- morris JavaScript -->	
-	<!-- $(document).ready(function() {
-		//BOX BUTTON SHOW AND CLOSE
-	   jQuery('.small-graph-box').hover(function() {
-		  jQuery(this).find('.box-button').fadeIn('fast');
-	   }, function() {
-		  jQuery(this).find('.box-button').fadeOut('fast');
-	   });
-	   jQuery('.small-graph-box .box-close').click(function() {
-		  jQuery(this).closest('.small-graph-box').fadeOut(200);
-		  return false;
-	   }) -->
+
+
+<script type="text/javascript">
+function Upload() {
+    //Get reference of FileUpload.
+    var fileUpload = document.getElementById("fileUpload");
+ 
+    //Check whether the file is valid Image.
+    var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(.jpg|.png|.gif)$");
+    if (regex.test(fileUpload.value.toLowerCase())) {
+ 
+        //Check whether HTML5 is supported.
+        if (typeof (fileUpload.files) != "undefined") {
+            //Initiate the FileReader object.
+            var reader = new FileReader();
+            //Read the contents of Image File.
+            reader.readAsDataURL(fileUpload.files[0]);
+            reader.onload = function (e) {
+                //Initiate the JavaScript Image object.
+                var image = new Image();
+ 
+                //Set the Base64 string return from FileReader as source.
+                image.src = e.target.result;
+                       
+                //Validate the File Height and Width.
+                image.onload = function () {
+                    var height = this.height;
+                    var width = this.width;
+                    if (height == 800 && width == 1680) {
+                    	alert("Uploaded image has valid Height and Width.");
+                        document.getElementById('sub').disabled = false;
+                        
+                    }
+                    else
+                    	{
+                    	 alert("Height and Width must not exceed 1680px & 800px.");
+                    	document.getElementById('sub').disabled = true;
+          
+                    	}
+                };
+ 
+            }
+        } else {
+            alert("This browser does not support HTML5.");
+            return false;
+        }
+    } else {
+        alert("Please select a valid Image file.");
+        return false;
+    }
+}
+
+
+</script>
+
+
 
 </body>
 </html>
