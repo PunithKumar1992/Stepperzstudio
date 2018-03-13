@@ -37,7 +37,7 @@ public class AdminbannerDaoimpl  implements AdminbannerDao {
 		Session session=factory.openSession();
 		Transaction t = session.beginTransaction();
 		t.begin();
-		session.save(banner);
+		session.saveOrUpdate(banner);
 		t.commit();
 		session.close();
 		
@@ -62,6 +62,20 @@ public class AdminbannerDaoimpl  implements AdminbannerDao {
 	
 	
 		
+	}
+
+
+	@Override
+	public Banner getsinglebanner(int id) {
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session=factory.openSession();
+		Transaction t = session.beginTransaction();
+		t.begin();
+		Banner banner = (Banner)session.get(Banner.class, id);
+		System.out.println("getsingle banner banner title  " +banner.getBanner_title());
+		t.commit();
+		session.close();
+		return banner;
 	}
 	
 	

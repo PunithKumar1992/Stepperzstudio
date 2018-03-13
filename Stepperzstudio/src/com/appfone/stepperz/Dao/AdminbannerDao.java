@@ -9,6 +9,6 @@ public interface AdminbannerDao {
 	public abstract List getbanners();
 	public void Savebanner(Banner banner);
 	public abstract void deletebanner(int id,String img);
-	
+	public abstract Banner getsinglebanner(int id);
 	
 }

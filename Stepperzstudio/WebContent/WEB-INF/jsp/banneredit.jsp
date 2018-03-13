@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html>
 <head>
@@ -168,7 +170,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- sidebar menu end-->
     </div>
 </aside>
-<!--sidebar end-->
 <!--main content start-->
 <section id="main-content">
 	<section class="wrapper">
@@ -176,84 +177,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Sadashiv Nagar
+                            Banner
                         </header>
                         <div class="panel-body">
-                            <div class="position-center">
-                                <form>
-                                
+                            <div >
+                                  <form:form action="saveeditedbanner.html" enctype="multipart/form-data"  method="post" modelAttribute="banner">
+                               <form:hidden path="banner_id"/>
+                               
+                               <div class="col-md-3">
+                               <form:input path="banner_title" class="form-control" placeholder="Enter title" size="10" value=""/>
+                             
+                                </div>
+                                 <div class="col-md-3">
+                                   <form:input path="banner_desc" id="bandisc" class="form-control" placeholder="Enter description" size="20" value=""/>
+                               			</div>
+                               			<div class="col-md-3">
+
+                                    <input type="file" name="file" id="fileUpload" onchange="Upload();" value="${banner.banner_img}" accept=".jpg,.png,jpeg" />
+                                </div>
+                                <input type="hidden" name="imgtoedit" value="${imgtoedit}">
                                 <div class="col-md-3">
-                                  <select>
-								  <option disabled selected>Time_Table_Caption</option>
-								  <option>Aerobics(Group Excercise)</option>
-								  <option>Dance</option>
-								  <option>Yoga</option>
-								  </select>
+                                    <input type="submit" class="btn btn-info" value="Update" style="margin-top:-2%" id="sub"/>
                                 </div>
-                                <div class="col-md-3">
-                                
-                                    <input type="file"   placeholder="Image" style="margin-left:83%;">
-                                </div>
-								<div class="col-md-2" style="float: right;margin-top:-2%;">
-                                    <button type="submit" class="btn btn-info" >Add</button>
-                                </div>
-                                </form>
+                               
+                               
+                               
+                               
+                               </form:form>
                             </div>
                         </div>
                     </section>
             </div>
 </section>
-<div class="table-agile-info">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-     Sadashiv Nagar Information
-    </div>
-     <div class="table-responsive">
-      <table class="table table-striped b-t b-light">
-        <thead>
-          <tr>
-            <th>Time_Table_Caption</th>
-            <th>Time_Table_Image</th>
-            <th> Action</th>
-          </tr>
-        </thead>
-        <tbody>
-    
-	 <tr>
-                 
-            <td><span class="text-ellipsis">{item.PrHelpText1}</span></td>
-			 <td>
-			<a class="example-image-link" href="adminimages/g1.jpg" data-lightbox="example-set" >		
-	<img src="adminimages/g1.jpg" alt="" width="70%"/>
-	</a>
-	 <script src="js/lightbox-plus-jquery.min.js"> </script>
-			<!-- //gallery -->
-			</td>
-			<td>
-		  <input type="button" value="delete">
-		  </td>
-           </tr>
-		
-		  
-		
-		 
-        </tbody>
-      </table>
-    </div>
-    
-  </div>
-</div>
-</section>
+
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>© 2018 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 			</div>
 		  </div>
   <!-- / footer -->
 </section>
-
 <!--main content end-->
+</section>
 <script src="adminjs/bootstrap.js"></script>
 <script src="adminjs/jquery.dcjqaccordion.2.7.js"></script>
 <script src="adminjs/scripts.js"></script>
@@ -262,6 +228,90 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="adminjs/jquery.scrollTo.js"></script>
 <!-- morris JavaScript -->	
+<script>
+	$(document).ready(function() {
+		//BOX BUTTON SHOW AND CLOSE
+	   jQuery('.small-graph-box').hover(function() {
+		  jQuery(this).find('.box-button').fadeIn('fast');
+	   }, function() {
+		  jQuery(this).find('.box-button').fadeOut('fast');
+	   });
+	   jQuery('.small-graph-box .box-close').click(function() {
+		  jQuery(this).closest('.small-graph-box').fadeOut(200);
+		  return false;
+	   });
+</script>
 
+
+
+<script type="text/javascript">
+function Upload() {
+    //Get reference of FileUpload.
+    var fileUpload = document.getElementById("fileUpload");
+ 
+    //Check whether the file is valid Image.
+    var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(.jpg|.png|.gif)$");
+    if (regex.test(fileUpload.value.toLowerCase())) {
+ 
+        //Check whether HTML5 is supported.
+        if (typeof (fileUpload.files) != "undefined") {
+            //Initiate the FileReader object.
+            var reader = new FileReader();
+            //Read the contents of Image File.
+            reader.readAsDataURL(fileUpload.files[0]);
+            reader.onload = function (e) {
+                //Initiate the JavaScript Image object.
+                var image = new Image();
+ 
+                //Set the Base64 string return from FileReader as source.
+                image.src = e.target.result;
+                       
+                //Validate the File Height and Width.
+                image.onload = function () {
+                    var height = this.height;
+                    var width = this.width;
+                    if (height == 800 && width == 1680) {
+                    	alert("Uploaded image has valid Height and Width.");
+                        document.getElementById('sub').disabled = false;
+                        
+                    }
+                    else
+                    	{
+                    	 alert("Height and Width must not exceed 1680px & 800px.");
+                    	document.getElementById('sub').disabled = true;
+          
+                    	}
+                };
+ 
+            }
+        } else {
+            alert("This browser does not support HTML5.");
+            return false;
+        }
+    } else {
+        alert("Please select a valid Image file.");
+        return false;
+    }
+}
+	
+
+
+</script>
+
+
+
+<script type="text/javascript">
+$("#bandisc").blur(function(){
+    
+	var size =  $("#bandisc").val().length;
+	if(size>60)
+		{
+		$("#bandisc").val(" ");
+		alert("description must be less than 60 Characters Only")
+		
+		}
+	
+});
+</script>
 </body>
 </html>

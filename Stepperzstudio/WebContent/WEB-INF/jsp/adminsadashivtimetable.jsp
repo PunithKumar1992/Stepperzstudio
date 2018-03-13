@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <head>
 <title>StepperzStudio::Admin</title>
@@ -18,6 +21,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="admincss/font.css" type="text/css"/>
 <link href="admincss/font-awesome.css" rel="stylesheet"> 
 <link rel="stylesheet" href="admincss/morris.css" type="text/css"/>
+<link rel="stylesheet" href="admincss/lightbox.css">
 <!-- calendar -->
 <link rel="stylesheet" href="admincss/monthly.css">
 <!-- //calendar -->
@@ -167,6 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- sidebar menu end-->
     </div>
 </aside>
+<!--sidebar end-->
 <!--main content start-->
 <section id="main-content">
 	<section class="wrapper">
@@ -174,40 +179,90 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Banner
+                            Sadashiv Nagar
                         </header>
                         <div class="panel-body">
-                            <div >
-                                <form>
-                                <div class="col-md-3">
-                                  
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter title">
-                                </div>
-                                <div class="col-md-3">
-                                   
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter description">
+                            <div class="position-center">
+                                <form:form action="savesadashivtimetable.html" enctype="multipart/form-data" method="post" modelAttribute="sadatime">
+                                <div class="col-md-5">
+                                <select name="timetable_caption">
+								  <option disabled selected>Time_Table_Caption</option>
+								  <option value="Aerobics(Group Excercise)">Aerobics(Group Excercise)</option>
+								  <option value="Dance">Dance</option>
+								  <option value="Yoga">Yoga</option>
+								  </select>
+                                
                                 </div>
                                 
-                                <div class="col-md-3">
-                                    <a href="banner.html"><button type="submit" class="btn btn-info" style="margin-top:-2%">Update</button></a>
+                                 <div class="col-md-4">
+                                
+                                    <input type="file"  name="file"  placeholder="Image" id="fileUpload" onchange="Upload();">
                                 </div>
-                                </form>
+								<div class="col-md-2" style="float: right;margin-top:-4%;">
+                                    <input type="submit" class="btn btn-info"  value="Add" id="sub"  disabled>
+                                </div>
+                                
+                                
+                                
+                                
+                                </form:form>
                             </div>
                         </div>
                     </section>
             </div>
 </section>
-
- <!-- footer -->
+	<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+       Sadashiv Nagar Information
+    </div>
+     <div class="table-responsive">
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            
+            <th>Time_Table_Caption</th>
+            <th>Time_Table_Image</th>
+            <th> Action</th>
+          </tr>
+        </thead>
+        <tbody>
+     
+    <c:forEach var="sadalist" items="${sadatimelist}" >
+   <tr>
+            <td><span class="text-ellipsis">${sadalist.timetable_caption}</span></td>
+            <td>
+			<a class="example-image-link" href="images/timetable/sadhashivnagar/${sadalist.timetable_image }" data-lightbox="example-set" >		
+	<img src="images/timetable/sadhashivnagar/${sadalist.timetable_image }" alt="" width="70%"/>
+	</a>
+	 <script src="adminjs/lightbox-plus-jquery.min.js"> </script>
+			<!-- //gallery -->
+			</td>
+			<td>
+		   <button type="button" value="Change">Change</button>
+		  
+		  </td>		 
+           </tr>
+		 
+</c:forEach>
+		 
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</div>
+<!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2018 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 			</div>
 		  </div>
   <!-- / footer -->
 </section>
+
+
 <!--main content end-->
-</section>
 <script src="adminjs/bootstrap.js"></script>
 <script src="adminjs/jquery.dcjqaccordion.2.7.js"></script>
 <script src="adminjs/scripts.js"></script>
@@ -216,18 +271,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="adminjs/jquery.scrollTo.js"></script>
 <!-- morris JavaScript -->	
-<script>
-	$(document).ready(function() {
-		//BOX BUTTON SHOW AND CLOSE
-	   jQuery('.small-graph-box').hover(function() {
-		  jQuery(this).find('.box-button').fadeIn('fast');
-	   }, function() {
-		  jQuery(this).find('.box-button').fadeOut('fast');
-	   });
-	   jQuery('.small-graph-box .box-close').click(function() {
-		  jQuery(this).closest('.small-graph-box').fadeOut(200);
-		  return false;
-	   });
+
+
+
+<script type="text/javascript">
+function Upload() 
+{
+    //Get reference of FileUpload.
+    var fileUpload = document.getElementById("fileUpload");
+ 
+    //Check whether the file is valid Image.
+    var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(.jpg|.png|.gif)$");
+    if (regex.test(fileUpload.value.toLowerCase())) {
+ 
+        //Check whether HTML5 is supported.
+        if (typeof (fileUpload.files) != "undefined") {
+            //Initiate the FileReader object.
+            var reader = new FileReader();
+            //Read the contents of Image File.
+            reader.readAsDataURL(fileUpload.files[0]);
+            reader.onload = function (e) {
+                //Initiate the JavaScript Image object.
+                var image = new Image();
+ 
+                //Set the Base64 string return from FileReader as source.
+                image.src = e.target.result;
+                       
+                //Validate the File Height and Width.
+                image.onload = function () {
+                    var height = this.height;
+                    var width = this.width;
+                    
+                    if (height<=552 && width<=776) {
+                    	alert("Uploaded image has valid Height and Width.");
+                        document.getElementById('sub').disabled = false;
+                        
+                    }
+                    else
+                    	{
+                    	 alert("Height and Width must not exceed 776px & 552px.");
+                    	document.getElementById('sub').disabled = true;
+          
+                    	}
+                };
+ 
+            }
+        } else {
+            alert("This browser does not support HTML5.");
+            return false;
+        }
+    } else {
+        alert("Please select a valid Image file.");
+        return false;
+    }
+}
+
+
+</script>
+
+
+
+
 
 </body>
 </html>

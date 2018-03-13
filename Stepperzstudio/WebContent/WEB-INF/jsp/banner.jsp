@@ -182,14 +182,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div >
                                <form:form action="savebanner.html" enctype="multipart/form-data"  method="post" modelAttribute="banner">
                                <div class="col-md-3">
-                               <form:input path="banner_title" class="form-control" placeholder="Enter title"/>
+                               <form:input path="banner_title" class="form-control" placeholder="Enter title" size="10"/>
                                 </div>
                                  <div class="col-md-3">
-                                   <form:input path="banner_desc" class="form-control" placeholder="Enter description"/>
+                                   <form:input path="banner_desc" id="bandisc" class="form-control" placeholder="Enter description" size="20"/>
                                			</div>
                                			<div class="col-md-3">
-                                   
-                                    <input type="file" name="file" id="fileUpload" onchange="Upload();" accept=".jpg,.png,jpeg" />
+
+                                    <input type="file" name="file" id="fileUpload" onchange="Upload();" value="" accept=".jpg,.png,jpeg" />
                                 </div>
                                 <div class="col-md-3">
                                     <input type="submit" class="btn btn-info" value="ADD" style="margin-top:-2%" id="sub"  disabled/>
@@ -231,6 +231,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <c:param name="bannerid"  value="${list.banner_id}"></c:param>
     <c:param name="bannerimg" value="${list.banner_img}"></c:param>
     </c:url>
+    
+    
+    <c:url var="editbanner" value="editbanner.html">
+    <c:param name="bannerid"  value="${list.banner_id}"></c:param>
+    <c:param name="bannerimg" value="${list.banner_img}"></c:param>
+    </c:url>
 	 <tr>
            
             <td>${list.banner_title}</td>
@@ -243,7 +249,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- //gallery -->
 			</td>
 			<td>
-		  <a href="banneredit.html"><input type="button" value="edit"></a>
+		   <button type="button" value="edit" onclick=window.location.href="${editbanner}">edit</button>
 		  
 		  </td>
 		
@@ -262,6 +268,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     
   </div>
 </div>
+
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
@@ -334,6 +341,20 @@ function Upload() {
 
 </script>
 
+
+<script type="text/javascript">
+$("#bandisc").blur(function(){
+    
+	var size =  $("#bandisc").val().length;
+	if(size>60)
+		{
+		$("#bandisc").val(" ");
+		alert("description must be less than 60 Characters Only")
+		
+		}
+	
+});
+</script>
 
 
 </body>

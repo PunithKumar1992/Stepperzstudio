@@ -39,6 +39,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.appfone.stepperz.Daoimpl.AdminLoginDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminbannerDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminregistrationDaoimpl;
+import com.appfone.stepperz.Daoimpl.Admintime_sadashivnagrDaoimpl;
 import com.appfone.stepperz.Daoimpl.BannerDaoimpl;
 import com.appfone.stepperz.Daoimpl.CareerDaoimpl;
 import com.appfone.stepperz.Daoimpl.FeedbackDaoimpl;
@@ -49,6 +50,7 @@ import com.appfone.stepperz.pojo.Banner;
 import com.appfone.stepperz.pojo.Career;
 import com.appfone.stepperz.pojo.Feedback;
 import com.appfone.stepperz.pojo.Registration;
+import com.appfone.stepperz.pojo.Timetable_sadashivnagr;
 import com.appfone.stepperz.util.Emailutility;
 
 @Controller
@@ -387,16 +389,13 @@ public class StepperzController {
 	@RequestMapping(value="/savebanner")
 	public String savebannerController(@ModelAttribute("banner")Banner banner)
 	{
-		InputStream inputStream = null;  
-		  OutputStream outputStream = null;  
 		  MultipartFile file = banner.getFile(); 
-		  System.out.println(file);
+		 
 		   
 		  String fileName = file.getOriginalFilename();  
 		  System.out.println("filename is " +fileName);
 		  banner.setBanner_img(fileName);
 		  String relativepath = "images/banner/"+fileName;
-		   String abspath=context.getRealPath(relativepath);
 		   String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"banner"+ File.separator;
 		   System.out.println("uploadpath is" +uploadPath);
 		   File targetFile = new File(uploadPath, fileName);  
@@ -431,4 +430,104 @@ public class StepperzController {
 		
 		return "redirect:/adminbanner.html";
 	}
+	
+	@RequestMapping(value="/editbanner")
+	public ModelAndView  bannereditController(@RequestParam("bannerid")int id,@RequestParam("bannerimg")String bannerimg)
+	{
+		AdminbannerDaoimpl editbanner=new AdminbannerDaoimpl();
+		Banner banner=editbanner.getsinglebanner(id);
+		ModelAndView mv= new ModelAndView();
+		mv.addObject("banner",banner);
+		mv.addObject("imgtoedit", bannerimg);
+		mv.setViewName("banneredit");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/saveeditedbanner")
+	public String  saveeditedbannerController(@RequestParam("imgtoedit")String imgtoedit,@ModelAttribute("banner")Banner banner)
+	{
+		System.out.println("imgtoedit is  " +imgtoedit);
+		MultipartFile file = banner.getFile(); 
+		System.out.println(""+file.getSize());
+		System.out.println(file.getOriginalFilename());
+		if(file.getSize()==0)
+		{
+			System.out.println("image is not choose method");
+			banner.setBanner_img(imgtoedit);
+			AdminbannerDaoimpl saveeditedbanner = new AdminbannerDaoimpl();
+			  saveeditedbanner.Savebanner(banner);
+			  
+		}
+		else if(file.getSize()>0)
+		{
+			System.out.println("image choose method");
+			String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"banner"+ File.separator;
+			File delfile=new File(uploadPath,imgtoedit);
+			delfile.delete();
+			String fileName = file.getOriginalFilename();  
+			  System.out.println("filename is " +fileName);
+			  banner.setBanner_img(fileName);
+			  String relativepath = "images/banner/"+fileName;
+			   System.out.println("uploadpath is" +uploadPath);
+			   File targetFile = new File(uploadPath, fileName);  
+			  try {
+				file.transferTo(targetFile);
+				System.out.println("transfer starts");
+			} catch (IllegalStateException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			  			 
+		}
+		AdminbannerDaoimpl saveeditedbanner = new AdminbannerDaoimpl();
+		  saveeditedbanner.Savebanner(banner);
+		 return "redirect:/adminbanner.html";
+	}
+	
+	@RequestMapping(value="/sadashivtimetable")
+	public ModelAndView  sadashivtimetableController()
+	{
+		
+		ModelAndView mv= new ModelAndView();
+		Timetable_sadashivnagr timetable = new Timetable_sadashivnagr();
+		Admintime_sadashivnagrDaoimpl savtime=new Admintime_sadashivnagrDaoimpl();
+		List list = savtime.gettimetables();
+		mv.addObject("sadatime", timetable);
+		mv.addObject("sadatimelist", list);
+		mv.setViewName("adminsadashivtimetable");
+		return mv;
+	}
+	
+	@RequestMapping(value="/savesadashivtimetable")
+	public String  savesadashivtimetableController(@ModelAttribute("sadatime")Timetable_sadashivnagr sadatime)
+	{
+		
+		MultipartFile file=sadatime.getFile();
+		String fileName = file.getOriginalFilename();
+		sadatime.setTimetable_image(fileName);
+		  String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"timetable"+ File.separator+"sadhashivnagar"+File.separator;
+		   System.out.println("uploadpath is" +uploadPath);
+		   File targetFile = new File(uploadPath, fileName);  
+		  try {
+			file.transferTo(targetFile);
+			System.out.println("transfer starts");
+		} catch (IllegalStateException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		  Admintime_sadashivnagrDaoimpl savesadatime=new Admintime_sadashivnagrDaoimpl();
+		  savesadatime.saveSadaTime(sadatime);
+		return "redirect:/sadashivtimetable.html";
+	}
+	
+	
+	
+	
 }
