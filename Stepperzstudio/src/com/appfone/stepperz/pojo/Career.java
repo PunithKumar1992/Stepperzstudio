@@ -72,6 +72,14 @@ public class Career {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	@Override
+	public String toString() {
+		return "Career [career_id=" + career_id + ", first_name=" + first_name + ", last_name=" + last_name + ", email="
+				+ email + ", post_applyfor=" + post_applyfor + ", salary_req=" + salary_req + ", joining_date="
+				+ joining_date + ", phone=" + phone + ", last_company=" + last_company + ", message=" + message + "]";
+	}
+	
+	
 	
 	
 	

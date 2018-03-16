@@ -174,45 +174,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--sidebar end-->
 <!--main content start-->
 <section id="main-content">
-	<section class="wrapper">
-            <div class="row">
-            <div class="col-md-12">
-                    <section class="panel">
-                        <header class="panel-heading">
-                            Sadashiv Nagar
-                        </header>
-                        <div class="panel-body">
-                            <div class="position-center">
-                                <form:form action="savesadashivtimetable.html" enctype="multipart/form-data" method="post" modelAttribute="sadatime">
-                                <div class="col-md-5">
-                                <select name="timetable_caption">
-								  <option disabled selected>Time_Table_Caption</option>
-								  <option value="Aerobics(Group Excercise)">Aerobics(Group Excercise)</option>
-								  <option value="Dance">Dance</option>
-								  <option value="Yoga">Yoga</option>
-								  </select>
-                                
-                                </div>
-                                
-                                 <div class="col-md-4">
-                                
-                                    <input type="file"  name="file"  placeholder="Image" id="fileUpload" onchange="Upload();">
-                                </div>
-								<div class="col-md-2" style="float: right;margin-top:-4%;">
-                                    <input type="submit" class="btn btn-info"  value="Add" id="sub"  disabled>
-                                </div>
-                                
-                                
-                                
-                                
-                                </form:form>
-                            </div>
-                        </div>
-                    </section>
-            </div>
-</section>
+
 	<div class="table-agile-info">
-  <div class="panel panel-default">
+  <div class="panel panel-default" style="margin-top: 8%;">
     <div class="panel-heading">
        Sadashiv Nagar Information
     </div>
@@ -229,6 +193,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <tbody>
      
     <c:forEach var="sadalist" items="${sadatimelist}" >
+    <c:url var="changesadtime" value="changesadatime.html">
+    <c:param name="timeid" value="${sadalist.tb_id}"></c:param>
+    </c:url>
    <tr>
             <td><span class="text-ellipsis">${sadalist.timetable_caption}</span></td>
             <td>
@@ -239,7 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- //gallery -->
 			</td>
 			<td>
-		   <button type="button" value="Change">Change</button>
+		   <button type="button" value="Change" onclick=window.location.href="${changesadtime}">Change</button>
 		  
 		  </td>		 
            </tr>
@@ -273,61 +240,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- morris JavaScript -->	
 
 
-
-<script type="text/javascript">
-function Upload() 
-{
-    //Get reference of FileUpload.
-    var fileUpload = document.getElementById("fileUpload");
- 
-    //Check whether the file is valid Image.
-    var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(.jpg|.png|.gif)$");
-    if (regex.test(fileUpload.value.toLowerCase())) {
- 
-        //Check whether HTML5 is supported.
-        if (typeof (fileUpload.files) != "undefined") {
-            //Initiate the FileReader object.
-            var reader = new FileReader();
-            //Read the contents of Image File.
-            reader.readAsDataURL(fileUpload.files[0]);
-            reader.onload = function (e) {
-                //Initiate the JavaScript Image object.
-                var image = new Image();
- 
-                //Set the Base64 string return from FileReader as source.
-                image.src = e.target.result;
-                       
-                //Validate the File Height and Width.
-                image.onload = function () {
-                    var height = this.height;
-                    var width = this.width;
-                    
-                    if (height<=552 && width<=776) {
-                    	alert("Uploaded image has valid Height and Width.");
-                        document.getElementById('sub').disabled = false;
-                        
-                    }
-                    else
-                    	{
-                    	 alert("Height and Width must not exceed 776px & 552px.");
-                    	document.getElementById('sub').disabled = true;
-          
-                    	}
-                };
- 
-            }
-        } else {
-            alert("This browser does not support HTML5.");
-            return false;
-        }
-    } else {
-        alert("Please select a valid Image file.");
-        return false;
-    }
-}
-
-
-</script>
 
 
 

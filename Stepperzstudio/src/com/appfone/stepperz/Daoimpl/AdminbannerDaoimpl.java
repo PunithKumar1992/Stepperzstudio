@@ -77,6 +77,21 @@ public class AdminbannerDaoimpl  implements AdminbannerDao {
 		session.close();
 		return banner;
 	}
+
+
+	@Override
+	public int getBannerdbsize() {
+		int size=0;
+		SessionFactory factory=HibernateUtil.getSessionFactory();
+		Session session=factory.openSession();
+		Transaction t = session.beginTransaction();
+		t.begin();
+		Query query=session.createQuery("select count(*) from Banner");
+		List list=query.list();
+		Iterator itr=list.iterator();
+		size=Integer.parseInt(itr.next().toString());
+		return size;
+	}
 	
 	
 }

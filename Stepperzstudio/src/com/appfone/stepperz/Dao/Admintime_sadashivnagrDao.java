@@ -8,5 +8,6 @@ public interface Admintime_sadashivnagrDao {
 	
 	public abstract List gettimetables();
 	public void saveSadaTime(Timetable_sadashivnagr newtime);
+	public Timetable_sadashivnagr getsingletime(int id);
 
 }

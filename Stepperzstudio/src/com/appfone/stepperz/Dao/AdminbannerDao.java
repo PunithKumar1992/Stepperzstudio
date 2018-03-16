@@ -10,5 +10,6 @@ public interface AdminbannerDao {
 	public void Savebanner(Banner banner);
 	public abstract void deletebanner(int id,String img);
 	public abstract Banner getsinglebanner(int id);
+	public int getBannerdbsize();
 	
 }

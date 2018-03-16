@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
 <head>
 <title>StepperzStudio::Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -167,6 +172,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- sidebar menu end-->
     </div>
 </aside>
+<!--sidebar end-->
 <!--main content start-->
 <section id="main-content">
 	<section class="wrapper">
@@ -174,39 +180,149 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Banner
+                           Career
                         </header>
                         <div class="panel-body">
                             <div >
-                                <form>
-                                <div class="col-md-3">
+                          <form:form method="post" action="saveadmincareer.html" modelAttribute="careerobj">
+                          
+                          
+                          <form:hidden path="career_id"/>
+								<div class="col-md-3">
                                   
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter title">
+                                   <form:input path="first_name" class="form-control" id="First-name" placeholder="First-name"/>
+                                </div>
+                          
+                          <div class="col-md-3">
+                                  
+                                   <form:input path="last_name" class="form-control" id="Last-name" placeholder="Last-name"/>
+                                </div>
+                               
+                          <div class="col-md-3">
+                                  
+                                   <form:input path="email" class="form-control" id="Email1" placeholder="Email"/>
                                 </div>
                                 <div class="col-md-3">
-                                   
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter description">
+                                   <form:input path="post_applyfor" class="form-control" id="apply-for" placeholder="Apply for "/>
+                                </div>
+                                
+								<div class="col-md-3">
+                                  <form:input path="salary_req" class="form-control" id="Salary" placeholder="Expected Salary"/>
+                                     </div>
+                                     
+                                     <div class="col-md-3">
+                                   <form:input path="joining_date" class="form-control" id="joining-date" placeholder="Joining-Date"/>
+                                 
                                 </div>
                                 
                                 <div class="col-md-3">
-                                    <button type="submit" class="btn btn-info" style="margin-top:-2%">Update</button>
+                                   <form:input path="phone" class="form-control" id="Phone-number" placeholder="Phone-number"/>
+                                    
                                 </div>
-                                </form>
+                                 <div class="col-md-3">
+                                  <form:input path="last_company" class="form-control" id="Last-company" placeholder="Last-company"/>
+                                    
+                                </div>
+                                </div>
+                                 <div class="col-md-3">
+                                  <form:input path="message" class="form-control" id="Message" placeholder="Message"/>
+                                    
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="submit" class="btn btn-info" value="Submit" style="margin-top:-2%"/>
+                                </div>
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          </form:form>     
+                       
                             </div>
                         </div>
                     </section>
             </div>
 </section>
-
+		<div class="table-agile-info">
+  <div class="panel panel-default" style="margin-left: 20%;">
+    <div class="panel-heading">
+      Career Information
+    </div>
+     <div class="table-responsive">
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            
+            <th>First_name</th>
+            <th>Last_name</th>
+            <th>Email</th>
+			<th>Post_apply_for</th>
+			<th>Salary_req</th>
+			<th>Joining_Date</th>
+			<th>Phone_number</th>
+			<th>Last_company</th>
+            <th> Message</th>
+			<th> Action</th>
+          </tr>
+        </thead>
+        <tbody>
+    
+	
+		   <c:forEach var="carrlist" items="${carrlist}">
+	 		<c:url  var="deletecareer" value="deleteadmincareer.html">
+            <c:param name="career_id" value="${carrlist.career_id}"></c:param>
+            
+                          </c:url>
+                          <c:url var="editadmincareer" value="editadmincareer.html">
+                         <c:param name="career_id" value="${carrlist.career_id}"></c:param>
+            
+                          </c:url>
+		   
+	 <tr>
+           
+			<td><span class="text-ellipsis">${carrlist.first_name}</span></td>
+            <td><span class="text-ellipsis">${carrlist.last_name}</span></td>
+			<td><span class="text-ellipsis">${carrlist.email}</span></td>
+			<td><span class="text-ellipsis">${carrlist.post_applyfor}</span></td>
+			<td><span class="text-ellipsis">${carrlist.salary_req}</span></td>
+			<td><span class="text-ellipsis">${carrlist.joining_date}</span></td>
+			<td><span class="text-ellipsis">${carrlist.phone}</span></td>
+			<td><span class="text-ellipsis">${carrlist.last_company}</span></td>
+			<td><span class="text-ellipsis">${carrlist.message}</span></td>
+			
+            
+			<td>
+		  <button type="button" value="delete" onclick=window.location.href="${editadmincareer}">edit</button>
+		  
+		  
+		  </td>
+		
+		  <td>
+		  <button type="button" value="delete" onclick=window.location.href="${deletecareer}">delete</button>
+		  
+		  </td>
+		 
+           </tr>
+			</c:forEach>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</div>
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>Â© 2018 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>© 2018 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 			</div>
 		  </div>
   <!-- / footer -->
-</section>
-<!--main content end-->
 </section>
 <!--main content end-->
 </section>

@@ -127,31 +127,31 @@ httpres.setDateHeader("Expires", 0); // Proxies.
                     </a>
                 </li>
 				 <li>
-                    <a href="adds.html">
+                    <a href="adminads.html">
                         <i class="fa fa-adn" aria-hidden="true"></i>
                         <span>Adds</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="testimonials.html">
+                    <a href="admintestimonials.html">
                        <i class="fa fa-comments-o" aria-hidden="true"></i>
                         <span>testimonials</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="career.html">
+                    <a href="admincareer.html">
                         <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>	
                         <span>Career</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="feedback.html">
+                    <a href="adminfeedback.html">
                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
                         <span>Feedback</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="registration.html">
+                    <a href="studentregbyadmin.html">
                        <i class="fa fa-registered" aria-hidden="true"></i>
                         <span>Registration</span>
                     </a>
@@ -206,7 +206,7 @@ httpres.setDateHeader("Expires", 0); // Proxies.
 	   jQuery('.small-graph-box .box-close').click(function() {
 		  jQuery(this).closest('.small-graph-box').fadeOut(200);
 		  return false;
-	   })
+	   });
 
 </body>
 </html>

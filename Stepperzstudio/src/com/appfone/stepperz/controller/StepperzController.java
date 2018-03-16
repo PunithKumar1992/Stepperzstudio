@@ -1,55 +1,53 @@
 package com.appfone.stepperz.controller;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.Blob;
-import java.sql.SQLException;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.appfone.stepperz.Daoimpl.AdminLoginDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdminadsDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminbannerDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdmincareerDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdminfeedbackDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminregistrationDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdminstdregDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdmintestimonialsDaoimpl;
+import com.appfone.stepperz.Daoimpl.Admintime_kalyannagrDaoimpl;
+import com.appfone.stepperz.Daoimpl.Admintime_malleshwaramDaoimpl;
 import com.appfone.stepperz.Daoimpl.Admintime_sadashivnagrDaoimpl;
-import com.appfone.stepperz.Daoimpl.BannerDaoimpl;
 import com.appfone.stepperz.Daoimpl.CareerDaoimpl;
 import com.appfone.stepperz.Daoimpl.FeedbackDaoimpl;
 import com.appfone.stepperz.Daoimpl.RecoveryDaoimpl;
 import com.appfone.stepperz.Daoimpl.RegistrationDaoimpl;
 import com.appfone.stepperz.pojo.Adminregistration;
+import com.appfone.stepperz.pojo.Advertisement;
 import com.appfone.stepperz.pojo.Banner;
 import com.appfone.stepperz.pojo.Career;
 import com.appfone.stepperz.pojo.Feedback;
 import com.appfone.stepperz.pojo.Registration;
+import com.appfone.stepperz.pojo.Testimonials;
+import com.appfone.stepperz.pojo.Timetable_kalyannagar;
+import com.appfone.stepperz.pojo.Timetable_malleshwaram;
 import com.appfone.stepperz.pojo.Timetable_sadashivnagr;
 import com.appfone.stepperz.util.Emailutility;
 
@@ -322,9 +320,12 @@ public class StepperzController {
 		AdminbannerDaoimpl bannerlist=new AdminbannerDaoimpl();
 		List list = bannerlist.getbanners();
 		ModelAndView mv = new ModelAndView();
+		AdminbannerDaoimpl bann=new AdminbannerDaoimpl();
+		int size=bann.getBannerdbsize();
 		Banner banner = new Banner();
 		mv.addObject("banner", banner);
 		mv.setViewName("banner");
+		mv.addObject("bannsize", size);
 		mv.addObject("bannerlist", list);
 		return mv;
 	}
@@ -502,14 +503,211 @@ public class StepperzController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/savesadashivtimetable")
-	public String  savesadashivtimetableController(@ModelAttribute("sadatime")Timetable_sadashivnagr sadatime)
+	@RequestMapping(value="/changesadatime")
+	public ModelAndView  changesadatimeController(@RequestParam("timeid")int changeid)
 	{
+		Admintime_sadashivnagrDaoimpl changeobj= new Admintime_sadashivnagrDaoimpl();
+		Timetable_sadashivnagr chhangedobj = changeobj.getsingletime(changeid);
+		ModelAndView mv= new ModelAndView();
+		mv.setViewName("adminsadashivtimechange");
+		mv.addObject("changesadaobj", chhangedobj);
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/savesadatimeimgchange")
+	public String  savesadatimeimgchangeController(@ModelAttribute("changesadaobj")Timetable_sadashivnagr updateobj )
+	{
+		MultipartFile sadafile = updateobj.getSadafile();
+		String fileName=sadafile.getOriginalFilename();
 		
-		MultipartFile file=sadatime.getFile();
-		String fileName = file.getOriginalFilename();
-		sadatime.setTimetable_image(fileName);
-		  String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"timetable"+ File.separator+"sadhashivnagar"+File.separator;
+		if(sadafile.getSize()>0)
+		{
+			
+			String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"timetable"+ File.separator +"sadhashivnagar" +File.separator ;
+			System.out.println("uploadpath is" +uploadPath);
+			String todeletefile =updateobj.getTimetable_image();
+			File delfile= new File(uploadPath,todeletefile);
+			delfile.delete();
+			updateobj.setTimetable_image(fileName);
+			 File targetFile = new File(uploadPath, fileName);  
+			  try {
+				sadafile.transferTo(targetFile);
+				System.out.println("transfer starts");
+			} catch (IllegalStateException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			  Admintime_sadashivnagrDaoimpl updatetime=new Admintime_sadashivnagrDaoimpl();
+			  updatetime.saveSadaTime(updateobj);
+	
+		}
+		
+		return "redirect:/sadashivtimetable.html";
+	}
+	
+	
+	@RequestMapping(value="/kalyantimetable")
+	public ModelAndView  kalyantimetableController()
+	{
+		System.out.println("admin kalayan nagar controller");
+		
+		ModelAndView mv= new ModelAndView();
+		Timetable_kalyannagar timetable = new Timetable_kalyannagar();
+		Admintime_kalyannagrDaoimpl kalayantime=new Admintime_kalyannagrDaoimpl();
+		List list = kalayantime.gettimetables();
+		mv.addObject("kalayantime", kalayantime);
+		mv.addObject("kalayntimelist", list);
+		mv.setViewName("adminkalyantimetable");
+		return mv;
+	}
+	
+	
+
+	@RequestMapping(value="/changekalyantime")
+	public ModelAndView  changekalyantimeController(@RequestParam("timeid")int changeid)
+	{
+		Admintime_kalyannagrDaoimpl changeobj= new Admintime_kalyannagrDaoimpl();
+		Timetable_kalyannagar chhangedobj = changeobj.getsingletime(changeid);
+		ModelAndView mv= new ModelAndView();
+		mv.setViewName("adminkalyantimechange");
+		mv.addObject("changekalaobj", chhangedobj);
+		return mv;
+	}
+	
+	@RequestMapping(value="/savekalatimeimgchange")
+	public String  savekalatimeimgchangeController(@ModelAttribute("changekalaobj")Timetable_kalyannagar updateobj )
+	{
+		MultipartFile sadafile = updateobj.getKalafile();
+		String fileName=sadafile.getOriginalFilename();
+		
+		if(sadafile.getSize()>0)
+		{
+			
+			String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"timetable"+ File.separator +"kalyannagar" +File.separator ;
+			System.out.println("uploadpath is" +uploadPath);
+			String todeletefile =updateobj.getTimetable_image();
+			File delfile= new File(uploadPath,todeletefile);
+			delfile.delete();
+			updateobj.setTimetable_image(fileName);
+			 File targetFile = new File(uploadPath, fileName);  
+			  try {
+				sadafile.transferTo(targetFile);
+				System.out.println("transfer starts");
+			} catch (IllegalStateException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			  Admintime_kalyannagrDaoimpl updatetime=new Admintime_kalyannagrDaoimpl();
+			  updatetime.saveSadaTime(updateobj);
+	
+		}
+		
+		return "redirect:/kalyantimetable.html";
+	}
+	
+	
+	
+	
+	@RequestMapping(value="/mallesharamtimetable")
+	public ModelAndView  mallesharamtimetableController()
+	{
+		System.out.println("admin mallesharam controller");
+		
+		ModelAndView mv= new ModelAndView();
+		Timetable_malleshwaram timetable = new Timetable_malleshwaram();
+		Admintime_malleshwaramDaoimpl malleshtime=new Admintime_malleshwaramDaoimpl();
+		List list = malleshtime.gettimetables();
+		mv.addObject("malleshtime", malleshtime);
+		mv.addObject("malleshtimelist", list);
+		mv.setViewName("adminmallesharamtimetable");
+		return mv;
+	}
+	
+	@RequestMapping(value="/changemalleshtime")
+	public ModelAndView  changemalleshtimeController(@RequestParam("timeid")int changeid)
+	{
+		Admintime_malleshwaramDaoimpl changeobj= new Admintime_malleshwaramDaoimpl();
+		Timetable_malleshwaram chhangedobj = changeobj.getsingletime(changeid);
+		ModelAndView mv= new ModelAndView();
+		mv.setViewName("adminmallesharamtimechange");
+		mv.addObject("changemalaobj", chhangedobj);
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/savemalatimeimgchange")
+	public String  savemalatimeimgchangeController(@ModelAttribute("changemalaobj")Timetable_malleshwaram updateobj )
+	{
+		MultipartFile malafile = updateobj.getMalafile();
+		String fileName=malafile.getOriginalFilename();
+		
+		if(malafile.getSize()>0)
+		{
+			
+			String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"timetable"+ File.separator +"malleshwaram" +File.separator ;
+			System.out.println("uploadpath is" +uploadPath);
+			String todeletefile =updateobj.getTimetable_image();
+			File delfile= new File(uploadPath,todeletefile);
+			delfile.delete();
+			updateobj.setTimetable_image(fileName);
+			 File targetFile = new File(uploadPath, fileName);  
+			  try {
+				malafile.transferTo(targetFile);
+				System.out.println("transfer starts");
+			} catch (IllegalStateException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			  Admintime_malleshwaramDaoimpl updatetime=new Admintime_malleshwaramDaoimpl();
+			  updatetime.saveMalleshTime(updateobj);
+	
+		}
+		
+		return "redirect:/mallesharamtimetable.html";
+	}
+	
+	
+	@RequestMapping(value="/adminads")
+	public ModelAndView adminadsController()
+	{
+		ModelAndView mv=new ModelAndView();
+		Advertisement ads=new Advertisement();
+		AdminadsDaoimpl adsobj=new AdminadsDaoimpl();
+		Map<String,String> adslist= new LinkedHashMap();
+		adslist.put("promo", "promo");
+		adslist.put("hire", "hire");
+		List list= adsobj.getads();
+		mv.addObject("ads", ads);
+		mv.addObject("adsMap", adslist);
+		mv.addObject("adslist", list);
+		mv.setViewName("adminads");
+		return mv;
+	}
+	
+	
+	
+	
+	@RequestMapping(value="/saveadminads")
+	public String saveadminadsController(@ModelAttribute("ads")Advertisement adver)
+	{
+		System.out.println("in ads controller");
+		System.out.println(adver.getAds_type());
+		MultipartFile file = adver.getAdsfile();
+		String fileName=file.getOriginalFilename();
+		System.out.println("uploaded file name is " +fileName);
+		adver.setAds_images(fileName);
+		
+		   String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"ads"+ File.separator;
 		   System.out.println("uploadpath is" +uploadPath);
 		   File targetFile = new File(uploadPath, fileName);  
 		  try {
@@ -522,12 +720,195 @@ public class StepperzController {
 			
 			e.printStackTrace();
 		}
-		  Admintime_sadashivnagrDaoimpl savesadatime=new Admintime_sadashivnagrDaoimpl();
-		  savesadatime.saveSadaTime(sadatime);
-		return "redirect:/sadashivtimetable.html";
+	
+		AdminadsDaoimpl newad = new AdminadsDaoimpl();
+		newad.saveads(adver);
+		return"redirect:/adminads.html";
+	}
+	
+	@RequestMapping(value="/deletead")
+	public String deleteadController(@RequestParam("ads_id")int adsid,@RequestParam("ads_img")String adsimg)
+	{
+		
+		
+		AdminadsDaoimpl deleads= new AdminadsDaoimpl();
+		deleads.deletead(adsid);
+		   String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"ads"+ File.separator;
+		System.out.println("ads image path " +uploadPath);
+		File file= new File(uploadPath,adsimg);
+		file.delete();
+		return "redirect:/adminads.html";
+	}
+	
+	
+	@RequestMapping(value="/admintestimonials")
+	public ModelAndView admintestimonialsController()
+	{
+		
+		Testimonials test = new Testimonials();
+		AdmintestimonialsDaoimpl gettest= new AdmintestimonialsDaoimpl();
+		List list=gettest.getAllTestimonials();
+		ModelAndView mv= new ModelAndView();
+		mv.setViewName("admintestimonials");
+		mv.addObject("testilist", list);
+		mv.addObject("testi", test);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/savetestimonial")
+	public String savetestimonialController(@ModelAttribute("testi")Testimonials testi)
+	{
+		
+		AdmintestimonialsDaoimpl savetesti= new AdmintestimonialsDaoimpl();
+		savetesti.saveTestimonial(testi);
+		
+		return "redirect:/admintestimonials.html";
+	}
+	
+	
+	@RequestMapping(value="/deletetesti")
+	public String deletetestiController(@RequestParam("test_id")int testid)
+	{
+		AdmintestimonialsDaoimpl deletesti = new AdmintestimonialsDaoimpl();
+		deletesti.deleteSingleTesti(testid);
+		
+		
+		return "redirect:/admintestimonials.html";
+	}
+
+	
+	@RequestMapping(value="/edittesti")
+	public ModelAndView edittestiController(@RequestParam("test_id")int testid)
+	{
+		
+		AdmintestimonialsDaoimpl edittest= new AdmintestimonialsDaoimpl();
+		Testimonials testt= edittest.getSingleTestimonial(testid);
+		ModelAndView mv= new ModelAndView();
+		mv.addObject("edittest", testt);
+		mv.setViewName("admintestimonialedit");
+		return mv;
+		
+	}
+	
+	@RequestMapping(value="/saveeditedtesti")
+	public String saveeditedtestiController(@ModelAttribute("edittest")Testimonials editest)
+	{
+		
+		AdmintestimonialsDaoimpl edittest= new AdmintestimonialsDaoimpl();
+		edittest.saveTestimonial(editest);
+		return "redirect:/admintestimonials.html";
+	}
+	
+	
+	@RequestMapping(value="/admincareer")
+	public ModelAndView admincareerController()
+	{
+		Career careerr = new Career(); 
+		ModelAndView mv= new ModelAndView();
+		AdmincareerDaoimpl listacareer= new AdmincareerDaoimpl();
+		List list=listacareer.getCareers();
+		mv.addObject("careerobj", careerr);
+		mv.addObject("carrlist", list);
+		mv.setViewName("admincareer");
+		return mv;
+		
+		
 	}
 	
 	
 	
 	
+	@RequestMapping(value="/saveadmincareer")
+	public String saveadmincareerController(@ModelAttribute("careerobj")Career carerr)
+	{
+		
+		AdmincareerDaoimpl savecareer=new AdmincareerDaoimpl();
+		savecareer.saveCareer(carerr);
+		return"redirect:/admincareer.html";
+
+	}
+	
+	
+	
+	@RequestMapping(value="/deleteadmincareer")
+	public String deleteadmincareerController(@RequestParam("career_id")int career_id)
+	{
+		
+		AdmincareerDaoimpl deletecareer= new AdmincareerDaoimpl();
+		deletecareer.deleteSingleCareer(career_id);
+		return "redirect:/admincareer.html";
+	}
+	
+	@RequestMapping(value="/editadmincareer")
+	public ModelAndView editadmincareerController(@RequestParam("career_id")int career_id)
+	{
+		AdmincareerDaoimpl editcareer = new AdmincareerDaoimpl();
+		Career editedcarrer= editcareer.getSingleCareer(career_id);
+		
+		ModelAndView mv= new ModelAndView();
+		mv.addObject("editedcareer", editedcarrer);
+		mv.setViewName("admincareeredit");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/adminfeedback")
+	public ModelAndView adminfeedbackController()
+	{
+		
+		AdminfeedbackDaoimpl feed = new AdminfeedbackDaoimpl();
+		List feedlist= feed.getFeedbacks();
+		ModelAndView mv= new ModelAndView();
+		mv.addObject("feedlist", feedlist);
+		mv.setViewName("adminfeedback");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/deleteadminfeed")
+	public String deleteadminfeedController(@RequestParam("feedback_id")int feedback_id)
+	{
+		AdminfeedbackDaoimpl delfeed= new AdminfeedbackDaoimpl();
+		delfeed.deletefeedback(feedback_id);
+		
+		return "redirect:/adminfeedback.html";
+	}
+	
+	@RequestMapping(value="/studentregbyadmin")
+	public ModelAndView studentregbyadminController()
+	{
+		Registration stdreg= new Registration();
+		AdminstdregDaoimpl reglist= new AdminstdregDaoimpl();
+		List list=reglist.getSavedreglist();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("stdreg", stdreg);
+		mv.addObject("stdreglist", list);
+		mv.setViewName("studentregbyadmin");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/savestdregbyadmin")
+	public String  savestdregbyadminController(@ModelAttribute("stdreg")Registration stdreg)
+	{
+		
+		AdminstdregDaoimpl savreg= new AdminstdregDaoimpl();
+		savreg.savestdreg(stdreg);
+		return "redirect:/studentregbyadmin.html";
+	}
+	
+	@RequestMapping(value="/deletestdreg")
+	public String  deletestdregController(@RequestParam("reg_id")int reg_id)
+	{
+		
+		AdminstdregDaoimpl delreg= new AdminstdregDaoimpl();
+		delreg.deletesinglestdreg(reg_id);
+		return "redirect:/studentregbyadmin.html";
+	}
+	
 }
+
+
+

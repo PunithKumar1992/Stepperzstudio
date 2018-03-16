@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <title>StepperzStudio::Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +22,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="admincss/font.css" type="text/css"/>
 <link href="admincss/font-awesome.css" rel="stylesheet"> 
 <link rel="stylesheet" href="admincss/morris.css" type="text/css"/>
-<link rel="stylesheet" href="admincss/lightbox.css">
 <!-- calendar -->
 <link rel="stylesheet" href="admincss/monthly.css">
 <!-- //calendar -->
@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="bashboard.html" class="logo">
+    <a href="index.html" class="logo">
         <img src="adminimages/logo.png" alt="stepper" style="width:90%;margin-top:-9%;">
     </a>
     <div class="sidebar-toggle-box">
@@ -48,18 +48,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
-        
+        <li>
+            <input type="text" class="form-control search" placeholder=" Search">
+        </li>
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-               <i class="fa fa-user" aria-hidden="true"></i>
-                <span class="username">${sessionScope.activeuser}</span>
+                <img alt="" src="adminimages/2.png">
+                <span class="username">John Doe</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="admin.html"><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -76,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="bashboard.html">
+                    <a class="active" href="index.html">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
@@ -118,7 +120,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
                 <li>
-                    <a href="adminbanner.html">
+                    <a href="banner.html">
                          <i class="fa fa-glass"></i>
                         <span>Banner</span>
                     </a>
@@ -169,115 +171,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- sidebar menu end-->
     </div>
 </aside>
+<!--sidebar end-->
 <!--main content start-->
 <section id="main-content">
 	<section class="wrapper">
-            <div class="row" id="bannerbanner">
+            <div class="row">
             <div class="col-md-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Banner
+                           Kalyan Nagar
                         </header>
                         <div class="panel-body">
-                            <div >
-                               <form:form action="savebanner.html" enctype="multipart/form-data"  method="post" modelAttribute="banner">
-                               <div class="col-md-3">
-                               <form:input path="banner_title" class="form-control" placeholder="Enter title" size="10"/>
-                                </div>
-                                 <div class="col-md-3">
-                                   <form:input path="banner_desc" id="bandisc" class="form-control" placeholder="Enter description" size="20"/>
-                               			</div>
-                               			<div class="col-md-3">
+                            <div class="position-center">
+                              <form:form method="post" modelAttribute="changekalaobj" action="savekalatimeimgchange.html" enctype="multipart/form-data">
+                                <form:hidden path="tb_id"/>
+                                <form:hidden path="timetable_caption"/>
+                                <form:hidden path="timetable_image"/>
+                               
+                               	<div class="col-md-3">
 
-                                    <input type="file" name="file" id="fileUpload" onchange="Upload();" value="" accept=".jpg,.png,jpeg" />
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="submit" class="btn btn-info" value="ADD" style="margin-top:-2%" id="sub"  disabled/>
+                                    <input type="file" name="kalafile" id="fileUpload" onchange="Upload();" value="" accept=".jpg,.png,jpeg" />
                                 </div>
                                
                                
-                               <input type="hidden" id="bannersize" value="${bannsize}">
-                               
-                               </form:form>
+                                <div class="col-md-2" style="float: right;margin-top:-2%;">
+                                <input type="submit" id="sub"  disabled class="btn btn-info" value="Update">
+                                </div>
+              
+                                
+                                
+                                </form:form>
+                              
                             </div>
                         </div>
                     </section>
-                    </div>
             </div>
 </section>
-		<div class="table-agile-info">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Banner Information
-    </div>
-     <div class="table-responsive">
-      <table class="table table-striped b-t b-light">
-        <thead>
-          <tr>
-            
-            <th>Banner_title</th>
-            <th>Banner_description</th>
-            <th>Banner_image</th>
-			<th></th>
-            <th> Action</th>
-          </tr>
-        </thead>
-        <tbody>
-        
-        
-        
-       
-    <c:forEach var ="list" items="${bannerlist}" >
-    <c:url var="deletebanner" value="deletebanner.html">
-    <c:param name="bannerid"  value="${list.banner_id}"></c:param>
-    <c:param name="bannerimg" value="${list.banner_img}"></c:param>
-    </c:url>
-    
-    
-    <c:url var="editbanner" value="editbanner.html">
-    <c:param name="bannerid"  value="${list.banner_id}"></c:param>
-    <c:param name="bannerimg" value="${list.banner_img}"></c:param>
-    </c:url>
-	 <tr>
-           
-            <td>${list.banner_title}</td>
-            <td><span class="text-ellipsis">${list.banner_desc}</span></td>
-            <td>
-			<a class="example-image-link" href="images/banner/${list.banner_img}" data-lightbox="example-set" >		
-	<img src="images/banner/${list.banner_img}" alt="" width="70%"/>
-	</a>
-	 <script src="adminjs/lightbox-plus-jquery.min.js"> </script>
-			<!-- //gallery -->
-			</td>
-			<td>
-		   <button type="button" value="edit" onclick=window.location.href="${editbanner}">edit</button>
-		  
-		  </td>
-		
-		  <td>
-		  <button type="button" value="delete" onclick=window.location.href="${deletebanner}">delete</button>
-		  
-		  </td>
-		 
-           </tr>
-		 
-</c:forEach>
-		 
-        </tbody>
-      </table>
-    </div>
-    
-  </div>
-</div>
 
+</section>
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>Â© 2018 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 			</div>
 		  </div>
   <!-- / footer -->
 </section>
+
 <!--main content end-->
 </section>
 <script src="adminjs/bootstrap.js"></script>
@@ -287,7 +227,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="adminjs/jquery.nicescroll.js"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="adminjs/jquery.scrollTo.js"></script>
-
+<!-- morris JavaScript -->	
 
 <script type="text/javascript">
 function Upload() {
@@ -315,14 +255,14 @@ function Upload() {
                 image.onload = function () {
                     var height = this.height;
                     var width = this.width;
-                    if (height == 800 && width == 1680) {
+                    if (height == 551 || width == 774) {
                     	alert("Uploaded image has valid Height and Width.");
                         document.getElementById('sub').disabled = false;
                         
                     }
                     else
                     	{
-                    	 alert("Height and Width must not exceed 1680px & 800px.");
+                    	 alert("Height and Width must not exceed 774px & 551px.");
                     	document.getElementById('sub').disabled = true;
           
                     	}
@@ -343,44 +283,10 @@ function Upload() {
 </script>
 
 
-<script type="text/javascript">
-$("#bandisc").blur(function(){
-    
-	var size =  $("#bandisc").val().length;
-	if(size>60)
-		{
-		$("#bandisc").val(" ");
-		alert("description must be less than 60 Characters Only")
-		
-		}
-	
-});
-</script>
 
-<script type="text/javascript">
 
-$(document).ready(function(){
-	var size=$("#bannersize").val();
-	
-	if(size>=4)
-		{
-		$("#bannerbanner").hide();
-		
-		}
-	else if(size<4)
-		{
-		$("#bannerbanner").show();
-		
-		}
-		
-	
-	
-		
-	
-	
-});
 
-</script>
+
 
 
 </body>

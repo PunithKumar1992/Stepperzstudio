@@ -6,7 +6,7 @@ public class Timetable_sadashivnagr {
 	 private int tb_id;
 	 private String timetable_caption;
 	 private String timetable_image;
-	 private MultipartFile file;
+	 private MultipartFile sadafile;
 	public int getTb_id() {
 		return tb_id;
 	}
@@ -25,17 +25,20 @@ public class Timetable_sadashivnagr {
 	public void setTimetable_image(String timetable_image) {
 		this.timetable_image = timetable_image;
 	}
-	public MultipartFile getFile() {
-		return file;
+	public MultipartFile getSadafile() {
+		return sadafile;
 	}
-	public void setFile(MultipartFile file) {
-		this.file = file;
+	public void setSadafile(MultipartFile sadafile) {
+		this.sadafile = sadafile;
 	}
 	@Override
 	public String toString() {
 		return "Timetable_sadashivnagr [tb_id=" + tb_id + ", timetable_caption=" + timetable_caption
-				+ ", timetable_image=" + timetable_image + ", file=" + file + "]";
+				+ ", timetable_image=" + timetable_image + ", sadafile=" + sadafile + "]";
 	}
+	
+	
+	
 	
 	
 	

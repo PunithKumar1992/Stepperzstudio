@@ -1,5 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+      <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<!DOCTYPE html>
 <head>
 <title>StepperzStudio::Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -168,72 +171,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- sidebar menu end-->
     </div>
 </aside>
-<!--sidebar end-->
 <!--main content start-->
 <section id="main-content">
-	<section class="wrapper">
-            <div class="row">
-            <div class="col-md-12">
-                    <section class="panel">
-                        <header class="panel-heading">
-                           Kalyan Nagar
-                        </header>
-                        <div class="panel-body">
-                            <div class="position-center">
-                                <form>
-                                
-                                <div class="col-md-3">
-                                  <select>
-								  <option disabled selected>Time_Table_Caption</option>
-								  <option>Aerobics(Group Excercise)</option>
-								  <option>Dance</option>
-								  <option>Yoga</option>
-								  </select>
-                                </div>
-                                <div class="col-md-3">
-                                
-                                    <input type="file" class="form-control"  placeholder="Image" style="margin-left:83%;">
-                                </div>
-								<div class="col-md-2" style="float: right;margin-top:-2%;">
-                                    <button type="submit" class="btn btn-info" >Add</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </section>
-            </div>
-</section>
+
 <div class="table-agile-info">
-  <div class="panel panel-default">
+  <div class="panel panel-default" style="margin-top: 10%;">
     <div class="panel-heading">
-     Kalyan Nagar Information
+     Feedback Information
     </div>
      <div class="table-responsive">
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th>Time_Table_Caption</th>
-            <th>Time_Table_Image</th>
+            
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone_number</th>
+			<th>Message</th>
             <th> Action</th>
           </tr>
         </thead>
         <tbody>
+        <c:forEach var="feedlist" items="${feedlist}">
+        <c:url var="deleteadminfeed" value="deleteadminfeed.html">
+        <c:param name="feedback_id" value="${feedlist.feedback_id}"></c:param>
+        </c:url>
+ 
     
 	 <tr>
-                 
-            <td><span class="text-ellipsis">{item.PrHelpText1}</span></td>
-			 <td>
-			<a class="example-image-link" href="adminimages/g1.jpg" data-lightbox="example-set" >		
-	<img src="adminimages/g1.jpg" alt="" width="70%"/>
-	</a>
-	 <script src="js/lightbox-plus-jquery.min.js"> </script>
-			<!-- //gallery -->
-			</td>
-			<td>
-		  <input type="button" value="delete">
+           
+           
+            <td><span class="text-ellipsis">${feedlist.name}</span></td>
+			 <td><span class="text-ellipsis">${feedlist.email}</span></td>
+			  <td><span class="text-ellipsis">${feedlist.phone_number}</span></td>
+			   <td><span class="text-ellipsis">${feedlist.message}</span></td>
+           
+			  <td>
+		  <button type="button" value="delete" onclick=window.location.href="${deleteadminfeed}">delete</button>
+		  
 		  </td>
            </tr>
-		
+		 </c:forEach>
 		  
 		
 		 
@@ -243,16 +221,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     
   </div>
 </div>
-</section>
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>Â© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 			</div>
 		  </div>
   <!-- / footer -->
 </section>
-
 <!--main content end-->
 </section>
 <script src="adminjs/bootstrap.js"></script>
@@ -263,6 +239,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="adminjs/jquery.scrollTo.js"></script>
 <!-- morris JavaScript -->	
+<script>
+	$(document).ready(function() {
+		//BOX BUTTON SHOW AND CLOSE
+	   jQuery('.small-graph-box').hover(function() {
+		  jQuery(this).find('.box-button').fadeIn('fast');
+	   }, function() {
+		  jQuery(this).find('.box-button').fadeOut('fast');
+	   });
+	   jQuery('.small-graph-box .box-close').click(function() {
+		  jQuery(this).closest('.small-graph-box').fadeOut(200);
+		  return false;
+	   });
 
 </body>
 </html>
