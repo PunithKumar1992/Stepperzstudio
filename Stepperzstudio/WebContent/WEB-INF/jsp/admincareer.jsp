@@ -17,6 +17,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom CSS -->
 <link href="admincss/style.css" rel='stylesheet' type='text/css' />
 <link href="admincss/style-responsive.css" rel="stylesheet"/>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+ <link rel="stylesheet" href="admincss/pikaday.css">
+    <link rel="stylesheet" href="admincss/site.css">
+
+
+
 <!-- font CSS -->
 <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <!-- font-awesome icons -->
@@ -37,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="index.html" class="logo">
+    <a href="bashboard.html" class="logo">
         <img src="adminimages/logo.png" alt="stepper" style="width:90%;margin-top:-9%;">
     </a>
     <div class="sidebar-toggle-box">
@@ -49,20 +58,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
-        <li>
-            <input type="text" class="form-control search" placeholder=" Search">
-        </li>
+       
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="adminimages/2.png">
-                <span class="username">John Doe</span>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span class="username">${sessionScope.activeuser}</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="adminlogout.html"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -79,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="bashboard.html">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
@@ -121,43 +128,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
                 <li>
-                    <a href="banner.html">
+                    <a href="adminbanner.html">
                          <i class="fa fa-glass"></i>
                         <span>Banner</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="adds.html">
+                    <a href="adminads.html">
                         <i class="fa fa-adn" aria-hidden="true"></i>
                         <span>Adds</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="testimonials.html">
+                    <a href="admintestimonials.html">
                        <i class="fa fa-comments-o" aria-hidden="true"></i>
                         <span>testimonials</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="career.html">
+                    <a href="admincareer.html">
                         <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>	
                         <span>Career</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="feedback.html">
+                    <a href="adminfeedback.html">
                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
                         <span>Feedback</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="registration.html">
+                    <a href="studentregbyadmin.html">
                        <i class="fa fa-registered" aria-hidden="true"></i>
                         <span>Registration</span>
                     </a>
                 </li>
                 
-                <li class="sub-menu">
+                <!-- <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-envelope"></i>
                         <span>Mail </span>
@@ -166,7 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="mail.html">Inbox</a></li>
                         <li><a href="mail_compose.html">Compose Mail</a></li>
                     </ul>
-                </li>
+                </li> -->
                 
             </ul>            </div>
         <!-- sidebar menu end-->
@@ -183,74 +190,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            Career
                         </header>
                         <div class="panel-body">
-                            <div >
-                          <form:form method="post" action="saveadmincareer.html" modelAttribute="careerobj">
+                            <div>
+                          <form:form method="post" action="saveadmincareer.html" modelAttribute="careerobj" onsubmit="return FormValidation();" onchange="return FormValidation();">
                           
                           
                           <form:hidden path="career_id"/>
 								<div class="col-md-3">
                                   
-                                   <form:input path="first_name" class="form-control" id="First-name" placeholder="First-name"/>
+                                   <form:input path="first_name" class="form-control" id="firstname" placeholder="First-name"/>
                                 </div>
                           
                           <div class="col-md-3">
                                   
-                                   <form:input path="last_name" class="form-control" id="Last-name" placeholder="Last-name"/>
+                                   <form:input path="last_name" class="form-control" id="lastname" placeholder="Last-name"/>
                                 </div>
                                
                           <div class="col-md-3">
                                   
-                                   <form:input path="email" class="form-control" id="Email1" placeholder="Email"/>
+                                   <form:input path="email" class="form-control" id="email" placeholder="Email"/>
                                 </div>
                                 <div class="col-md-3">
-                                   <form:input path="post_applyfor" class="form-control" id="apply-for" placeholder="Apply for "/>
+                                   <form:input path="post_applyfor" class="form-control" id="pos" placeholder="Apply for "/>
                                 </div>
                                 
 								<div class="col-md-3">
-                                  <form:input path="salary_req" class="form-control" id="Salary" placeholder="Expected Salary"/>
+                                  <form:input path="salary_req" class="form-control" id="sal" placeholder="Expected Salary"/>
                                      </div>
                                      
                                      <div class="col-md-3">
-                                   <form:input path="joining_date" class="form-control" id="joining-date" placeholder="Joining-Date"/>
+                                   <form:input path="joining_date" class="form-control" id="datepicker" placeholder="Joining-Date"/>
                                  
                                 </div>
                                 
                                 <div class="col-md-3">
-                                   <form:input path="phone" class="form-control" id="Phone-number" placeholder="Phone-number"/>
+                                   <form:input path="phone" class="form-control" id="ppp" placeholder="Phone-number"/>
                                     
                                 </div>
                                  <div class="col-md-3">
-                                  <form:input path="last_company" class="form-control" id="Last-company" placeholder="Last-company"/>
+                                  <form:input path="last_company" class="form-control" id="lastcom" placeholder="Last-company"/>
                                     
                                 </div>
-                                </div>
+                                
                                  <div class="col-md-3">
-                                  <form:input path="message" class="form-control" id="Message" placeholder="Message"/>
+                                  <form:input path="message" class="form-control"  id ="msg" placeholder="Message"/>
                                     
                                 </div>
                                 <div class="col-md-3">
                                     <input type="submit" class="btn btn-info" value="Submit" style="margin-top:-2%"/>
                                 </div>
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          </form:form>     
+                                   </form:form>  
                        
                             </div>
                         </div>
                     </section>
             </div>
+            </div>
 </section>
 		<div class="table-agile-info">
-  <div class="panel panel-default" style="margin-left: 20%;">
+  <div class="panel panel-default">
     <div class="panel-heading">
       Career Information
     </div>
@@ -319,13 +316,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2018 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>© 2018 Stepperz Studio. All rights reserved | Design by <a href="http://appfonehub.com">Appfone Hub Pvt Ltd</a></p>
 			</div>
 		  </div>
   <!-- / footer -->
 </section>
+
 <!--main content end-->
-</section>
 <script src="adminjs/bootstrap.js"></script>
 <script src="adminjs/jquery.dcjqaccordion.2.7.js"></script>
 <script src="adminjs/scripts.js"></script>
@@ -346,6 +343,263 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  jQuery(this).closest('.small-graph-box').fadeOut(200);
 		  return false;
 	   });
+</script>
 
+<script type="text/javascript">
+function FormValidation()
+{
+	var fn=document.getElementById('firstname').value;
+	
+    if(fn == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("firstname").value)) 
+    {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    if(fn.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    
+var ln=document.getElementById('lastname').value;
+	
+    if(ln == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('lastname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('lastname').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("lastname").value)) 
+    {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('lastname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('lastname').style.borderColor = "green";
+    }
+    if(ln.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('lastname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('lastname').style.borderColor = "green";
+    }
+    
+    var em=document.getElementById('email').value;
+    if(em=="")
+ 	   {
+ 	   document.getElementById('email').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('email').style.borderColor = "green";
+    }
+    if(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(document.getElementById("email").value))
+    	{
+    	document.getElementById('email').style.borderColor = "green";
+    	}
+    else
+	   {
+	   document.getElementById('email').style.borderColor = "red";
+	   return false;
+	   }
+    
+    var pos=document.getElementById('pos').value;
+    if(pos == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('pos').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('pos').style.borderColor = "green";
+    }
+    if(/^[a-zA-z]+$/.test(document.getElementById("pos").value))
+    	{
+    	document.getElementById('pos').style.borderColor = "green";
+    	}
+   	
+    else
+	   {
+	   document.getElementById('pos').style.borderColor = "red";
+	   return false;
+	   }
+    
+    var sal=document.getElementById('sal').value;
+    if(sal == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('sal').style.borderColor = "red";
+        return false;
+    }
+    else
+    	{
+        document.getElementById('sal').style.borderColor = "green";
+    }
+    
+    if(/^[0-9]+$/.test(document.getElementById('sal').value))
+    	{
+    	document.getElementById('sal').style.borderColor = "green";
+    	
+    	}
+    else
+    	{
+    	document.getElementById('sal').style.borderColor = "red"
+    	return false;
+    	
+    	}
+    
+    var st=document.getElementById('datepicker').value;
+    if(st == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('datepicker').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('datepicker').style.borderColor = "green";
+    }
+    var ph=document.getElementById('ppp').value;
+    if(ph=="")
+ 	   {
+ 	   document.getElementById('ppp').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('ppp').style.borderColor = "green";
+    }
+   if(/^[789]\d{9}$/.test(document.getElementById("ppp").value))
+	   {
+	   
+	   document.getElementById('ppp').style.borderColor = "green";
+	   }
+   else
+   {
+   document.getElementById('ppp').style.borderColor = "red";
+   return false;
+   }
+   
+   var lc=document.getElementById('lastcom').value;
+	
+   if(lc == "")
+   {
+       //alert('Please Enter First Name');
+       document.getElementById('lastcom').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('lastcom').style.borderColor = "green";
+   }
+   if (/^[a-zA-Z]+$/.test(document.getElementById("lastcom").value)) 
+   {
+      //alert("First Name Contains Numbers!");
+       document.getElementById('lastcom').style.borderColor = "green";
+       
+   }
+   else
+   {
+       document.getElementById('lastcom').style.borderColor = "red";
+       return false;
+   }
+   
+   if(lc.length <=2)
+   {
+       //alert('Your Name is To Short');
+       document.getElementById('lastcom').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('lastcom').style.borderColor = "green";
+   }
+   
+   var msg=document.getElementById('msg').value;
+	
+   if(msg== "")
+   {
+       //alert('Please Enter First Name');
+       document.getElementById('msg').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('msg').style.borderColor = "green";
+   }
+   if (/^[0-9]+$/.test(document.getElementById("msg").value)) 
+   {
+      //alert("First Name Contains Numbers!");
+       document.getElementById('msg').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('msg').style.borderColor = "green";
+   }
+   if(msg.length <=2)
+   {
+       //alert('Your Name is To Short');
+       document.getElementById('msg').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('msg').style.borderColor = "green";
+   }
+   
+    	
+   	
+}
+</script>
+
+
+
+
+<script src="adminjs/pikaday.js"></script>
+    <script>
+
+    var picker = new Pikaday(
+    {
+        field: document.getElementById('datepicker'),
+        firstDay: 1,
+        minDate: new Date(),
+        maxDate: new Date(2020, 12, 31),
+        yearRange: [2000,2020]
+    });
+
+    </script>
 </body>
 </html>

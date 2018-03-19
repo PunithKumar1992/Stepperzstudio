@@ -23,8 +23,9 @@
 <link href="//fonts.googleapis.com/css?family=Arapey:400,400i" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300i,400,400i,600,600i,700" rel="stylesheet">
 <!-- //web-fonts -->
+
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" style="width:100%">  
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" style="width:100%">
 <%! 
 int size;
 String title[];
@@ -102,7 +103,7 @@ String adsimages[];
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<h1><a class="navbar-brand" href="index.jsp"><img src="images/logo.png" alt="stepperz"></a></h1>
+						<a class="navbar-brand" href="index.jsp"><img src="images/logo.png" alt="stepperz"></a>
 					</div> 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -542,17 +543,17 @@ for(int i=0;i<adscount;i++)
 
 
 
-			<form action="feedback.html" method="post" class="contact_form slideanim">
+			<form action="feedback.html" method="post" class="contact_form slideanim" onsubmit="return FormValidation();" onchange="return FormValidation();">
 
 				<div class="message">
 					<div class="col-md-6 col-sm-6 grid_6 c1">
-						<input type="text" class="margin-right" Name="name" placeholder="Name" required="">
-						<input type="email" Name="email" placeholder="Email" required="">
-						<input type="text" class="margin-right" Name="phone_number" placeholder="Phone Number" required="">
+						<input type="text" class="margin-right" Name="name" placeholder="Name" required="" id="firstname">
+						<input type="email" Name="email" placeholder="Email" id="email" required="">
+						<input type="text" class="margin-right" Name="phone_number" id="ppp" placeholder="Phone Number" required="">
 					</div>
 
 					<div class="col-md-6 col-sm-6 grid_6 c1">
-						<textarea name="message" placeholder="Message" required=""></textarea>
+						<textarea name="message" placeholder="Message" id="msg" required=""></textarea>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -717,7 +718,120 @@ for(int i=0;i<adscount;i++)
 <!-- //here ends scrolling icon -->
 	<script src="js/bootstrap.js"></script>
 <!-- //for bootstrap working -->
-
+<script type="text/javascript">
+function FormValidation()
+{
+	var fn=document.getElementById('firstname').value;
+	
+    if(fn == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("firstname").value)) 
+    {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    if(fn.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    
+    var em=document.getElementById('email').value;
+    if(em=="")
+ 	   {
+ 	   document.getElementById('email').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('email').style.borderColor = "green";
+    }
+    if(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(document.getElementById("email").value))
+    	{
+    	document.getElementById('email').style.borderColor = "green";
+    	}
+    else
+	   {
+	   document.getElementById('email').style.borderColor = "red";
+	   return false;
+	   }
+    
+    
+    var ph=document.getElementById('ppp').value;
+    if(ph=="")
+ 	   {
+ 	   document.getElementById('ppp').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('ppp').style.borderColor = "green";
+    }
+   if(/^[789]\d{9}$/.test(document.getElementById("ppp").value))
+	   {
+	   
+	   document.getElementById('ppp').style.borderColor = "green";
+	   }
+   else
+   {
+   document.getElementById('ppp').style.borderColor = "red";
+   return false;
+   }
+   
+   
+   var msg=document.getElementById('msg').value;
+	
+   if(msg== "")
+   {
+       //alert('Please Enter First Name');
+       document.getElementById('msg').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('msg').style.borderColor = "green";
+   }
+   if (/^[0-9]+$/.test(document.getElementById("msg").value)) 
+   {
+      //alert("First Name Contains Numbers!");
+       document.getElementById('msg').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('msg').style.borderColor = "green";
+   }
+   if(msg.length <=2)
+   {
+       //alert('Your Name is To Short');
+       document.getElementById('msg').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('msg').style.borderColor = "green";
+   }
+   
+}
+</script>
 
 
 

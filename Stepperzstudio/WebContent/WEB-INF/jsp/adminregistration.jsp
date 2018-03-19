@@ -38,25 +38,26 @@ size:2px;
 
 </style>
 </head>
-<body>
+<body >
 <div class="reg-w3">
 <div class="w3layouts-main">
 	<h2>Register Now</h2>
-		<form:form action="adminregistration.html" method="post" modelAttribute="adminreg">
+		<form:form action="adminregistration.html" method="post" modelAttribute="adminreg" onsubmit="return FormValidation();" onchange="return FormValidation();">
 		
-		<form:input path="admin_name" class="ggg" placeholder="NAME" />
+		<form:input path="admin_name" class="ggg" placeholder="NAME"  id="firstname"/>
 		<form:errors path="admin_name" cssClass="error"></form:errors>
 		
-		<form:input path="admin_email" class="ggg" placeholder="E-MAIL" />
+		<form:input path="admin_email" class="ggg" placeholder="E-MAIL"  id="email"/>
 		<form:errors path="admin_email" cssClass="error"></form:errors>
 	
-		<form:input path="admin_phone" class="ggg" placeholder="PHONE" />
+		<form:input path="admin_phone" class="ggg" placeholder="PHONE" id="ppp"/>
 		<form:errors path="admin_phone" cssClass="error"></form:errors>
 		
-		<form:password path="admin_password"  class="ggg" placeholder="PASSWORD" />
+		<form:password path="admin_password"  class="ggg" placeholder="PASSWORD"  id="pass" />
 		<form:errors path="admin_password" cssClass="error"></form:errors>
+		<input type="checkbox" id="chk" value="Show password" onchange="tick(this)" >Show password
 		
-		<input type="submit" value="Register">
+		<input type="submit" value="Register" onmouseover="hello()"  id="sub" >
 		
 		</form:form>
 	
@@ -72,5 +73,120 @@ size:2px;
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="adminjs/jquery.scrollTo.js"></script>
 <!-- morris JavaScript -->	
+
+<script type="text/javascript">
+function FormValidation()
+{
+  var fn=document.getElementById('firstname').value;
+    if(fn == ""){
+        //alert('Please Enter First Name');
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("firstname").value)) {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    if(fn.length <=2){
+        //alert('Your Name is To Short');
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    
+    
+    var em=document.getElementById('email').value;
+    if(em=="")
+ 	   {
+ 	   document.getElementById('email').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('email').style.borderColor = "green";
+    }
+    if(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(document.getElementById("email").value))
+    	{
+    	document.getElementById('email').style.borderColor = "green";
+       
+    	
+    	}
+    else
+	   {
+	   document.getElementById('email').style.borderColor = "red";
+	   return false;
+	   }
+   
+    var ph=document.getElementById('ppp').value;
+    if(ph=="")
+ 	   {
+ 	   document.getElementById('ppp').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('ppp').style.borderColor = "green";
+    }
+   if(/^[789]\d{9}$/.test(document.getElementById("ppp").value))
+	   {
+	   
+	   document.getElementById('ppp').style.borderColor = "green";
+	   }
+   else
+   {
+   document.getElementById('ppp').style.borderColor = "red";
+   return false;
+   }
+   
+   var pass=document.getElementById('pass').value;
+   if(pass=="")
+	   {
+	   document.getElementById('pass').style.borderColor = "red";
+       return false;
+   }else{
+       document.getElementById('pass').style.borderColor = "green";
+   }
+   if(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/.test(document.getElementById("pass").value))
+	   {
+	   document.getElementById('pass').style.borderColor = "green";
+	   }
+   else
+   {
+	   alert("password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:")
+   document.getElementById('pass').style.borderColor = "red";
+   return false;
+   }
+	   
+}
+
+
+    </script>
+    <script type="text/javascript">
+    function tick(el) {
+    	 $('#pass').attr('type',chk.checked ? 'text' : 'password');
+    	}
+    
+    </script>
+    
+    <script type="text/javascript">
+   
+    function hi()
+    {
+    	document.getElementById('sub').disabled = true;
+    }
+   
+    function hello()
+    {
+    	
+    	if(document.getElementById('firstname').style.borderColor == "green" && document.getElementById('email').style.borderColor == "green" 
+			&&  document.getElementById('ppp').style.borderColor == "green" && document.getElementById('pass').style.borderColor == "green")
+    		{
+    		document.getElementById('sub').disabled = false;
+    		}
+    }
+    </script>
+    
 </body>
 </html>

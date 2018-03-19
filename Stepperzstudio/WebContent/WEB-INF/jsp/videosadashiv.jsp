@@ -106,8 +106,8 @@ String video_path;
                         <!-- //gallery -->
 
 <!-- footer -->
-			<div class="copy-right" style="margin-top: 20%;">
-				<p>&copy; 2017 Stepperz. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfonehub.com</a></p>
+			<div class="copy-right">
+				<p>&copy; 2018 Stepperz Studio. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfone Hub Pvt Ltd</a></p>
 			</div>
 			
 <!-- //footer -->

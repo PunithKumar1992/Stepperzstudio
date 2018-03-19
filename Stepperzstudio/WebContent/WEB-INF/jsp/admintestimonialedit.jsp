@@ -37,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="index.html" class="logo">
+    <a href="bashboard.html" class="logo">
         <img src="adminimages/logo.png" alt="stepper" style="width:90%;margin-top:-9%;">
     </a>
     <div class="sidebar-toggle-box">
@@ -49,20 +49,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
-        <li>
-            <input type="text" class="form-control search" placeholder=" Search">
-        </li>
+       
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="adminimages/2.png">
-                <span class="username">John Doe</span>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span class="username">${sessionScope.activeuser}</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="adminlogout.html"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -79,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="bashboard.html">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
@@ -121,43 +119,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
                 <li>
-                    <a href="banner.html">
+                    <a href="adminbanner.html">
                          <i class="fa fa-glass"></i>
                         <span>Banner</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="adds.html">
+                    <a href="adminads.html">
                         <i class="fa fa-adn" aria-hidden="true"></i>
                         <span>Adds</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="testimonials.html">
+                    <a href="admintestimonials.html">
                        <i class="fa fa-comments-o" aria-hidden="true"></i>
                         <span>testimonials</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="career.html">
+                    <a href="admincareer.html">
                         <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>	
                         <span>Career</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="feedback.html">
+                    <a href="adminfeedback.html">
                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
                         <span>Feedback</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="registration.html">
+                    <a href="studentregbyadmin.html">
                        <i class="fa fa-registered" aria-hidden="true"></i>
                         <span>Registration</span>
                     </a>
                 </li>
                 
-                <li class="sub-menu">
+                <!-- <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-envelope"></i>
                         <span>Mail </span>
@@ -166,7 +164,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="mail.html">Inbox</a></li>
                         <li><a href="mail_compose.html">Compose Mail</a></li>
                     </ul>
-                </li>
+                </li> -->
                 
             </ul>            </div>
         <!-- sidebar menu end-->
@@ -183,16 +181,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </header>
                         <div class="panel-body">
                             <div >
-                            <form:form action="saveeditedtesti.html" method="post" modelAttribute="edittest">
+                            <form:form action="saveeditedtesti.html" method="post" modelAttribute="edittest" onsubmit="return FormValidation();" onchange="return FormValidation();">
                            
                            <form:hidden path="test_id"/>
                             <div class="col-md-3">
                                   
-                                   <form:input path="message"/>
+                                   <form:input path="message" id="text1"/>
                                 </div>
                                 <div class="col-md-3">
                                    
-                                   <form:input path="name"/>
+                                   <form:input path="name" id="text2"/>
                                     </div>
                                 
                                 <div class="col-md-3">
@@ -210,7 +208,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2018 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>© 2018 Stepperz Studio. All rights reserved | Design by <a href="http://appfonehub.com">Appfone Hub Pvt Ltd</a></p>
 			</div>
 		  </div>
   <!-- / footer -->
@@ -239,6 +237,81 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  jQuery(this).closest('.small-graph-box').fadeOut(200);
 		  return false;
 	   });
+</script>
 
+
+
+
+ <script type="text/javascript">
+function FormValidation()
+{
+	var t1=document.getElementById('text1').value;
+	
+    if(t1 == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('text1').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text1').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("text1").value)) 
+    {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('text1').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text1').style.borderColor = "green";
+    }
+    if(t1.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('text1').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text1').style.borderColor = "green";
+    }
+    
+    
+var t2=document.getElementById('text2').value;
+	
+    if(t1 == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('text2').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text2').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("text2").value)) 
+    {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('text2').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text2').style.borderColor = "green";
+    }
+    if(t2.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('text2').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text2').style.borderColor = "green";
+    }
+}
+</script>
 </body>
 </html>

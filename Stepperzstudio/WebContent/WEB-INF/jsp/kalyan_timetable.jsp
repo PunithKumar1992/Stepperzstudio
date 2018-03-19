@@ -112,11 +112,12 @@ audio.play();
 	
 	<!-- //gallery -->
 
-<!-- //footer -->
-<div class="copy-right">
-				<p>&copy; 2017 Stepperz. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfonehub.com</a></p>
+<!-- footer -->
+			<div class="copy-right">
+				<p>&copy; 2018 Stepperz Studio. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfone Hub Pvt Ltd</a></p>
 			</div>
-			<!-- Footer -->
+			
+<!-- //footer -->
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 <script src="js/jquery-2.2.3.min.js"></script> 

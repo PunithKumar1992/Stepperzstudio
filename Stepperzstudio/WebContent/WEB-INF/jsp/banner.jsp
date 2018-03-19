@@ -48,18 +48,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
-        
+       
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-               <i class="fa fa-user" aria-hidden="true"></i>
+                <i class="fa fa-user" aria-hidden="true"></i>
                 <span class="username">${sessionScope.activeuser}</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="admin.html"><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="adminlogout.html"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -124,37 +124,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </a>
                 </li>
 				 <li>
-                    <a href="adds.html">
+                    <a href="adminads.html">
                         <i class="fa fa-adn" aria-hidden="true"></i>
                         <span>Adds</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="testimonials.html">
+                    <a href="admintestimonials.html">
                        <i class="fa fa-comments-o" aria-hidden="true"></i>
                         <span>testimonials</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="career.html">
+                    <a href="admincareer.html">
                         <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>	
                         <span>Career</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="feedback.html">
+                    <a href="adminfeedback.html">
                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
                         <span>Feedback</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="registration.html">
+                    <a href="studentregbyadmin.html">
                        <i class="fa fa-registered" aria-hidden="true"></i>
                         <span>Registration</span>
                     </a>
                 </li>
                 
-                <li class="sub-menu">
+                <!-- <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-envelope"></i>
                         <span>Mail </span>
@@ -163,7 +163,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="mail.html">Inbox</a></li>
                         <li><a href="mail_compose.html">Compose Mail</a></li>
                     </ul>
-                </li>
+                </li> -->
                 
             </ul>            </div>
         <!-- sidebar menu end-->
@@ -180,9 +180,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </header>
                         <div class="panel-body">
                             <div >
-                               <form:form action="savebanner.html" enctype="multipart/form-data"  method="post" modelAttribute="banner">
+                               <form:form action="savebanner.html" enctype="multipart/form-data"  method="post" modelAttribute="banner" onsubmit="return FormValidation();" onchange="return FormValidation();">
                                <div class="col-md-3">
-                               <form:input path="banner_title" class="form-control" placeholder="Enter title" size="10"/>
+                               <form:input path="banner_title" class="form-control" id="bant" placeholder="Enter title" size="10"/>
                                 </div>
                                  <div class="col-md-3">
                                    <form:input path="banner_desc" id="bandisc" class="form-control" placeholder="Enter description" size="20"/>
@@ -246,7 +246,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<a class="example-image-link" href="images/banner/${list.banner_img}" data-lightbox="example-set" >		
 	<img src="images/banner/${list.banner_img}" alt="" width="70%"/>
 	</a>
-	 <script src="adminjs/lightbox-plus-jquery.min.js"> </script>
+	
 			<!-- //gallery -->
 			</td>
 			<td>
@@ -262,7 +262,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            </tr>
 		 
 </c:forEach>
-		 
+		  <script src="adminjs/lightbox-plus-jquery.min.js"> </script>
         </tbody>
       </table>
     </div>
@@ -273,7 +273,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>Â© 2018 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>© 2018 Stepperz Studio. All rights reserved | Design by <a href="http://appfonehub.com">Appfone Hub Pvt Ltd</a></p>
 			</div>
 		  </div>
   <!-- / footer -->
@@ -382,6 +382,82 @@ $(document).ready(function(){
 
 </script>
 
+
+
+<script type="text/javascript">
+function FormValidation()
+{
+
+	var bant=document.getElementById('bant').value;
+	
+    if(bant == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('bant').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('bant').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("bant").value)) 
+    {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('bant').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('bant').style.borderColor = "green";
+    }
+    if(bant.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('bant').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('bant').style.borderColor = "green";
+    }
+    
+    
+    
+var bandisc=document.getElementById('bandisc').value;
+	
+    if(bandisc == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('bandisc').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('bandisc').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("bandisc").value)) 
+    {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('bandisc').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('bandisc').style.borderColor = "green";
+    }
+    if(bant.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('bandisc').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('bandisc').style.borderColor = "green";
+    }
+
+}
+</script>
 
 </body>
 </html>

@@ -62,7 +62,7 @@ httpres.setDateHeader("Expires", 0); // Proxies.
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="admin.html"><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="adminlogout.html"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -157,7 +157,7 @@ httpres.setDateHeader("Expires", 0); // Proxies.
                     </a>
                 </li>
                 
-                <li class="sub-menu">
+                <!-- <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-envelope"></i>
                         <span>Mail </span>
@@ -166,7 +166,7 @@ httpres.setDateHeader("Expires", 0); // Proxies.
                         <li><a href="mail.html">Inbox</a></li>
                         <li><a href="mail_compose.html">Compose Mail</a></li>
                     </ul>
-                </li>
+                </li> -->
                 
             </ul>            </div>
         <!-- sidebar menu end-->
@@ -180,7 +180,7 @@ httpres.setDateHeader("Expires", 0); // Proxies.
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>Â© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>© 2018 Stepperz Studio. All rights reserved | Design by <a href="http://appfonehub.com">Appfone Hub Pvt Ltd</a></p>
 			</div>
 		  </div>
   <!-- / footer -->

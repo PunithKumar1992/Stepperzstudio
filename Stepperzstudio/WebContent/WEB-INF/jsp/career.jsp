@@ -14,13 +14,19 @@
 <link href="css/font-awesome.css" rel="stylesheet">		<!-- font-awesome icons -->
 <link rel="icon" href="images/log.ico" type="image/x-icon">
 
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+ <link rel="stylesheet" href="css/pikaday.css">
+    <link rel="stylesheet" href="css/site.css">
+
 <!-- //Custom Theme files --> 
 <!-- web-fonts -->  
 <link href="//fonts.googleapis.com/css?family=Arapey:400,400i" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300i,400,400i,600,600i,700" rel="stylesheet">
 <!-- //web-fonts -->
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" >  
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top"  >  
 	<!-- banner -->
 	<div id="home" class="w3ls-banner"> 
  <div id="player">
@@ -41,7 +47,7 @@
 								<h3>&nbsp;&nbsp;&nbsp;CAREER FORM</h3>
 									<div style="margin-top: 0%; margin-left: 25%; border: groove 20px; green; width: 55%; padding: 3%">
 
-<form action="careersubmit.html" id="EmploymentApplication100" method="post">
+<form action="careersubmit.html" id="EmploymentApplication100" method="post" onsubmit="return FormValidation();" onchange="return FormValidation();">
 <script type="text/javascript">
 function ValidateForm(frm) {
 if (frm.First_Name.value == "") { alert('First name is required.'); frm.First_Name.focus(); return false; }
@@ -56,32 +62,32 @@ return true; }
 <table border="0" cellpadding="5" cellspacing="0" style="color: WHITE">
 <tr> <td style="width: 50%;">
 <label for="First_Name"><b>First name *</b></label><br />
-<input name="first_name" type="text" maxlength="50" style="width: 260px;color:black;" />
+<input name="first_name" type="text" id="firstname" maxlength="50" style="width: 260px;color:black;" />
 </td> <td style="width: 50%;">
 <label for="Last_Name"><b>Last name *</b></label><br />
-<input name="last_name" type="text" maxlength="50" style="width: 260px;color:black;" />
+<input name="last_name" type="text" id="lastname" maxlength="50" style="width: 260px;color:black;" />
 </td> </tr> <tr> <td colspan="2">
 <label for="Email_Address"><b>Email *</b></label><br />
-<input name="email" type="text" maxlength="100" style="width: 535px;color:black;" />
+<input name="email" type="text" id="email" maxlength="100" style="width: 535px;color:black;" />
 </td> </tr> 
  <tr> <td colspan="2">
 <label for="Position"><b>Position you are applying for *</b></label><br />
-<input name="post_applyfor" type="text" maxlength="100" style="width: 535px;color:black;" />
+<input name="post_applyfor" type="text" maxlength="100" style="width: 535px;color:black;" id="pos" />
 </td> </tr> <tr> <td>
-<label for="Salary"><b>Salary requirements</b></label><br /> <input name="salary_req" type="text" maxlength="50" style="width: 260px;color:black;" /> </td> <td>
+<label for="Salary"><b>Salary requirements</b></label><br /> <input name="salary_req" type="text" id="sal" maxlength="50" style="width: 260px;color:black;" /> </td> <td>
 <label for="StartDate"><b>When can you start?</b></label><br />
-<input name="joining_date" type="text" maxlength="50" style="width: 260px;color:black;" />
+<input name="joining_date" type="text" maxlength="50" id="datepicker" name="date"  style="width: 260px;color:black;" />
 </td> </tr> <tr> <td>
 <label for="Phone"><b>Phone *</b></label><br />
-<input name="phone" type="text" maxlength="50" style="width: 260px;color:black;" />
+<input name="phone" type="text" maxlength="50" style="width: 260px;color:black;" id="ppp" />
 </td>  </tr> <tr> <td colspan="2">
 <label for="Organization"><b>Last company you worked for</b></label><br />
-<input name="last_company" type="text" maxlength="100" style="width: 535px;color:black;" />
+<input name="last_company" type="text" id="lastcom" maxlength="100" style="width: 535px;color:black;" />
 </td> </tr> <tr> <td colspan="2">
 <label for="Reference"><b>Reference / Comments / Questions</b></label><br />
-<textarea name="message" rows="7" cols="40" style="width: 535px;color:black;"></textarea>
+<textarea name="message"  id ="msg" rows="7" cols="40" style="width: 535px;color:black;"></textarea>
 </td> </tr> <tr> <td colspan="2" style="text-align: center;color:black;">
-<input type="submit" value="Submit" style="width: 535px;color:black bold;">
+<input type="submit" value="Submit" id="sub" style="width: 535px;color:black bold;">
         
 </td> </tr>
 </table>
@@ -113,22 +119,22 @@ return true; }
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<h1><a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="stepperz"></a></h1>
+						<h1><a class="navbar-brand" href="index.jsp"><img src="images/logo.png" alt="stepperz"></a></h1>
 					</div> 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse navbar-ex1-collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-							<li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
-							<li><a  href="index.html">Home</a></li>
-							<li><a href="index.html">About</a></li>
-							<li><a href="index.html">Classes</a></li>
-							<li><a  href="index.html">Views</a></li>
-							<li><a href="index.html">Videos</a></li>
+							<li class="hidden"><a class="" href=""></a>	</li>
+							<li><a  href="index.jsp">Home</a></li>
+							<li><a href="index.jsp#about">About</a></li>
+							<li><a href="index.jsp#classes">Classes</a></li>
+							<li><a  href="index.jsp#plans">Views</a></li>
+							<li><a href="index.jsp#instructors">Videos</a></li>
 
-							<li><a href="index.html">Gallery</a></li>
+							<li><a href="index.jsp#gallery">Gallery</a></li>
 							<li><a href="career.html">Career</a></li>
-							<li><a href="index.html">Contact</a></li>
+							<li><a href="index.jsp#contact">Contact</a></li>
 						</ul>
 					</div>
 					<!-- /.navbar-collapse -->
@@ -144,7 +150,7 @@ return true; }
 
 <!-- footer -->
 			<div class="copy-right">
-				<p>&copy; 2017 Stepperz. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfonehub.com</a></p>
+				<p>&copy; 2018 Stepperz Studio. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfone Hub Pvt Ltd</a></p>
 			</div>
 			
 <!-- //footer -->
@@ -275,5 +281,260 @@ return true; }
 <!-- //here ends scrolling icon -->
 	<script src="js/bootstrap.js"></script>
 <!-- //for bootstrap working -->
+
+
+<script type="text/javascript">
+function FormValidation()
+{
+	var fn=document.getElementById('firstname').value;
+	
+    if(fn == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("firstname").value)) 
+    {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    if(fn.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('firstname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('firstname').style.borderColor = "green";
+    }
+    
+var ln=document.getElementById('lastname').value;
+	
+    if(ln == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('lastname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('lastname').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("lastname").value)) 
+    {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('lastname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('lastname').style.borderColor = "green";
+    }
+    if(ln.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('lastname').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('lastname').style.borderColor = "green";
+    }
+    
+    var em=document.getElementById('email').value;
+    if(em=="")
+ 	   {
+ 	   document.getElementById('email').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('email').style.borderColor = "green";
+    }
+    if(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(document.getElementById("email").value))
+    	{
+    	document.getElementById('email').style.borderColor = "green";
+    	}
+    else
+	   {
+	   document.getElementById('email').style.borderColor = "red";
+	   return false;
+	   }
+    
+    var pos=document.getElementById('pos').value;
+    if(pos == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('pos').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('pos').style.borderColor = "green";
+    }
+    if(/^[a-zA-z]+$/.test(document.getElementById("pos").value))
+    	{
+    	document.getElementById('pos').style.borderColor = "green";
+    	}
+   	
+    else
+	   {
+	   document.getElementById('pos').style.borderColor = "red";
+	   return false;
+	   }
+    
+    var sal=document.getElementById('sal').value;
+    if(sal == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('sal').style.borderColor = "red";
+        return false;
+    }
+    else
+    	{
+        document.getElementById('sal').style.borderColor = "green";
+    }
+    
+    if(/^[0-9]+$/.test(document.getElementById('sal').value))
+    	{
+    	document.getElementById('sal').style.borderColor = "green";
+    	
+    	}
+    else
+    	{
+    	document.getElementById('sal').style.borderColor = "red"
+    	return false;
+    	
+    	}
+    
+    var st=document.getElementById('datepicker').value;
+    if(st == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('datepicker').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('datepicker').style.borderColor = "green";
+    }
+    var ph=document.getElementById('ppp').value;
+    if(ph=="")
+ 	   {
+ 	   document.getElementById('ppp').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('ppp').style.borderColor = "green";
+    }
+   if(/^[789]\d{9}$/.test(document.getElementById("ppp").value))
+	   {
+	   
+	   document.getElementById('ppp').style.borderColor = "green";
+	   }
+   else
+   {
+   document.getElementById('ppp').style.borderColor = "red";
+   return false;
+   }
+   
+   var lc=document.getElementById('lastcom').value;
+	
+   if(lc == "")
+   {
+       //alert('Please Enter First Name');
+       document.getElementById('lastcom').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('lastcom').style.borderColor = "green";
+   }
+   if (/^[a-zA-Z]+$/.test(document.getElementById("lastcom").value)) 
+   {
+      //alert("First Name Contains Numbers!");
+       document.getElementById('lastcom').style.borderColor = "green";
+       
+   }
+   else
+   {
+       document.getElementById('lastcom').style.borderColor = "red";
+       return false;
+   }
+   
+   if(lc.length <=2)
+   {
+       //alert('Your Name is To Short');
+       document.getElementById('lastcom').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('lastcom').style.borderColor = "green";
+   }
+   
+   var msg=document.getElementById('msg').value;
+	
+   if(msg== "")
+   {
+       //alert('Please Enter First Name');
+       document.getElementById('msg').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('msg').style.borderColor = "green";
+   }
+   if (/^[0-9]+$/.test(document.getElementById("msg").value)) 
+   {
+      //alert("First Name Contains Numbers!");
+       document.getElementById('msg').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('msg').style.borderColor = "green";
+   }
+   if(msg.length <=2)
+   {
+       //alert('Your Name is To Short');
+       document.getElementById('msg').style.borderColor = "red";
+       return false;
+   }
+   else
+   {
+       document.getElementById('msg').style.borderColor = "green";
+   }
+   
+    	
+   	
+}
+</script>
+
+<script src="js/pikaday.js"></script>
+    <script>
+
+    var picker = new Pikaday(
+    {
+        field: document.getElementById('datepicker'),
+        firstDay: 1,
+        minDate: new Date(),
+        maxDate: new Date(2020, 12, 31),
+        yearRange: [2000,2020]
+    });
+
+    </script>
 </body>
 </html>

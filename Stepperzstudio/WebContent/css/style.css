@@ -1980,6 +1980,7 @@ section.social ul li {
 		letter-spacing: 1px;
 	}
 }
+
 @media(max-width:480px){
 	.price-gd-top h4 {
 		font-size:1.2em;
@@ -2098,6 +2099,7 @@ section.social ul li {
 		float: left;
 		height: 50px;
 		padding: 15px 10px;
+		margin-top: -9%;
 	}
 	.class-grid {
 		width: 49%;

@@ -55,7 +55,9 @@ import com.appfone.stepperz.util.Emailutility;
 public class StepperzController {
 	@Autowired
 	ServletContext context; 
-	
+
+	@Autowired
+	HttpSession sessionn;
 	
 	
 	@RequestMapping(value="/KayanNagarGal")
@@ -175,8 +177,9 @@ public class StepperzController {
 	@RequestMapping(value="/regestration")
 	public ModelAndView regestrationController()
 	{
-		
+		Registration reg= new Registration();
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("adminreg", reg);
 		mv.setViewName("regestration");
 		return mv;
 	}
@@ -266,8 +269,10 @@ public class StepperzController {
 		}
 	}
 	@RequestMapping(value="/admindashboard")
-	public String admindashboardController(@RequestParam Map<String, String>reqparam,HttpServletRequest request)
+	public String admindashboardController(@RequestParam Map<String, String>reqparam)
 	{
+		
+		
 		String user=reqparam.get("username");
 		String pass= reqparam.get("password1");
 		System.out.println("in controller");
@@ -277,16 +282,12 @@ public class StepperzController {
 		{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Adminindex");
-		HttpSession session = request.getSession();
-		session.setAttribute("activeuser", user);
+		sessionn.setAttribute("activeuser", user);
 		String activeuser=user;
 		mv.addObject("activeuser", activeuser);
 		return "redirect:/adminloginsuccess.html";
 		}
-		/*ModelAndView mv = new ModelAndView();
-		mv.setViewName("login");
-		String err="Username or Password Missmatch";
-		mv.addObject("error", err);*/
+		
 		return "redirect:/adminloginfailure.html";
 	}
 	
@@ -294,6 +295,12 @@ public class StepperzController {
 	@RequestMapping(value="/adminloginsuccess")
 	public ModelAndView adminloginsuccessController()
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		System.out.println("in controller");
 		
 		ModelAndView mv = new ModelAndView();
@@ -304,6 +311,13 @@ public class StepperzController {
 	@RequestMapping(value="/adminloginfailure")
 	public ModelAndView adminloginfailureController()
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
+		
 		System.out.println("in controller");
 		
 		ModelAndView mv = new ModelAndView();
@@ -316,18 +330,27 @@ public class StepperzController {
 	@RequestMapping(value="/adminbanner")
 	public ModelAndView adminbannerController()
 	{
-		System.out.println("in controller");
-		AdminbannerDaoimpl bannerlist=new AdminbannerDaoimpl();
-		List list = bannerlist.getbanners();
-		ModelAndView mv = new ModelAndView();
-		AdminbannerDaoimpl bann=new AdminbannerDaoimpl();
-		int size=bann.getBannerdbsize();
-		Banner banner = new Banner();
-		mv.addObject("banner", banner);
-		mv.setViewName("banner");
-		mv.addObject("bannsize", size);
-		mv.addObject("bannerlist", list);
-		return mv;
+		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		
+		}
+		
+			System.out.println("in controller");
+			AdminbannerDaoimpl bannerlist=new AdminbannerDaoimpl();
+			List list = bannerlist.getbanners();
+			ModelAndView mv = new ModelAndView();
+			AdminbannerDaoimpl bann=new AdminbannerDaoimpl();
+			int size=bann.getBannerdbsize();
+			Banner banner = new Banner();
+			mv.addObject("banner", banner);
+			mv.setViewName("banner");
+			mv.addObject("bannsize", size);
+			mv.addObject("bannerlist", list);
+			return mv;
 	}
 	
 	
@@ -337,6 +360,12 @@ public class StepperzController {
 	@RequestMapping(value="/bashboard")
 	public ModelAndView DashboardController()
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Adminindex");
@@ -390,6 +419,12 @@ public class StepperzController {
 	@RequestMapping(value="/savebanner")
 	public String savebannerController(@ModelAttribute("banner")Banner banner)
 	{
+		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		  MultipartFile file = banner.getFile(); 
 		 
 		   
@@ -418,6 +453,11 @@ public class StepperzController {
 	@RequestMapping(value="/deletebanner")
 	public String deletebannerController(@RequestParam("bannerid")int bannerid,@RequestParam("bannerimg")String bannerimg)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		System.out.println("banner id is" +bannerid);
 		System.out.println("banner image is " +bannerimg);
 		AdminbannerDaoimpl deletebanner = new AdminbannerDaoimpl();
@@ -435,6 +475,12 @@ public class StepperzController {
 	@RequestMapping(value="/editbanner")
 	public ModelAndView  bannereditController(@RequestParam("bannerid")int id,@RequestParam("bannerimg")String bannerimg)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		AdminbannerDaoimpl editbanner=new AdminbannerDaoimpl();
 		Banner banner=editbanner.getsinglebanner(id);
 		ModelAndView mv= new ModelAndView();
@@ -448,6 +494,11 @@ public class StepperzController {
 	@RequestMapping(value="/saveeditedbanner")
 	public String  saveeditedbannerController(@RequestParam("imgtoedit")String imgtoedit,@ModelAttribute("banner")Banner banner)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		System.out.println("imgtoedit is  " +imgtoedit);
 		MultipartFile file = banner.getFile(); 
 		System.out.println(""+file.getSize());
@@ -492,6 +543,12 @@ public class StepperzController {
 	@RequestMapping(value="/sadashivtimetable")
 	public ModelAndView  sadashivtimetableController()
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		
 		ModelAndView mv= new ModelAndView();
 		Timetable_sadashivnagr timetable = new Timetable_sadashivnagr();
@@ -506,6 +563,12 @@ public class StepperzController {
 	@RequestMapping(value="/changesadatime")
 	public ModelAndView  changesadatimeController(@RequestParam("timeid")int changeid)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		Admintime_sadashivnagrDaoimpl changeobj= new Admintime_sadashivnagrDaoimpl();
 		Timetable_sadashivnagr chhangedobj = changeobj.getsingletime(changeid);
 		ModelAndView mv= new ModelAndView();
@@ -518,6 +581,11 @@ public class StepperzController {
 	@RequestMapping(value="/savesadatimeimgchange")
 	public String  savesadatimeimgchangeController(@ModelAttribute("changesadaobj")Timetable_sadashivnagr updateobj )
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		MultipartFile sadafile = updateobj.getSadafile();
 		String fileName=sadafile.getOriginalFilename();
 		
@@ -553,6 +621,12 @@ public class StepperzController {
 	@RequestMapping(value="/kalyantimetable")
 	public ModelAndView  kalyantimetableController()
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		System.out.println("admin kalayan nagar controller");
 		
 		ModelAndView mv= new ModelAndView();
@@ -570,6 +644,12 @@ public class StepperzController {
 	@RequestMapping(value="/changekalyantime")
 	public ModelAndView  changekalyantimeController(@RequestParam("timeid")int changeid)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		Admintime_kalyannagrDaoimpl changeobj= new Admintime_kalyannagrDaoimpl();
 		Timetable_kalyannagar chhangedobj = changeobj.getsingletime(changeid);
 		ModelAndView mv= new ModelAndView();
@@ -581,6 +661,11 @@ public class StepperzController {
 	@RequestMapping(value="/savekalatimeimgchange")
 	public String  savekalatimeimgchangeController(@ModelAttribute("changekalaobj")Timetable_kalyannagar updateobj )
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		MultipartFile sadafile = updateobj.getKalafile();
 		String fileName=sadafile.getOriginalFilename();
 		
@@ -617,7 +702,13 @@ public class StepperzController {
 	
 	@RequestMapping(value="/mallesharamtimetable")
 	public ModelAndView  mallesharamtimetableController()
-	{
+	{	
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		System.out.println("admin mallesharam controller");
 		
 		ModelAndView mv= new ModelAndView();
@@ -633,6 +724,12 @@ public class StepperzController {
 	@RequestMapping(value="/changemalleshtime")
 	public ModelAndView  changemalleshtimeController(@RequestParam("timeid")int changeid)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		Admintime_malleshwaramDaoimpl changeobj= new Admintime_malleshwaramDaoimpl();
 		Timetable_malleshwaram chhangedobj = changeobj.getsingletime(changeid);
 		ModelAndView mv= new ModelAndView();
@@ -645,6 +742,11 @@ public class StepperzController {
 	@RequestMapping(value="/savemalatimeimgchange")
 	public String  savemalatimeimgchangeController(@ModelAttribute("changemalaobj")Timetable_malleshwaram updateobj )
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		MultipartFile malafile = updateobj.getMalafile();
 		String fileName=malafile.getOriginalFilename();
 		
@@ -680,6 +782,12 @@ public class StepperzController {
 	@RequestMapping(value="/adminads")
 	public ModelAndView adminadsController()
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		ModelAndView mv=new ModelAndView();
 		Advertisement ads=new Advertisement();
 		AdminadsDaoimpl adsobj=new AdminadsDaoimpl();
@@ -700,6 +808,12 @@ public class StepperzController {
 	@RequestMapping(value="/saveadminads")
 	public String saveadminadsController(@ModelAttribute("ads")Advertisement adver)
 	{
+		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		System.out.println("in ads controller");
 		System.out.println(adver.getAds_type());
 		MultipartFile file = adver.getAdsfile();
@@ -729,7 +843,11 @@ public class StepperzController {
 	@RequestMapping(value="/deletead")
 	public String deleteadController(@RequestParam("ads_id")int adsid,@RequestParam("ads_img")String adsimg)
 	{
-		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		
 		AdminadsDaoimpl deleads= new AdminadsDaoimpl();
 		deleads.deletead(adsid);
@@ -744,7 +862,12 @@ public class StepperzController {
 	@RequestMapping(value="/admintestimonials")
 	public ModelAndView admintestimonialsController()
 	{
-		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		Testimonials test = new Testimonials();
 		AdmintestimonialsDaoimpl gettest= new AdmintestimonialsDaoimpl();
 		List list=gettest.getAllTestimonials();
@@ -760,6 +883,11 @@ public class StepperzController {
 	public String savetestimonialController(@ModelAttribute("testi")Testimonials testi)
 	{
 		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		AdmintestimonialsDaoimpl savetesti= new AdmintestimonialsDaoimpl();
 		savetesti.saveTestimonial(testi);
 		
@@ -770,6 +898,10 @@ public class StepperzController {
 	@RequestMapping(value="/deletetesti")
 	public String deletetestiController(@RequestParam("test_id")int testid)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			return "redirect:/admin.html";
+		}
 		AdmintestimonialsDaoimpl deletesti = new AdmintestimonialsDaoimpl();
 		deletesti.deleteSingleTesti(testid);
 		
@@ -781,6 +913,12 @@ public class StepperzController {
 	@RequestMapping(value="/edittesti")
 	public ModelAndView edittestiController(@RequestParam("test_id")int testid)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		
 		AdmintestimonialsDaoimpl edittest= new AdmintestimonialsDaoimpl();
 		Testimonials testt= edittest.getSingleTestimonial(testid);
@@ -794,6 +932,11 @@ public class StepperzController {
 	@RequestMapping(value="/saveeditedtesti")
 	public String saveeditedtestiController(@ModelAttribute("edittest")Testimonials editest)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		
 		AdmintestimonialsDaoimpl edittest= new AdmintestimonialsDaoimpl();
 		edittest.saveTestimonial(editest);
@@ -804,6 +947,12 @@ public class StepperzController {
 	@RequestMapping(value="/admincareer")
 	public ModelAndView admincareerController()
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		Career careerr = new Career(); 
 		ModelAndView mv= new ModelAndView();
 		AdmincareerDaoimpl listacareer= new AdmincareerDaoimpl();
@@ -822,6 +971,11 @@ public class StepperzController {
 	@RequestMapping(value="/saveadmincareer")
 	public String saveadmincareerController(@ModelAttribute("careerobj")Career carerr)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		
 		AdmincareerDaoimpl savecareer=new AdmincareerDaoimpl();
 		savecareer.saveCareer(carerr);
@@ -834,7 +988,11 @@ public class StepperzController {
 	@RequestMapping(value="/deleteadmincareer")
 	public String deleteadmincareerController(@RequestParam("career_id")int career_id)
 	{
-		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		AdmincareerDaoimpl deletecareer= new AdmincareerDaoimpl();
 		deletecareer.deleteSingleCareer(career_id);
 		return "redirect:/admincareer.html";
@@ -843,6 +1001,13 @@ public class StepperzController {
 	@RequestMapping(value="/editadmincareer")
 	public ModelAndView editadmincareerController(@RequestParam("career_id")int career_id)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
+		
 		AdmincareerDaoimpl editcareer = new AdmincareerDaoimpl();
 		Career editedcarrer= editcareer.getSingleCareer(career_id);
 		
@@ -856,6 +1021,12 @@ public class StepperzController {
 	@RequestMapping(value="/adminfeedback")
 	public ModelAndView adminfeedbackController()
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		
 		AdminfeedbackDaoimpl feed = new AdminfeedbackDaoimpl();
 		List feedlist= feed.getFeedbacks();
@@ -869,6 +1040,12 @@ public class StepperzController {
 	@RequestMapping(value="/deleteadminfeed")
 	public String deleteadminfeedController(@RequestParam("feedback_id")int feedback_id)
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		
 		AdminfeedbackDaoimpl delfeed= new AdminfeedbackDaoimpl();
 		delfeed.deletefeedback(feedback_id);
 		
@@ -878,6 +1055,12 @@ public class StepperzController {
 	@RequestMapping(value="/studentregbyadmin")
 	public ModelAndView studentregbyadminController()
 	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
 		Registration stdreg= new Registration();
 		AdminstdregDaoimpl reglist= new AdminstdregDaoimpl();
 		List list=reglist.getSavedreglist();
@@ -893,7 +1076,11 @@ public class StepperzController {
 	@RequestMapping(value="/savestdregbyadmin")
 	public String  savestdregbyadminController(@ModelAttribute("stdreg")Registration stdreg)
 	{
-		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		AdminstdregDaoimpl savreg= new AdminstdregDaoimpl();
 		savreg.savestdreg(stdreg);
 		return "redirect:/studentregbyadmin.html";
@@ -902,12 +1089,24 @@ public class StepperzController {
 	@RequestMapping(value="/deletestdreg")
 	public String  deletestdregController(@RequestParam("reg_id")int reg_id)
 	{
-		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
 		AdminstdregDaoimpl delreg= new AdminstdregDaoimpl();
 		delreg.deletesinglestdreg(reg_id);
 		return "redirect:/studentregbyadmin.html";
 	}
 	
+	
+	@RequestMapping(value="adminlogout.html")
+	public String adminlogoutController()
+	{
+		
+		sessionn.invalidate();
+		return "redirect:/admin.html";
+	}
 }
 
 

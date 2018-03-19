@@ -40,12 +40,7 @@ margin-top: 8%;
 </style>
 </head>
 <body>
-<%
-HttpServletResponse httpres = (HttpServletResponse) response;
-httpres.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-httpres.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-httpres.setDateHeader("Expires", 0); // Proxies.
-%>
+
 <div class="log-w3">
 <div class="w3layouts-main">
 	<h2>Sign In Now</h2>

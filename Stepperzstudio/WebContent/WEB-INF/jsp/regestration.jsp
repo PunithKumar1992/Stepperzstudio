@@ -93,7 +93,7 @@ audio.play();
 	<!-- //banner -->
       <div class="container" style="margin-top: 12%;">
 
-    <form class="well form-horizontal" action="courseregistration.html" method="post"  id="contact_form">
+    <form class="well form-horizontal" action="courseregistration.html" method="post"  id="contact_form" onsubmit="return FormValidation();" onchange="return FormValidation();">
 <fieldset>
 
 <!-- Form Name -->
@@ -128,8 +128,8 @@ audio.play();
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="course" class="form-control selectpicker">
-      <option value="" disabled="disabled">Course Type</option>
+    <select name="course" class="form-control selectpicker" id="course">
+      <option value="" disabled="disabled" selected>Course Type</option>
       <option value="Aerobics">Aerobics</option>
       <option value="Dance">Dance</option>
       <option value="Yoga">Yoga</option>
@@ -164,7 +164,7 @@ audio.play();
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
-  <textarea name="address" placeholder="Address" class="form-control" row="45" col="15" style="resize: none;"></textarea>
+  <textarea name="address" placeholder="Address" id="add" class="form-control" row="45" col="15" style="resize: none;"></textarea>
     </div>
   </div>
 </div>
@@ -202,7 +202,7 @@ audio.play();
 
 <!-- footer -->
 			<div class="copy-right">
-				<p>&copy; 2018 Stepperz. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfonehub.com</a></p>
+				<p>&copy; 2018 Stepperz Studio. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfone Hub Pvt Ltd</a></p>
 			</div>
 			
 <!-- //footer -->
@@ -224,6 +224,61 @@ $('#contact').on('mouseout change', function () {
 		}
 	});
 
+</script>
+
+
+<script type="text/javascript">
+function FormValidation()
+{
+	var cr=document.getElementById('course').value;
+	
+    if(cr == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('course').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('course').style.borderColor = "green";
+    }
+   
+    if(cr.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('course').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('course').style.borderColor = "green";
+    }
+    
+var add=document.getElementById('add').value;
+	
+    if(add == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('add').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('add').style.borderColor = "green";
+    }
+   
+    if(cr.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('add').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('add').style.borderColor = "green";
+    }
+    
+}
 </script>
 </body>
 </html>
