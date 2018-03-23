@@ -65,7 +65,7 @@ String adsimages[];
 							img=banner_img[i];
 							imgpath="images/banner/"+img;
 							 out.println("<li>");
-                       out.println("<div class='w3layouts-banner-top' style='background: url("+imgpath+") no-repeat 0px 0px;'>");
+                       out.println("<div class='w3layouts-banner-top' style='background: url("+imgpath+") no-repeat 0px 0px;background-size:100%;'>");
                        out.println("<div class='container'>");
                        out.println("<div class='agileits-banner-info'>");
                        out.println("<h3>"+title[i]+"</h3>");
@@ -86,11 +86,7 @@ String adsimages[];
 			
 			<!--banner Slider starts Here-->
 		</div>
-		    <div class="thim-click-to-bottom">
-				<a href="#about" class="scroll">
-					<i class="fa fa-long-arrow-down" aria-hidden="true"></i>
-				</a>
-			</div>
+		    
  			<!-- header -->
 		<div class="header-w3layouts"> 
 			<!-- Navigation -->
@@ -113,7 +109,7 @@ String adsimages[];
 							<li><a class="page-scroll scroll" href="#home">Home</a></li>
 							<li><a class="page-scroll scroll" href="#about">About</a></li>
 							<li><a class="page-scroll scroll" href="#classes">Classes</a></li>
-							<li><a class="page-scroll scroll" href="#plans">Views</a></li>
+							<li><a class="page-scroll scroll" href="#plans">Adds</a></li>
 							<li><a class="page-scroll scroll" href="#instructors">Time-Table</a></li>
 
 							<li><a class="page-scroll scroll" href="#gallery">Gallery</a></li>
@@ -169,23 +165,7 @@ audio.play();
 	  </div>
  
 		<div class="clearfix"></div>
-     <!-- <div class="col-md-12 ab-w3-agile-inner" style="    margin-top: 0em;
-    width: 50%;">
-	       <div class="col-sm-4 ab-w3-agile-part">
-				<h4>Vision</h4>
-				 <p class="sub-text one"></p>
-		    <br/> <p>Stepperz Studio seeks to be the most desirable place to experience fitness training in south India .  The unmatched experience that will occur at Stepperz Studio will create a buzz in the fitness network.  Stepperz Studio also seeks for community involvement, community service, parent and child interaction, and innovative sports technology solutions.</p>
-
-	       </div>
-			<div class="col-sm-4 ab-w3-agile-part two" style="
-    height: 322px;
-">
-			<h4>Mission</h4>
-			 <p class="sub-text one"></p>
-		     <br/><p>stepperz studio is on a mission to bring the passion of fitness to the heart of Bengaluru. Fitness has a major impact on the lives of people of all ages and can influence their personal legacies inside and outside of the gym. stepperz studio will provide a workout studio with daily classes with custom designed workouts for people of all ages. </p>
-			  <h3 data-toggle="modal" data-target="#myModal"> <u><i><br/> Read more</i></u></h3><br/><br/>-->
-
-  <!-- Modal -->
+       <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -206,11 +186,11 @@ audio.play();
   </div>
   
   
-<!--</div0>--><div class="col-md-6 ab-w3-agile-part" style="background-color: #ffff00; padding: 2.9em 2em;">
+<!--</div0>--><div class="col-md-6 ab-w3-agile-part" style="background-color: #ffff00; padding: 1.0em 2em;">
 				<h4>Vision</h4><br>
                                 <p  style="color: black">Stepperz Studio seeks to be the most desirable place to experience fitness training in south India .  The unmatched experience that will occur at Stepperz Studio will create a buzz in the fitness network.  Stepperz Studio also seeks for community involvement, community service, parent and child interaction, and innovative sports technology solutions.</p><br>
 <h4>Mision</h4><br>
-<p  style="color: black">
+<p  style="color: black;font-family: 'Source Sans Pro', sans-serif">
 stepperz studio is on a mission to bring the passion of fitness to the heart of Bengaluru.  Fitness has a major impact on the lives of people of all ages and can influence their personal legacies inside and outside of the gym. stepperz studio will provide a workout studio with daily classes with custom designed workouts for people of all ages.  stepperz studio is on a mission to provide a safe and encouraging place for young athletes, young professionals, adults, and the older age group to get & stay fit, and push themselves to unimaginable places both inside and outside of the stepperz studio.<br>
 </p><br>
 	       </div>
@@ -223,8 +203,6 @@ stepperz studio is on a mission to bring the passion of fitness to the heart of 
 -To allow older adults to have a place to exercise and socialize , helps people of all ages create their legacy.</p>
 
 	       </div>
-</div>
-</div>
 </section>
 	<!-- //about -->
 											<!-- Modal1 -->
@@ -273,8 +251,8 @@ Choreography is an artefact of personal manifestation.  Develop your own persona
 							 </div>
 							</div>
 						</div>	
-					<p>Stepperz provide a blend of rhythmic aerobic exercises to improve your endurance and stamina levels.</p>
-                    <h4><a href="Aerobics.html"><h2 style=" color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"> AEROBICS</h2></a></h4>
+					<p>Stepperz provide a blend of rhythmic aerobic exercises to improve your endurance and stamina levels.<br><br></p>
+                    <h2 style=" color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;" > AEROBICS</h2>
 				    </div>
 					<div class="col-lg-4 class-grid">
 						<div class="class-grid-img hvr-sweep-to-top">
@@ -286,8 +264,8 @@ Choreography is an artefact of personal manifestation.  Develop your own persona
 							    </div>
 							</div>
 						</div>
-						<p>If you like to step up, here's your crack. It doesn't matter if you are a 5 year old or 80 year old.</p><br>
-                       <h4><a href="dance.html"><h2 style=" color: white; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"> DANCE</h2></a> </h4>
+						<p>If you like to step up, here's your crack. It doesn't matter if you are a 5 year old or 80 year old.<br><br></p>
+                      <h2 style=" color: white; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"> DANCE</h2>
 					
 				    </div>
 					<div class="col-lg-4 class-grid">
@@ -301,7 +279,7 @@ Choreography is an artefact of personal manifestation.  Develop your own persona
 							</div>
 						</div>
 						<p>We offer Ashtanga yoga classes of traditional character and uncompromising excellence, which is opposing to Power yoga followed in present days.</p>
-	                      <h4><a href="yoga.html"><h2 style=" color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"> YOGA</h2></a></h4>			
+	                     <h2 style=" color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"> YOGA</h2>		
 				    </div>
 				<div class="clearfix"> </div>
 	         </div>
@@ -310,6 +288,7 @@ Choreography is an artefact of personal manifestation.  Develop your own persona
    </div>
    <!-- //classes-->
  <div class="main" id="plans" style="overflow-y:hidden; ">
+  <h3 class="title-w3">Adds</h3>
 		<div id="particles-js"></div> 
 	  <center>	<div class="priceing-table-main">
 <marquee onmouseover="this.stop();" onmouseout="this.start();">
@@ -505,7 +484,7 @@ for(int i=0;i<adscount;i++)
 <div  style="background-color: #ffff00;color: black;" >
 
 <h3 style="color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map</h3>
-<p style="padding-left: 5%;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.4406804557916!2d77.57718101439238!3d13.007585317608191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1634a2723345%3A0x15530c4788f31dc8!2sStepperz!5e0!3m2!1sen!2sin!4v1506324703751" frameborder="0" style="border:0;height:250px;width:550px;overflow-xy:hidden;" allowfullscreen></iframe></p>
+<p style="padding-left: 5%;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.4406804557916!2d77.57718101439238!3d13.007585317608191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1634a2723345%3A0x15530c4788f31dc8!2sStepperz!5e0!3m2!1sen!2sin!4v1506324703751" frameborder="0"  style="width:95%;" allowfullscreen></iframe></p>
 </div>
 </div>
 	</div>
@@ -523,7 +502,7 @@ for(int i=0;i<adscount;i++)
 <div style="background-color: #00aaff;">
 
 <h3 style="color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map</h3>
-<p style="padding-left: 5%;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.132955095439!2d77.57549181482257!3d13.027204190819345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17c46ab6a80f%3A0x4f50148657a96800!2sstepperzstudio!5e0!3m2!1sen!2sin!4v1506323952575" frameborder="0" style="border:0;height:250px;width:550px;overflow-xy:hidden;" allowfullscreen></iframe></p>
+<p style="padding-left: 5%;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.132955095439!2d77.57549181482257!3d13.027204190819345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17c46ab6a80f%3A0x4f50148657a96800!2sstepperzstudio!5e0!3m2!1sen!2sin!4v1506323952575" frameborder="0" style="width:95%;" allowfullscreen></iframe></p>
 </div>
 </div>
 </div>	 
@@ -587,7 +566,7 @@ for(int i=0;i<adscount;i++)
 
 <!-- footer -->
 			<div class="copy-right">
-				<p>&copy; 2017 Stepperz. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfonehub.com</a></p>
+				<p>&copy; 2017 Stepperz. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfone Hub Pvt Ltd.</a></p>
 			</div>
 			
 <!-- //footer -->

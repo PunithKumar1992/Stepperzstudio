@@ -1107,6 +1107,23 @@ public class StepperzController {
 		sessionn.invalidate();
 		return "redirect:/admin.html";
 	}
+	
+	
+	
+	
+	@RequestMapping(value="/timetablelist")
+	public ModelAndView timetablelistController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
+		ModelAndView mv= new ModelAndView();
+		mv.setViewName("timetablelist");
+		return mv;
+	}
 }
 
 

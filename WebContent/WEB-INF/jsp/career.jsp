@@ -129,11 +129,12 @@ return true; }
 							<li><a  href="index.jsp">Home</a></li>
 							<li><a href="index.jsp#about">About</a></li>
 							<li><a href="index.jsp#classes">Classes</a></li>
-							<li><a  href="index.jsp#plans">Views</a></li>
-							<li><a href="index.jsp#instructors">Videos</a></li>
+							<li><a  href="index.jsp#plans">Adds</a></li>
+							<li><a href="index.jsp#instructors">Time-Table</a></li>
 
 							<li><a href="index.jsp#gallery">Gallery</a></li>
 							<li><a href="career.html">Career</a></li>
+							<li><a href="regestration.html">Regestration</a></li>
 							<li><a href="index.jsp#contact">Contact</a></li>
 						</ul>
 					</div>

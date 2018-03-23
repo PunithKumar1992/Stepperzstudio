@@ -56,20 +56,21 @@
 					<div class="collapse navbar-collapse navbar-ex1-collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-							<li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
-							<li><a class="page-scroll scroll" href="index.jsp" style="color:white;">Home</a></li>
-							<li><a class="page-scroll scroll" href="index.jsp" style="color:white;">About</a></li>
-							<li><a class="page-scroll scroll" href="index.jsp" style="color:white;">Classes</a></li>
-							<li><a class="page-scroll scroll" href="index.jsp" style="color:white;">Adds</a></li>
-							<li><a class="page-scroll scroll" href="index.jsp" style="color:white;">Time-Table</a></li>
+							
+							<li><a  href="index.jsp#home" style="color:white;">Home</a></li>
+							<li><a  href="index.jsp#about" style="color:white;">About</a></li>
+							<li><a  href="index.jsp#classes" style="color:white;">Classes</a></li>
+							<li><a href="index.jsp#plans" style="color:white;">Adds</a></li>
+							<li><a href="index.jsp#instructors" style="color:white;">Time-Table</a></li>
 
-							<li><a class="page-scroll scroll" href="index.jsp"style="color:white;">Gallery</a></li>
+							<li><a  href="index.jsp#gallery"style="color:white;">Gallery</a></li>
 							<li><a href="career.jsp" style="color:white;">Career</a></li>
-							<li><a class="page-scroll scroll" href="index.jsp" style="color:white;">Contact</a></li>
+							<li><a href="regestration.html" style="color:white;">Registration</a></li>
+							<li><a  href="index.jsp#contact" style="color:white;">Contact</a></li>
 							 <div id="player">
     <audio id="audio" autoplay hidden>
      <source src="audio/homepage.mp3" type="audio/mp3">
-                If you're reading this, audio isn't supported. 
+               <p> If you're reading this, audio isn't supported. </p>
     </audio>
 </div>
 		

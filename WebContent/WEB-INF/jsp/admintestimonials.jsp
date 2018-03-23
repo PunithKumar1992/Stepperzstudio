@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <title>StepperzStudio::Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,12 +32,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="adminjs/morris.js"></script>
 </head>
 <body>
-<%
-HttpServletResponse httpres = (HttpServletResponse) response;
-httpres.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-httpres.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-httpres.setDateHeader("Expires", 0); // Proxies.
-%>
 <section id="container">
 <!--header start-->
 <header class="header fixed-top clearfix">
@@ -175,9 +173,87 @@ httpres.setDateHeader("Expires", 0); // Proxies.
 <!--main content start-->
 <section id="main-content">
 	<section class="wrapper">
-		
+            <div class="row">
+            <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Testimonials
+                        </header>
+                        <div class="panel-body">
+                            <div class="position-center">
+                               <form:form method="post" action="savetestimonial.html" modelAttribute="testi" onsubmit="return FormValidation();" onchange="return FormValidation();">
+                                <div class="col-md-4">
+                                <form:input path="message" class="form-control" placeholder="Message" id="text1"/>
+                              </div>
+                              
+                               <div class="col-md-4">
+                                   
+                                   <form:input path="name" class="form-control" id="text2" placeholder="Add Name"/>
+                                   </div>
+                                   
+                                    <div class="col-md-4">
+                                    <input type="submit" value="Add"   class="btn btn-info" style="margin-left: 30%;margin-top:0%;">
+                                </div>
+                         
+                               </form:form>
+                               
+                            </div>
+                        </div>
+                    </section>
+            </div>
 </section>
- <!-- footer -->
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Testimonials Information
+    </div>
+     <div class="table-responsive">
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            
+            <th>Message</th>
+            <th>Name</th>
+			<th></th>
+             <th> Action</th>
+          </tr>
+        </thead>
+        <tbody>
+    
+    <c:forEach var="testilist" items="${testilist}">
+    <c:url var="deletetesti" value="deletetesti.html">
+    <c:param name="test_id" value="${testilist.test_id}"></c:param>
+    </c:url>
+    
+    <c:url  var="edittesti" value="edittesti.html">
+    <c:param name="test_id" value="${testilist.test_id}"></c:param>
+    </c:url>
+     
+		    <tr>
+           
+            
+            <td><span class="text-ellipsis">${testilist.message}</span></td>
+              <td><span class="text-ellipsis">${testilist.name}</span></td>
+			<td>
+		  <button type="button" value="edit" onclick=window.location.href="${edittesti}">edit</button>
+		  
+		  
+		  </td>
+		 <td>
+		  <button type="button" value="delete" onclick=window.location.href="${deletetesti}">delete</button>
+		  
+		  </td>
+           </tr>
+		    
+		   </c:forEach>
+	
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</div>
+<!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
 			  <p>© 2018 Stepperz Studio. All rights reserved | Design by <a href="http://appfonehub.com">Appfone Hub Pvt Ltd</a></p>
@@ -207,6 +283,83 @@ httpres.setDateHeader("Expires", 0); // Proxies.
 		  jQuery(this).closest('.small-graph-box').fadeOut(200);
 		  return false;
 	   });
+	   
+	   </script>
+	   
+	   
+	   <script type="text/javascript">
+function FormValidation()
+{
+	var t1=document.getElementById('text1').value;
+	
+    if(t1 == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('text1').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text1').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("text1").value)) 
+    {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('text1').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text1').style.borderColor = "green";
+    }
+    if(t1.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('text1').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text1').style.borderColor = "green";
+    }
+    
+    
+var t2=document.getElementById('text2').value;
+	
+    if(t1 == "")
+    {
+        //alert('Please Enter First Name');
+        document.getElementById('text2').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text2').style.borderColor = "green";
+    }
+    if (/^[0-9]+$/.test(document.getElementById("text2").value)) 
+    {
+       //alert("First Name Contains Numbers!");
+        document.getElementById('text2').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text2').style.borderColor = "green";
+    }
+    if(t2.length <=2)
+    {
+        //alert('Your Name is To Short');
+        document.getElementById('text2').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('text2').style.borderColor = "green";
+    }
+}
+</script>
+	   
+	   
 
 </body>
 </html>

@@ -53,7 +53,7 @@ margin-top: 8%;
 				<label class="error">${error}</label>
 				<input type="submit" value="Sign In" name="login">
 		</form>
-		<p>Don't Have an Account ?<a href="registration.html">Create an account</a></p>
+		
 </div>
 </div>
 <!--main content end-->
