@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -24,12 +23,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.appfone.stepperz.Daoimpl.AdminKalayanvideogalDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminLoginDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdminMalleshvideogalleryDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdminMalleshwaramimggalleryDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdminSadashivvideogalleryDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminadsDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminbannerDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdmincareerDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminfeedbackDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdminkalayanimggalleryDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminregistrationDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdminsadashivimggalleryDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminstdregDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdmintestimonialsDaoimpl;
 import com.appfone.stepperz.Daoimpl.Admintime_kalyannagrDaoimpl;
@@ -37,6 +42,7 @@ import com.appfone.stepperz.Daoimpl.Admintime_malleshwaramDaoimpl;
 import com.appfone.stepperz.Daoimpl.Admintime_sadashivnagrDaoimpl;
 import com.appfone.stepperz.Daoimpl.CareerDaoimpl;
 import com.appfone.stepperz.Daoimpl.FeedbackDaoimpl;
+import com.appfone.stepperz.Daoimpl.KalyannagarvideosDaoimpl;
 import com.appfone.stepperz.Daoimpl.RecoveryDaoimpl;
 import com.appfone.stepperz.Daoimpl.RegistrationDaoimpl;
 import com.appfone.stepperz.pojo.Adminregistration;
@@ -44,7 +50,13 @@ import com.appfone.stepperz.pojo.Advertisement;
 import com.appfone.stepperz.pojo.Banner;
 import com.appfone.stepperz.pojo.Career;
 import com.appfone.stepperz.pojo.Feedback;
+import com.appfone.stepperz.pojo.Kalyannagarimages;
+import com.appfone.stepperz.pojo.Kalyannagarvideo;
+import com.appfone.stepperz.pojo.Malleshwaramimages;
+import com.appfone.stepperz.pojo.Malleshwaramvideo;
 import com.appfone.stepperz.pojo.Registration;
+import com.appfone.stepperz.pojo.Sadashivnagarimages;
+import com.appfone.stepperz.pojo.Sadashivnagarvideo;
 import com.appfone.stepperz.pojo.Testimonials;
 import com.appfone.stepperz.pojo.Timetable_kalyannagar;
 import com.appfone.stepperz.pojo.Timetable_malleshwaram;
@@ -1123,6 +1135,363 @@ public class StepperzController {
 		ModelAndView mv= new ModelAndView();
 		mv.setViewName("timetablelist");
 		return mv;
+	}
+	
+	@RequestMapping(value="/adminsadagallery")
+	public ModelAndView adminsadagalleryController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
+		AdminsadashivimggalleryDaoimpl adsadim= new AdminsadashivimggalleryDaoimpl();
+		List list = adsadim.getsadashivimg();
+		Sadashivnagarimages sadaimg= new Sadashivnagarimages();
+		ModelAndView mv= new ModelAndView();
+		mv.addObject("adminsadaimg", list);
+		mv.addObject("adsadaim", sadaimg);
+		mv.setViewName("adminsadashivimagegal");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/deleteadminsada")
+	public String deleteadminsadaController(@RequestParam("delimgid")int delimgid,@RequestParam("delimgname")String delimgname)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		
+		AdminsadashivimggalleryDaoimpl deleimg= new AdminsadashivimggalleryDaoimpl(); 
+		deleimg.deletesadimg(delimgid);
+		String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"sadashivnagarimages"+ File.separator;
+		System.out.println("ads image path " +uploadPath);
+		File file= new File(uploadPath,delimgname);
+		file.delete();
+		return "redirect:/adminsadagallery.html";
+	}
+	
+	
+	
+	@RequestMapping(value="/saveadminsadimg")
+	public String saveadminsadimgController(@ModelAttribute("adsadaim")Sadashivnagarimages adsadaim)
+	{
+		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		  MultipartFile file = adsadaim.getAdminsadafile();
+		 
+		   
+		  String fileName = file.getOriginalFilename();  
+		  System.out.println("filename is " +fileName);
+		  adsadaim.setImage_name(fileName);
+		  String relativepath = "images/sadashivnagarimages/"+fileName;
+		   String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"sadashivnagarimages"+ File.separator;
+		   System.out.println("uploadpath is" +uploadPath);
+		   File targetFile = new File(uploadPath, fileName);  
+		  try {
+			file.transferTo(targetFile);
+			System.out.println("transfer starts");
+		} catch (IllegalStateException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		  AdminsadashivimggalleryDaoimpl adminimg = new AdminsadashivimggalleryDaoimpl();
+		  adminimg.saveadminimg(adsadaim);
+		return "redirect:/adminsadagallery.html";
+	}
+	
+	
+	@RequestMapping(value="/adminkalagallery")
+	public ModelAndView adminkalagalleryController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
+		AdminkalayanimggalleryDaoimpl adkalim= new AdminkalayanimggalleryDaoimpl();
+		List list = adkalim.getkalayanimg();
+		Kalyannagarimages kalaimg= new Kalyannagarimages();
+		ModelAndView mv= new ModelAndView();
+		mv.addObject("adminkalaimg", list);
+		mv.addObject("adkalaim", kalaimg);
+		mv.setViewName("adminkalyanimagegal");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/deleteadminkala")
+	public String deleteadminkalaController(@RequestParam("delimgid")int delimgid,@RequestParam("delimgname")String delimgname)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		
+		AdminkalayanimggalleryDaoimpl deleimg= new AdminkalayanimggalleryDaoimpl(); 
+		deleimg.deletekalaimg(delimgid);
+		String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"Kalyannagarimages"+ File.separator;
+		System.out.println("ads image path " +uploadPath);
+		File file= new File(uploadPath,delimgname);
+		file.delete();
+		return "redirect:/adminkalagallery.html";
+	}
+	
+	@RequestMapping(value="/saveadminkalaimg")
+	public String saveadminkalaimgController(@ModelAttribute("adkalaim")Kalyannagarimages adkalaim)
+	{
+		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		  MultipartFile file = adkalaim.getAdminkalafile();
+		 
+		   
+		  String fileName = file.getOriginalFilename();  
+		  System.out.println("filename is " +fileName);
+		  adkalaim.setImage_name(fileName);
+		  String relativepath = "images/kalyannagarimages/"+fileName;
+		   String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"kalyannagarimages"+ File.separator;
+		   System.out.println("uploadpath is" +uploadPath);
+		   File targetFile = new File(uploadPath, fileName);  
+		  try {
+			file.transferTo(targetFile);
+			System.out.println("transfer starts");
+		} catch (IllegalStateException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		 AdminkalayanimggalleryDaoimpl adminimg = new AdminkalayanimggalleryDaoimpl();
+		 adminimg.saveadminimg(adkalaim);
+		return "redirect:/adminkalagallery.html";
+	}
+	
+	
+	@RequestMapping(value="/adminmalleshgallery")
+	public ModelAndView adminmalleshgalleryController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
+		AdminMalleshwaramimggalleryDaoimpl admalaim= new AdminMalleshwaramimggalleryDaoimpl();
+		List list = admalaim.getmalanimg();
+		Malleshwaramimages malaimg= new Malleshwaramimages();
+		ModelAndView mv= new ModelAndView();
+		mv.addObject("adminmalaimg", list);
+		mv.addObject("admalaim", malaimg);
+		mv.setViewName("adminmallehswaramimagegal");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/deleteadminmalaimg")
+	public String deleteadminmalaimgController(@RequestParam("delimgid")int delimgid,@RequestParam("delimgname")String delimgname)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		
+		AdminMalleshwaramimggalleryDaoimpl deleimg= new AdminMalleshwaramimggalleryDaoimpl(); 
+		deleimg.deletemalaimg(delimgid);
+		String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"malleshwaramimages"+ File.separator;
+		System.out.println("ads image path " +uploadPath);
+		File file= new File(uploadPath,delimgname);
+		file.delete();
+		return "redirect:/adminmalleshgallery.html";
+	}
+	
+	
+	@RequestMapping(value="/saveadminmalaimg")
+	public String saveadminmalaimgController(@ModelAttribute("admalaim")Malleshwaramimages admalaim)
+	{
+		
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		  MultipartFile file = admalaim.getAdminmalafile();
+		 
+		   
+		  String fileName = file.getOriginalFilename();  
+		  System.out.println("filename is " +fileName);
+		  admalaim.setImage_name(fileName);
+		  String relativepath = "images/malleshwaramimages/"+fileName;
+		   String uploadPath = context.getRealPath("") + File.separator + "images" + File.separator +"malleshwaramimages"+ File.separator;
+		   System.out.println("uploadpath is" +uploadPath);
+		   File targetFile = new File(uploadPath, fileName);  
+		  try {
+			file.transferTo(targetFile);
+			System.out.println("transfer starts");
+		} catch (IllegalStateException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		 AdminMalleshwaramimggalleryDaoimpl adminimg = new AdminMalleshwaramimggalleryDaoimpl();
+		 adminimg.saveadminimg(admalaim);
+		return "redirect:/adminmalleshgallery.html";
+	}
+	
+	
+	@RequestMapping(value="/adminkalavideo")
+	public ModelAndView adminkalavideoController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
+		
+		ModelAndView mv= new ModelAndView();
+		AdminKalayanvideogalDaoimpl kalvlist= new AdminKalayanvideogalDaoimpl();
+		List list = kalvlist.getKalayanvideos();
+		Kalyannagarvideo kalvideo= new Kalyannagarvideo();
+		mv.addObject("adkalavideo", kalvideo);
+		mv.addObject("adminkalavlist", list);
+		mv.setViewName("adminkalyanvideogal");
+		return mv;
+	}
+	
+	@RequestMapping(value="/admkalavideodel")
+	public String admkalavideodelController(@RequestParam("video_id")int video_id)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		
+		AdminKalayanvideogalDaoimpl delevid= new AdminKalayanvideogalDaoimpl(); 
+		delevid.deletevideo(video_id);
+		
+		return "redirect:/adminkalavideo.html";
+	}
+	
+	@RequestMapping(value="/saveadminkalavid")
+	public String saveadminkalavidController(@ModelAttribute("adkalavideo")Kalyannagarvideo adkalavideo)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		
+		AdminKalayanvideogalDaoimpl savevid= new AdminKalayanvideogalDaoimpl(); 
+		savevid.savevideo(adkalavideo);
+		
+		return "redirect:/adminkalavideo.html";
+	}
+	
+	@RequestMapping(value="/adminsadavideo")
+	public ModelAndView adminsadavideoController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
+		
+		ModelAndView mv= new ModelAndView();
+		AdminSadashivvideogalleryDaoimpl sadavlist= new AdminSadashivvideogalleryDaoimpl();
+		List list = sadavlist.getSadavideos();
+		Sadashivnagarvideo sadavideo= new Sadashivnagarvideo();
+		mv.addObject("adsadavideo", sadavideo);
+		mv.addObject("adminsadavlist", list);
+		mv.setViewName("adminsadashivideogal");
+		return mv;
+	}
+	@RequestMapping(value="/admsadavideodel")
+	public String admsadavideodelController(@RequestParam("video_id")int video_id)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		
+		AdminSadashivvideogalleryDaoimpl delevid= new AdminSadashivvideogalleryDaoimpl(); 
+		delevid.deletevideo(video_id);
+		
+		return "redirect:/adminsadavideo.html";
+	}
+	
+	@RequestMapping(value="/saveadminsadavid")
+	public String saveadminsadavidController(@ModelAttribute("saveadminsadavid")Sadashivnagarvideo adsadavideo)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		
+		AdminSadashivvideogalleryDaoimpl savevid= new AdminSadashivvideogalleryDaoimpl(); 
+		savevid.savevideo(adsadavideo);
+		
+		return "redirect:/adminsadavideo.html";
+	}
+	
+	
+	@RequestMapping(value="/adminmalleshvideo")
+	public ModelAndView adminmalleshvideoController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
+		
+		ModelAndView mv= new ModelAndView();
+		AdminMalleshvideogalleryDaoimpl malavlist= new AdminMalleshvideogalleryDaoimpl();
+		List list = malavlist.getMalleshvideos();
+		Malleshwaramvideo malavideo= new Malleshwaramvideo();
+		mv.addObject("admalavideo", malavideo);
+		mv.addObject("adminmalavlist", list);
+		mv.setViewName("adminmalleshwaramvideogal");
+		return mv;
+	}
+	
+	@RequestMapping(value="/admmalavideodel")
+	public String admmalavideodelController(@RequestParam("video_id")int video_id)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		
+		AdminMalleshvideogalleryDaoimpl delevid= new AdminMalleshvideogalleryDaoimpl(); 
+		delevid.deletevideo(video_id);
+		
+		return "redirect:/adminmalleshvideo.html";
 	}
 }
 

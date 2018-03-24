@@ -1,10 +1,14 @@
 package com.appfone.stepperz.pojo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Kalyannagarimages
 {
 	
 	private int image_id;
 	private String image_name;
+	private MultipartFile adminkalafile;
+	
 	public int getImage_id() {
 		return image_id;
 	}
@@ -17,6 +21,13 @@ public class Kalyannagarimages
 	public void setImage_name(String image_name) {
 		this.image_name = image_name;
 	}
+	public MultipartFile getAdminkalafile() {
+		return adminkalafile;
+	}
+	public void setAdminkalafile(MultipartFile adminkalafile) {
+		this.adminkalafile = adminkalafile;
+	}
+	
 	
 	
 

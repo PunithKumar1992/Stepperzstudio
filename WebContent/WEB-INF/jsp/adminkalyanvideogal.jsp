@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <title>StepperzStudio::Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +23,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="admincss/font.css" type="text/css"/>
 <link href="admincss/font-awesome.css" rel="stylesheet"> 
 <link rel="stylesheet" href="admincss/morris.css" type="text/css"/>
-<link rel="stylesheet" href="admincss/lightbox.css">
 <!-- calendar -->
 <link rel="stylesheet" href="admincss/monthly.css">
 <!-- //calendar -->
@@ -29,6 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="adminjs/jquery2.0.3.min.js"></script>
 <script src="adminjs/raphael-min.js"></script>
 <script src="adminjs/morris.js"></script>
+<link rel="stylesheet" href="admincss/lightbox.css">
 </head>
 <body>
 <section id="container">
@@ -37,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--logo start-->
 <div class="brand">
     <a href="bashboard.html" class="logo">
-        <img src="adminimages/logo.png" alt="stepper" style="width:90%;margin-top:-9%;">
+        <img src="images/logo.png" alt="stepper" style="width:90%;margin-top:-9%;">
     </a>
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>
@@ -52,14 +54,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <img alt="" src="images/2.png">
                 <span class="username">${sessionScope.activeuser}</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="adminlogout.html"><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -76,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="bashboard.html">
+                    <a class="active" href="index.html">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
@@ -118,18 +120,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
                 <li>
-                    <a href="adminbanner.html">
+                    <a href="banner.html">
                          <i class="fa fa-glass"></i>
                         <span>Banner</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="adminads.html">
+                    <a href="adds.html">
                         <i class="fa fa-adn" aria-hidden="true"></i>
                         <span>Adds</span>
                     </a>
                 </li>
-                
+				
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
@@ -215,40 +217,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                   
                 </li>
 				 <li>
-                    <a href="admintestimonials.html">
+                    <a href="testimonial.html">
                        <i class="fa fa-comments-o" aria-hidden="true"></i>
                         <span>testimonials</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="admincareer.html">
+                    <a href="career.html">
                         <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>	
                         <span>Career</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="adminfeedback.html">
+                    <a href="feedback.html">
                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
                         <span>Feedback</span>
                     </a>
                 </li>
 				 <li>
-                    <a href="studentregbyadmin.html">
+                    <a href="registration.html">
                        <i class="fa fa-registered" aria-hidden="true"></i>
                         <span>Registration</span>
                     </a>
-                </li>
-                
-                <!-- <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-envelope"></i>
-                        <span>Mail </span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="mail.html">Inbox</a></li>
-                        <li><a href="mail_compose.html">Compose Mail</a></li>
-                    </ul>
-                </li> -->
+                </li>           
             </ul>            </div>
         <!-- sidebar menu end-->
     </div>
@@ -256,76 +247,88 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--sidebar end-->
 <!--main content start-->
 <section id="main-content">
+<section class="wrapper">
+            <div class="row">
+            <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                          Kalayan Nagar
+                        </header>
+                        <div class="panel-body">
+                            <div class="position-center">
+                              <form:form method="post" modelAttribute="adkalavideo" action="saveadminkalavid.html">
+                                
+                               
+                               	<div class="col-md-3">
 
-	<div class="table-agile-info">
-  <div class="panel panel-default" style="margin-top: 8%;">
-    <div class="panel-heading">
-       Kalyan Nagar Time Table Information
-    </div>
-     <div class="table-responsive">
-      <table class="table table-striped b-t b-light">
-        <thead>
-          <tr>
-            
-            <th>Time_Table_Caption</th>
-            <th>Time_Table_Image</th>
-            <th> Action</th>
-          </tr>
-        </thead>
-        <tbody>
-     
-    <c:forEach var="kalaynlist" items="${kalayntimelist}" >
-    <c:url var="changekalyantime" value="changekalyantime.html">
-    <c:param name="timeid" value="${kalaynlist.tb_id}"></c:param>
-	</c:url>
-   <tr>
-            <td><span class="text-ellipsis">${kalaynlist.timetable_caption}</span></td>
-            <td>
-			<a class="example-image-link" href="images/timetable/kalyannagar/${kalaynlist.timetable_image }" data-lightbox="example-set" >		
-	<img src="images/timetable/kalyannagar/${kalaynlist.timetable_image }" alt="" width="70%"/>
-	</a>
-	 
-			<!-- //gallery -->
-			</td>
-			<td>
-		   <button type="button" value="Change" onclick=window.location.href="${changekalyantime}">Change</button>
-		  
-		  </td>		 
-           </tr>
-		 
-</c:forEach>
-		 <script src="adminjs/lightbox-plus-jquery.min.js"> </script>
-        </tbody>
-      </table>
-    </div>
-    
-  </div>
-</div>
-<!-- footer -->
+                                    <input type="text" placeholder="upload video link "  name="video_link"  required />
+                                </div>
+                               
+                               
+                                <div class="col-md-2" style="float: right;margin-top:-2%;">
+                                <input type="submit" id="sub"   class="btn btn-info" value="Upload">
+                                </div>
+              
+                                
+                                
+                                </form:form>
+                              
+                            </div>
+                        </div>
+                    </section>
+            </div>
+</section>
+	<section class="wrapper">
+		<!-- gallery -->
+		<!-- gallery -->
+	<div class="gallery">
+		<h2 class="w3ls_head">Gallery</h2>
+		<div class="gallery-grids">
+				
+				<div class="gallery-top-grids">
+				<c:forEach var="kalavideo" items="${adminkalavlist}">
+				<c:url var="admkalavideodel" value="admkalavideodel.html">
+				<c:param name="video_id" value="${kalavideo.video_id}"></c:param>
+				</c:url>
+					<div class="col-sm-4 gallery-grids-left">
+					<a href="${admkalavideodel}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+						<div class="gallery-grid">
+									<iframe src="${kalavideo.video_link}"></iframe>
+						</div>
+					</div>
+					</c:forEach>
+					
+					
+					</div>
+				<div class="clearfix"> </div>
+				
+				
+				
+		
+	</div>
+	</div>
+	<!-- //gallery -->
+
+</section>
+ <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2018 Stepperz Studio. All rights reserved | Design by <a href="http://appfonehub.com">Appfone Hub Pvt Ltd</a></p>
+			  <p>Â© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 			</div>
 		  </div>
   <!-- / footer -->
 </section>
 
-
 <!--main content end-->
-<script src="adminjs/bootstrap.js"></script>
-<script src="adminjs/jquery.dcjqaccordion.2.7.js"></script>
-<script src="adminjs/scripts.js"></script>
-<script src="adminjs/jquery.slimscroll.js"></script>
-<script src="adminjs/jquery.nicescroll.js"></script>
+</section>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/jquery.slimscroll.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-<script src="adminjs/jquery.scrollTo.js"></script>
-<!-- morris JavaScript -->	
-
-
-
-
-
-
+<script src="js/jquery.scrollTo.js"></script>
+<!-- gallery -->
 
 </body>
 </html>

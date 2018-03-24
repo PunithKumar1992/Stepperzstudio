@@ -1331,6 +1331,10 @@ h3.agileits-icons-title {
 	h3.agileits-icons-title {
 		font-size: 23px;
 	}
+	.gallery-grid img{
+	width: 63%;
+    height: 85%;
+	}
 	h3.icon-subheading {
 		font-size: 18px;
 	}

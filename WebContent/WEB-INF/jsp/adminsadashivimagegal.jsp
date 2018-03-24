@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <title>StepperzStudio::Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +23,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="admincss/font.css" type="text/css"/>
 <link href="admincss/font-awesome.css" rel="stylesheet"> 
 <link rel="stylesheet" href="admincss/morris.css" type="text/css"/>
-<link rel="stylesheet" href="admincss/lightbox.css">
 <!-- calendar -->
 <link rel="stylesheet" href="admincss/monthly.css">
 <!-- //calendar -->
@@ -29,6 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="adminjs/jquery2.0.3.min.js"></script>
 <script src="adminjs/raphael-min.js"></script>
 <script src="adminjs/morris.js"></script>
+<link rel="stylesheet" href="admincss/lightbox.css">
 </head>
 <body>
 <section id="container">
@@ -37,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--logo start-->
 <div class="brand">
     <a href="bashboard.html" class="logo">
-        <img src="adminimages/logo.png" alt="stepper" style="width:90%;margin-top:-9%;">
+        <img src="images/logo.png" alt="stepper" style="width:90%;margin-top:-9%;">
     </a>
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>
@@ -48,18 +50,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
-       
+        
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <img alt="" src="images/2.png">
                 <span class="username">${sessionScope.activeuser}</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="adminlogout.html"><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -129,8 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Adds</span>
                     </a>
                 </li>
-                
-                <li class="sub-menu">
+                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
                         <span>Gallery</span>
@@ -249,81 +250,154 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="mail_compose.html">Compose Mail</a></li>
                     </ul>
                 </li> -->
+                
             </ul>            </div>
         <!-- sidebar menu end-->
     </div>
 </aside>
+
 <!--sidebar end-->
 <!--main content start-->
 <section id="main-content">
+<section class="wrapper">
+            <div class="row">
+            <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                          Sadashiv Nagar
+                        </header>
+                        <div class="panel-body">
+                            <div class="position-center">
+                              <form:form method="post" modelAttribute="adsadaim" action="saveadminsadimg.html" enctype="multipart/form-data">
+                                
+                               
+                               	<div class="col-md-3">
 
-	<div class="table-agile-info">
-  <div class="panel panel-default" style="margin-top: 8%;">
-    <div class="panel-heading">
-       Kalyan Nagar Time Table Information
-    </div>
-     <div class="table-responsive">
-      <table class="table table-striped b-t b-light">
-        <thead>
-          <tr>
-            
-            <th>Time_Table_Caption</th>
-            <th>Time_Table_Image</th>
-            <th> Action</th>
-          </tr>
-        </thead>
-        <tbody>
-     
-    <c:forEach var="kalaynlist" items="${kalayntimelist}" >
-    <c:url var="changekalyantime" value="changekalyantime.html">
-    <c:param name="timeid" value="${kalaynlist.tb_id}"></c:param>
-	</c:url>
-   <tr>
-            <td><span class="text-ellipsis">${kalaynlist.timetable_caption}</span></td>
-            <td>
-			<a class="example-image-link" href="images/timetable/kalyannagar/${kalaynlist.timetable_image }" data-lightbox="example-set" >		
-	<img src="images/timetable/kalyannagar/${kalaynlist.timetable_image }" alt="" width="70%"/>
-	</a>
-	 
-			<!-- //gallery -->
-			</td>
-			<td>
-		   <button type="button" value="Change" onclick=window.location.href="${changekalyantime}">Change</button>
-		  
-		  </td>		 
-           </tr>
-		 
-</c:forEach>
-		 <script src="adminjs/lightbox-plus-jquery.min.js"> </script>
-        </tbody>
-      </table>
-    </div>
-    
-  </div>
-</div>
-<!-- footer -->
+                                    <input type="file" name="adminsadafile" id="fileUpload" onchange="Upload();" value="" accept=".jpg,.png,jpeg" />
+                                </div>
+                               
+                               
+                                <div class="col-md-2" style="float: right;margin-top:-2%;">
+                                <input type="submit" id="sub"  disabled class="btn btn-info" value="Add">
+                                </div>
+              
+                                
+                                
+                                </form:form>
+                              
+                            </div>
+                        </div>
+                    </section>
+            </div>
+</section>
+		<section class="wrapper">
+		<!-- gallery -->
+		<!-- gallery -->
+	<div class="gallery">
+		<h2 class="w3ls_head">Gallery</h2>
+		<div class="gallery-grids">
+			
+				<c:forEach var="sadaimg" items="${adminsadaimg}">
+				<c:url var="deleteadminsada" value="deleteadminsada.html">
+				<c:param name="delimgid" value="${sadaimg.image_id}"></c:param>
+				<c:param name="delimgname" value="${sadaimg.image_name}"></c:param>
+				</c:url>
+					<div class="col-sm-4 gallery-grids">
+					
+					<a href="${deleteadminsada}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+						<div class="gallery-grid" style="width:450px;height:300px;">
+							<a class="example-image-link" href="images/sadashivnagarimages/${sadaimg.image_name }" data-lightbox="example-set" >
+								<img src="images/sadashivnagarimages/${sadaimg.image_name }" alt="" style="width: 70%;height: 90%;" />
+								
+							</a>
+						</div>
+						
+					</div>
+					</c:forEach>
+					  <script src="adminjs/lightbox-plus-jquery.min.js"> </script>
+				
+	</div>
+	<div class="clearfix"></div>
+	
+		
+	</div>
+	<!-- //gallery -->
+
+</section>
+ <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2018 Stepperz Studio. All rights reserved | Design by <a href="http://appfonehub.com">Appfone Hub Pvt Ltd</a></p>
+			  <p>Â© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 			</div>
 		  </div>
   <!-- / footer -->
 </section>
 
-
 <!--main content end-->
-<script src="adminjs/bootstrap.js"></script>
-<script src="adminjs/jquery.dcjqaccordion.2.7.js"></script>
-<script src="adminjs/scripts.js"></script>
-<script src="adminjs/jquery.slimscroll.js"></script>
-<script src="adminjs/jquery.nicescroll.js"></script>
+</section>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/jquery.slimscroll.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-<script src="adminjs/jquery.scrollTo.js"></script>
-<!-- morris JavaScript -->	
+<script src="js/jquery.scrollTo.js"></script>
+<!-- gallery -->
 
 
 
+<script type="text/javascript">
+function Upload() {
+    //Get reference of FileUpload.
+    var fileUpload = document.getElementById("fileUpload");
+ 
+    //Check whether the file is valid Image.
+    var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(.jpg|.png|.gif)$");
+    if (regex.test(fileUpload.value.toLowerCase())) {
+ 
+        //Check whether HTML5 is supported.
+        if (typeof (fileUpload.files) != "undefined") {
+            //Initiate the FileReader object.
+            var reader = new FileReader();
+            //Read the contents of Image File.
+            reader.readAsDataURL(fileUpload.files[0]);
+            reader.onload = function (e) {
+                //Initiate the JavaScript Image object.
+                var image = new Image();
+ 
+                //Set the Base64 string return from FileReader as source.
+                image.src = e.target.result;
+                       
+                //Validate the File Height and Width.
+                image.onload = function () {
+                    var height = this.height;
+                    var width = this.width;
+                    if (height > 100 && width == 100) {
+                    	alert("Uploaded image has valid Height and Width.");
+                        document.getElementById('sub').disabled = false;
+                        
+                    }
+                    else
+                    	{
+                    	 alert("Height and Width must not exceed 457px & 307px.");
+                    	document.getElementById('sub').disabled = true;
+          
+                    	}
+                };
+ 
+            }
+        } else {
+            alert("This browser does not support HTML5.");
+            return false;
+        }
+    } else {
+        alert("Please select a valid Image file.");
+        return false;
+    }
+}
 
+
+</script>
 
 
 

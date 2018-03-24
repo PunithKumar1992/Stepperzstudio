@@ -137,6 +137,90 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Adds</span>
                     </a>
                 </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Gallery</span>
+                    </a>
+					  <ul class="sub">
+						<li>
+						<li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Images</span>
+                    </a> 
+					 <ul class="sub">
+						<li>
+						<li class="sub-menu">
+                    <a href="adminsadagallery.html">
+                       <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <span>sadashiva Nagar</span>
+                    </a>
+                   
+                </li>
+						</li>
+						<li>
+						<li class="sub-menu">
+                    <a href="adminkalagallery.html">
+                       <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <span>Kalyan Nagar</span>
+                    </a>
+                    
+                </li>
+						</li>
+                        <li>
+						<li class="sub-menu">
+                    <a href="adminmalleshgallery.html">
+                       <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <span>Malleshwaram</span>
+                    </a>
+                    
+                </li>
+						</li>
+                    </ul>
+                </li>
+						</li>
+						<li>
+				<li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Videos</span>
+                    </a>    
+ <ul class="sub">
+						<li>
+						<li class="sub-menu">
+                    <a href="adminsadavideo.html">
+                       <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <span>sadashiva Nagar</span>
+                    </a>
+                   
+                </li>
+						</li>
+						<li>
+						<li class="sub-menu">
+                    <a href="adminkalavideo.html">
+                       <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <span>Kalyan Nagar</span>
+                    </a>
+                    
+                </li>
+						</li>
+                        <li>
+						<li class="sub-menu">
+                    <a href="adminmalleshvideo.html">
+                       <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <span>Malleshwaram</span>
+                    </a>
+                    
+                </li>
+						</li>
+                    </ul>					
+                </li>
+						</li>
+                        
+                    </ul>
+                  
+                </li>
 				 <li>
                     <a href="admintestimonials.html">
                        <i class="fa fa-comments-o" aria-hidden="true"></i>
