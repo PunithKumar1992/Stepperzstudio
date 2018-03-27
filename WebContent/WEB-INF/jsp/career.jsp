@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html lang="en" style="over">
-<head>
-<title>Stepperz | Dance Aerobics N Yoga Studio</title>
 
+<!DOCTYPE html>
+<html lang="en" style="overflow-x:hidden;">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stepperz | Dance Aerobics N Yoga Studio</title>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
@@ -12,102 +13,22 @@
 <link href="css/style.css" type="text/css" rel="stylesheet" media="all"> 
 <link rel="stylesheet" href="css/main-gallery.css" type="text/css" media="screen" />  <!-- flexslider-CSS --> 
 <link href="css/font-awesome.css" rel="stylesheet">		<!-- font-awesome icons -->
+
 <link rel="icon" href="images/log.ico" type="image/x-icon">
-
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
- <link rel="stylesheet" href="css/pikaday.css">
-    <link rel="stylesheet" href="css/site.css">
 
 <!-- //Custom Theme files --> 
 <!-- web-fonts -->  
 <link href="//fonts.googleapis.com/css?family=Arapey:400,400i" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300i,400,400i,600,600i,700" rel="stylesheet">
 <!-- //web-fonts -->
-</head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top"  >  
-	<!-- banner -->
-	<div id="home" class="w3ls-banner"> 
- <div id="player">
-    <audio autoplay hidden>
-     <source src="audio/music.mp3" type="audio/mp3">
-                If you're reading this, audio isn't supported. 
-    </audio>
-</div>
-		<!-- banner-text -->
-		<div class="slider">
-			<div class="callbacks_container">
-				<ul class="rsldes callbacks callbacks1" id="slider4">
-					<li>
-						<div style="background-color:#d85f5f">
-						<div id="particles-js1"></div>
-							<div class="container">
-                                                            <div class="agileits-banner-info" style=" margin-top: -10%">
-								<h3>&nbsp;&nbsp;&nbsp;CAREER FORM</h3>
-									<div style="margin-top: 0%; margin-left: 25%; border: groove 20px; green; width: 55%; padding: 3%">
-
-<form action="careersubmit.html" id="EmploymentApplication100" method="post" onsubmit="return FormValidation();" onchange="return FormValidation();">
-<script type="text/javascript">
-function ValidateForm(frm) {
-if (frm.First_Name.value == "") { alert('First name is required.'); frm.First_Name.focus(); return false; }
-if (frm.Last_Name.value == "") { alert('Last name is required.'); frm.Last_Name.focus(); return false; }
-if (frm.Email_Address.value == "") { alert('Email address is required.'); frm.Email_Address.focus(); return false; }
-if (frm.Email_Address.value.indexOf("@") < 1 || frm.Email_Address.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); frm.Email_Address.focus(); return false; }
-if (frm.Position.value == "") { alert('Position is required.'); frm.Position.focus(); return false; }
-if (frm.Phone.value == "") { alert('Phone is required.'); frm.Phone.focus(); return false; }
-return true; }
-</script>
-
-<table border="0" cellpadding="5" cellspacing="0" style="color: WHITE">
-<tr> <td style="width: 50%;">
-<label for="First_Name"><b>First name *</b></label><br />
-<input name="first_name" type="text" id="firstname" maxlength="50" style="width: 260px;color:black;" />
-</td> <td style="width: 50%;">
-<label for="Last_Name"><b>Last name *</b></label><br />
-<input name="last_name" type="text" id="lastname" maxlength="50" style="width: 260px;color:black;" />
-</td> </tr> <tr> <td colspan="2">
-<label for="Email_Address"><b>Email *</b></label><br />
-<input name="email" type="text" id="email" maxlength="100" style="width: 535px;color:black;" />
-</td> </tr> 
- <tr> <td colspan="2">
-<label for="Position"><b>Position you are applying for *</b></label><br />
-<input name="post_applyfor" type="text" maxlength="100" style="width: 535px;color:black;" id="pos" />
-</td> </tr> <tr> <td>
-<label for="Salary"><b>Salary requirements</b></label><br /> <input name="salary_req" type="text" id="sal" maxlength="50" style="width: 260px;color:black;" /> </td> <td>
-<label for="StartDate"><b>When can you start?</b></label><br />
-<input name="joining_date" type="text" maxlength="50" id="datepicker" name="date"  style="width: 260px;color:black;" />
-</td> </tr> <tr> <td>
-<label for="Phone"><b>Phone *</b></label><br />
-<input name="phone" type="text" maxlength="50" style="width: 260px;color:black;" id="ppp" />
-</td>  </tr> <tr> <td colspan="2">
-<label for="Organization"><b>Last company you worked for</b></label><br />
-<input name="last_company" type="text" id="lastcom" maxlength="100" style="width: 535px;color:black;" />
-</td> </tr> <tr> <td colspan="2">
-<label for="Reference"><b>Reference / Comments / Questions</b></label><br />
-<textarea name="message"  id ="msg" rows="7" cols="40" style="width: 535px;color:black;"></textarea>
-</td> </tr> <tr> <td colspan="2" style="text-align: center;color:black;">
-<input type="submit" value="Submit" id="sub" style="width: 535px;color:black bold;">
-        
-</td> </tr>
-</table>
-</form>
-        </div>
-        	
-								</div>	
-							</div>
-						</div>
-					</li>
-					
-					
-				</ul>
-			</div>
-			<div class="clearfix"> </div>
-			
-			<!--banner Slider starts Here-->
-		</div>
-		   
- 			<!-- header -->
+<link href="careercss/style.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="careercss/font-awesome.css">
+	
+	<link href="//fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+	    rel="stylesheet">
+</head><body>
+	<!-- header -->
 		<div class="header-w3layouts"> 
 			<!-- Navigation -->
 			<nav class="navbar navbar-default navbar-fixed-top">
@@ -125,18 +46,33 @@ return true; }
 					<div class="collapse navbar-collapse navbar-ex1-collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-							<li class="hidden"><a class="" href=""></a>	</li>
-							<li><a  href="index.jsp">Home</a></li>
-							<li><a href="index.jsp#about">About</a></li>
-							<li><a href="index.jsp#classes">Classes</a></li>
-							<li><a  href="index.jsp#plans">Adds</a></li>
-							<li><a href="index.jsp#instructors">Time-Table</a></li>
+							
+							<li><a  href="index.jsp#home" style="color:white;font-size: 14px;">Home</a></li>
+							<li><a  href="index.jsp#about" style="color:white;font-size: 14px;">About</a></li>
+							<li><a  href="index.jsp#classes" style="color:white;font-size: 14px;">Classes</a></li>
+							<li><a href="index.jsp#plans" style="color:white;font-size: 14px;">Adds</a></li>
+							<li><a href="index.jsp#instructors" style="color:white;font-size: 14px;">Time-Table</a></li>
 
-							<li><a href="index.jsp#gallery">Gallery</a></li>
-							<li><a href="career.html">Career</a></li>
-							<li><a href="regestration.html">Regestration</a></li>
-							<li><a href="index.jsp#contact">Contact</a></li>
-						</ul>
+							<li><a  href="index.jsp#gallery"style="color:white;font-size: 14px;">Gallery</a></li>
+							<li><a href="career.jsp" style="color:white;font-size: 14px;">Career</a></li>
+							<li><a href="regestration.html" style="color:white;font-size: 14px;">Registration</a></li>
+							<li><a  href="index.jsp#contact" style="color:white;font-size: 14px;">Contact</a></li>
+							 <div id="player">
+    <audio id="audio" autoplay hidden>
+     <source src="audio/homepage.mp3" type="audio/mp3">
+               <p> If you're reading this, audio isn't supported. </p>
+    </audio>
+</div>
+		
+<script>		
+      var audio = document.getElementById('audio');
+audio.play();
+ 
+// Sometime Later
+audio.src = 'audio/homepage.mp3';
+audio.play();
+</script>
+		</ul>
 					</div>
 					<!-- /.navbar-collapse -->
 				</div>
@@ -144,145 +80,84 @@ return true; }
 			</nav>  
 		</div>	
 		<!-- //header -->
-	</div>
-        
-        
-        
+	</div>	
+	<!-- //banner --> 
 
-<!-- footer -->
+	<!-- main -->
+	<div class="main-agileits" style="margin-top: 5%;">
+		<h1>Career Form
+		</h1>
+		<div class="register-form">
+			<form action="careersubmit.html" id="EmploymentApplication100" method="post" onsubmit="return FormValidation();" onchange="return FormValidation();">
+			
+				<div class="fields-grid">
+					<div class="styled-input">
+						
+						<input type="text" placeholder="First Name" name="name" id="firstname">
+					</div>
+					<div class="styled-input">
+						
+						<input type="text" placeholder="Last Name" name="name"id="lastname">
+					</div>
+					<div class="styled-input">
+						
+						<input type="email" placeholder="Your E-mail" name="email" id="email">
+					</div>
+					<div class="styled-input">
+						
+						<input type="text" placeholder="Phone Number" name="phone number" id="ppp" >
+					</div>
+					<div class="styled-input">
+						
+						<input id="datepicker" placeholder="When You Can Start?" name="date" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}">
+					</div>
+					<div class="styled-input">
+						
+						<input type="text" placeholder="Position You are Applying" name="name" id="pos" >
+					</div>
+					<div class="styled-input">
+						
+						<input name="salary_req" type="text" id="sal"  placeholder="Salary Requirements" />
+					</div>
+					<div class="styled-input">
+					
+						<input type="text" placeholder="Previous Company" name="name" id="lastcom">
+					</div>
+					<div class="styled-input">
+						
+						<input type="text" id ="msg"  placeholder="Reference / Comments / Questions" name="message" style="
+    background-color: rgba(19, 22, 23, 0);
+    border: 0.5em;
+    color: white;
+"></input>
+					</div>
+					
+					<div class="clear"> </div>
+				</div>
+				<input type="submit" value="Submit" id="sub">
+			</form>
+		</div>
+	</div>
+	<!-- //main -->
+	<!-- footer -->
 			<div class="copy-right">
-				<p>&copy; 2018 Stepperz Studio. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfone Hub Pvt Ltd</a></p>
+				<p>&copy; 2017 Stepperz. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfone Hub Pvt Ltd.</a></p>
 			</div>
 			
 <!-- //footer -->
-<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
-<script src="js/jquery-2.2.3.min.js"></script> 
-			<script src="js/particles.js"></script>
-			<script src="js/app.js"></script>
-	
-<!-- skills -->
+	<!-- js -->
+	<script src="careerjs/jquery-2.1.4.min.js"></script>
 
-						<script src="js/responsiveslides.min.js"></script>
-			<script>
-						// You can also use "$(window).load(function() {"
-						$(function () {
-						  // Slideshow 4
-						  $("#slider4").responsiveSlides({
-							auto: true,
-							pager:true,
-							nav:false,
-							speed: 500,
-							namespace: "callbacks",
-							before: function () {
-							  $('.events').append("<li>before event fired.</li>");
-							},
-							after: function () {
-							  $('.events').append("<li>after event fired.</li>");
-							}
-						  });
-					
-						});
-			</script>
-			<script>
-								// You can also use "$(window).load(function() {"
-								$(function () {
-								  // Slideshow 4
-								  $("#slider3").responsiveSlides({
-									auto: true,
-									pager:false,
-									nav:true,
-									speed: 500,
-									namespace: "callbacks",
-									before: function () {
-									  $('.events').append("<li>before event fired.</li>");
-									},
-									after: function () {
-									  $('.events').append("<li>after event fired.</li>");
-									}
-								  });
-							
-								});
-							 </script>
-
- <!-- js -->
-	<script src="js/main.js"></script>
-<!-- search-jQuery -->
-<!-- pop-up-box -->
-			<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
-			<!--//pop-up-box -->
-			<script>
-				$(document).ready(function() {
-					$('.popup-with-zoom-anim').magnificPopup({
-						type: 'inline',
-						fixedContentPos: false,
-						fixedBgPos: true,
-						overflowY: 'auto',
-						closeBtnInside: true,
-						preloader: false,
-						midClick: true,
-						removalDelay: 300,
-						mainClass: 'my-mfp-zoom-in'
-					});														
-				});
-			</script>
-
-		<!-- Map-JavaScript -->
-			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>        
-			<script type="text/javascript">
-				google.maps.event.addDomListener(window, 'load', init);
-				function init() {
-					var mapOptions = {
-						zoom: 11,
-						center: new google.maps.LatLng(40.6700, -73.9400),
-						styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
-					};
-					var mapElement = document.getElementById('map');
-					var map = new google.maps.Map(mapElement, mapOptions);
-					var marker = new google.maps.Marker({
-						position: new google.maps.LatLng(40.6700, -73.9400),
-						map: map,
-					});
-				}
-			</script>
-	<!-- //Map-JavaScript -->
-
-	
-<!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
-
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+	<!-- Calendar -->
+	<link rel="stylesheet" href="careercss/jquery-ui.css" />
+	<script src="careerjs/jquery-ui.js"></script>
+	<script>
+		$(function () {
+			$("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker();
 		});
-	});
-</script>
-<!-- start-smoth-scrolling -->
-
-
-<!-- here stars scrolling icon -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-				};
-			*/
-								
-			$().UItoTop({ easingType: 'easeOutQuart' });
-								
-			});
 	</script>
-<!-- //here ends scrolling icon -->
-	<script src="js/bootstrap.js"></script>
-<!-- //for bootstrap working -->
-
+	<!-- //Calendar -->
 
 <script type="text/javascript">
 function FormValidation()
@@ -524,18 +399,9 @@ var ln=document.getElementById('lastname').value;
 }
 </script>
 
-<script src="js/pikaday.js"></script>
-    <script>
 
-    var picker = new Pikaday(
-    {
-        field: document.getElementById('datepicker'),
-        firstDay: 1,
-        minDate: new Date(),
-        maxDate: new Date(2020, 12, 31),
-        yearRange: [2000,2020]
-    });
 
-    </script>
+
 </body>
+
 </html>

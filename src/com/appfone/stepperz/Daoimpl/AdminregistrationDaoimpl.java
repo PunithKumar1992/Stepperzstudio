@@ -16,7 +16,7 @@ public  class AdminregistrationDaoimpl implements AdminregistrationDao{
 		Session session=factory.openSession();
 		Transaction t=session.beginTransaction();
 		t.begin();
-		session.save(admin);
+		session.saveOrUpdate(admin);
 		t.commit();
 		session.close();
 		

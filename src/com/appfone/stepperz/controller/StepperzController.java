@@ -23,10 +23,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.appfone.stepperz.Daoimpl.AdminAddDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminKalayanvideogalDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminLoginDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminMalleshvideogalleryDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminMalleshwaramimggalleryDaoimpl;
+import com.appfone.stepperz.Daoimpl.AdminProfileDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminSadashivvideogalleryDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminadsDaoimpl;
 import com.appfone.stepperz.Daoimpl.AdminbannerDaoimpl;
@@ -257,28 +259,17 @@ public class StepperzController {
 	}
 	
 	@RequestMapping(value="/adminregistration")
-	public ModelAndView  adminregprocessController(@Valid @ModelAttribute("adminreg") Adminregistration adminregg,BindingResult result )
+	public String  adminregprocessController(@Valid @ModelAttribute("adminreg") Adminregistration adminregg,BindingResult result )
 	{
-		System.out.println(result);
-		System.out.println("in controller");
 		
-		if(result.hasErrors())
-		{
-			System.out.println("errors");
-			ModelAndView mv=new  ModelAndView();
-			mv.setViewName("adminregistration");
-			return mv;
-			
-		}
-		else
-		{
+	
 			System.out.println("no errors");
 		AdminregistrationDaoimpl saveAdmin=new AdminregistrationDaoimpl();
 		saveAdmin.saveAdmin(adminregg);
 		ModelAndView mv=new  ModelAndView();
 		mv.setViewName("login");
-		return mv;
-		}
+		return "redirect:adminadd.html";
+		
 	}
 	@RequestMapping(value="/admindashboard")
 	public String admindashboardController(@RequestParam Map<String, String>reqparam)
@@ -295,6 +286,7 @@ public class StepperzController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Adminindex");
 		sessionn.setAttribute("activeuser", user);
+		sessionn.setAttribute("activpass", pass);
 		String activeuser=user;
 		mv.addObject("activeuser", activeuser);
 		return "redirect:/adminloginsuccess.html";
@@ -1492,6 +1484,101 @@ public class StepperzController {
 		delevid.deletevideo(video_id);
 		
 		return "redirect:/adminmalleshvideo.html";
+	}
+	
+	@RequestMapping(value="/saveadminmalavid")
+	public String saveadminmalavidController(@ModelAttribute("admalavideo")Malleshwaramvideo admalavideo)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			return "redirect:/admin.html";
+		}
+		
+		AdminMalleshvideogalleryDaoimpl savevid= new AdminMalleshvideogalleryDaoimpl(); 
+		savevid.savevideo(admalavideo);
+		
+		return "redirect:/adminmalleshvideo.html";
+	}
+	
+	
+	@RequestMapping(value="/adminprofile")
+	public ModelAndView adminprofileController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
+		AdminProfileDaoimpl prof= new AdminProfileDaoimpl();
+		String user = sessionn.getAttribute("activeuser").toString();
+		String pass = sessionn.getAttribute("activpass").toString();
+		List list = prof.getAdminDetails(user, pass);
+		ModelAndView mv= new ModelAndView();
+		mv.addObject("proflist", list);
+		mv.setViewName("adminprofile");
+		return mv;
+	}
+	
+	@RequestMapping(value="/adminadd")
+	public ModelAndView adminaddController()
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			return mv;
+		}
+		ModelAndView mv= new ModelAndView();
+		AdminAddDaoimpl admin = new AdminAddDaoimpl();
+		Adminregistration adminreg= new Adminregistration();
+		List list = admin.getAdmins();
+		mv.addObject("adminlist", list);
+		mv.addObject("adminreg", adminreg);
+		mv.setViewName("adminAdd");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/deleteadmin")
+	public String deleteadminController(@RequestParam("admin_id")int admin_id)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			
+			
+			return "redirect:/admin.html";
+		}
+		
+		AdminAddDaoimpl admin = new AdminAddDaoimpl();
+		admin.deleteAdmin(admin_id);
+		
+		return "redirect:/adminadd.html";
+	}
+	
+	
+	@RequestMapping(value="/editadmin")
+	public ModelAndView editadminController(@RequestParam("admin_id")int admin_id)
+	{
+		if((sessionn.getAttribute("activeuser"))==null)
+		{
+			ModelAndView mv= new ModelAndView();
+			mv.setViewName("login");
+			
+			return mv;
+		}
+		
+		AdminAddDaoimpl admin = new AdminAddDaoimpl();
+		Adminregistration adminreg = admin.getSingleadmin(admin_id);
+		System.out.println(adminreg.getAdmin_email());
+		System.out.println(adminreg.getAdmin_password());
+		ModelAndView mv= new ModelAndView();
+		mv.addObject("adminreg", adminreg);
+		mv.setViewName("adminedit");
+		return mv;
 	}
 }
 

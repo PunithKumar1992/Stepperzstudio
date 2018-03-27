@@ -53,6 +53,7 @@ body a:hover{
 }
 .leftside-navigation,.right-stat-bar{
     height: 100%;
+    width: 100%;
 }
 .right-stat-bar ul {
     list-style-type: none;

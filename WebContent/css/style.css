@@ -454,10 +454,10 @@ p.sub-text.one {
 }
 #gallery {
 	  padding:1em 0 0 0;
-	  background:#616272;
+	  background:none;
 }
 .wthree-agile-classes-section {
-    margin-top: 3em;
+    margin-top: -2em;
 }
 .class-grid-img{
 	position:relative;
@@ -467,6 +467,7 @@ p.sub-text.one {
     margin-right: 1%;
 	text-align:center;
 	position:relative;
+	padding:1em;
 }
 .class-grid.lost {
     margin-right: 0;
@@ -614,7 +615,7 @@ p.sub-text.one {
   background-repeat: no-repeat;
 }
 canvas.particles-js-canvas-el{
-    height:630px!important;
+    height:518px!important;
 }
 /*--test--*/
 #monials {
@@ -1369,7 +1370,7 @@ section.social ul li {
 
 @media(max-width:1440px){
 	.w3layouts-banner-top,.w3layouts-banner-top1,.w3layouts-banner-top2{
-		min-height:680px;
+		min-height:642px;
 	}
 	.agileits-banner-info {
 		text-align: center;
@@ -1398,11 +1399,14 @@ section.social ul li {
 		left: 9%;
 	}
 	#classes, #instructors {
-		padding: 4em 0;
+		padding: 1em 0;
 		background-color:"#616272";
 	}
 	#gallery {
     padding:1em 0 0 0;
+	}
+	.img{
+	width:100%;
 	}
 }
 @media(max-width:1366px){
@@ -1419,6 +1423,7 @@ section.social ul li {
 		left: 16%;
 		width: 66%;
 	}
+	
 }
 @media(max-width:1280px){
 	h3.title-w3 {
@@ -1448,6 +1453,9 @@ section.social ul li {
 		position: absolute;
 		top: 41%;
 		left: 4%;
+	}
+	.img{
+	width:80%;
 	}
 }
 @media(max-width:1080px){
@@ -1529,6 +1537,9 @@ section.social ul li {
 	.wthree-agile-classes-section {
 		margin-top: 2em;
 	}
+	.img{
+	width:70%;
+	}
 }
 @media(max-width:1024px){
 	.callbacks_tabs {
@@ -1566,6 +1577,10 @@ section.social ul li {
 		float: right !important;
 		margin-right: 0;
 		margin-top: 4px;
+	}
+	
+	.img{
+	width:100%;
 	}
 }
 @media(max-width:991px){
@@ -1649,6 +1664,9 @@ section.social ul li {
 	.modal-content h5 {
       font-size: 1.5em;
 	}
+	.img{
+	width:100%;
+	}
 	
 }
 @media(max-width:800px){
@@ -1729,6 +1747,9 @@ section.social ul li {
 		width: 25%;
 		padding: 0 5px;
 	}
+	.img{
+	width:100%;
+	}
 }
 @media(max-width:768px){
 	.ab-w3-agile-info-text {
@@ -1768,6 +1789,9 @@ section.social ul li {
 	h2.title-w3 {
 		font-size: 2.3em;
 		letter-spacing: 5px;
+	}
+	.img{
+	width:100%;
 	}
 	
 }
@@ -1862,6 +1886,9 @@ section.social ul li {
 	.hidden-xs {
 		display: block!important;
 	}
+	.img{
+	width:100%;
+	}
 }
 @media(max-width:736px){
 	.team-grid {
@@ -1884,6 +1911,9 @@ section.social ul li {
 		font-size: 2em;
 		letter-spacing:3px;
 	}
+	.img{
+	width:100%;
+	}
 }
 @media(max-width:667px){
 	#classes {
@@ -1891,6 +1921,9 @@ section.social ul li {
 	}
 	.cont-top h5 {
       font-size: 1.5em;
+	}
+	.img{
+	width:100%;
 	}
 } 
 @media(max-width:640px){
@@ -1933,6 +1966,9 @@ section.social ul li {
 		padding-top: 0;
 		float: none;
 		width: 100%;
+	}
+	.img{
+	width:100%;
 	}
 }
 @media(max-width:600px){
@@ -1978,6 +2014,9 @@ section.social ul li {
 		line-height: 2em;
 		margin: 0.5em 0 1em 0;
 		letter-spacing: 1px;
+	}
+	.img{
+	width:100%;
 	}
 }
 
@@ -2125,6 +2164,9 @@ section.social ul li {
 	.modal-content h5 {
 		font-size: 1.3em;
 	}
+	.img{
+	width:100%;
+	}
 }
 @media(max-width:414px){
 	.team-grid:nth-child(4), .team-grid:nth-child(3), .team-grid:nth-child(5), .team-grid:nth-child(6) {
@@ -2178,6 +2220,9 @@ section.social ul li {
 	.team-grid:nth-child(1),.team-grid:nth-child(3),.team-grid:nth-child(5) {
 		padding-left:0;
 	}
+	.img{
+	width:100%;
+	}
 }
 @media(max-width:384px){
 	.agileits-banner-info p {
@@ -2185,6 +2230,9 @@ section.social ul li {
 		letter-spacing: 4px;
 		margin: 1em auto;
 		width: 86%;
+	}
+	.img{
+	width:100%;
 	}
 }
 @media(max-width:375px){
@@ -2195,7 +2243,7 @@ section.social ul li {
 		width: 86%;
 	}
 	.w3layouts-banner-top, .w3layouts-banner-top1, .w3layouts-banner-top2 {
-		min-height: 258px;
+		min-height: 184px;
 	}
 	.agileits-banner-info {
 		text-align: center;
@@ -2266,6 +2314,9 @@ section.social ul li {
 	}
 	.modal-content h5 {
 		font-size: 1em;
+	}
+	.img{
+	width:100%;
 	}
 }
 
@@ -2340,6 +2391,9 @@ section.social ul li {
 	.callbacks_tabs a:after {
 		height: 10px;
 		width: 10px;
+	}
+	.img{
+	width:100%;
 	}
 }
 /*-- //responsive-design --*/

@@ -69,91 +69,95 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </header>
 <!--header end-->
 <!--sidebar start-->
-<aside>
-    <div id="sidebar" class="nav-collapse">
-        <!-- sidebar menu start-->
-        <div class="leftside-navigation">
-            <ul class="sidebar-menu" id="nav-accordion">
-                <li>
-                    <a class="active" href="index.html">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span>Time_Table</span>
-                    </a>
-                    <ul class="sub">
-						<li>
-						<li class="sub-menu">
-                    <a href="sadashivtimetable.html">
-                       <i class="fa fa-bullhorn" aria-hidden="true"></i>
-                        <span>sadashiva Nagar</span>
-                    </a>
-                   
-                </li>
+<aside style="overflow:hidden;">
+			<div id="sidebar" class="nav-collapse" style="overflow-y: scroll;display: flex;">
+				<!-- sidebar menu start-->
+				<div class="leftside-navigation">
+					<ul class="sidebar-menu" id="nav-accordion">
+						<li><a class="active" href="bashboard.html"> <i
+								class="fa fa-dashboard"></i> <span>Dashboard</span>
+						</a></li>
+
+						<li class="sub-menu"><a href="javascript:;"> <i
+								class="fa fa-book"></i> <span>Time_Table</span>
+						</a>
+							<ul class="sub">
+								<li class="sub-menu"><a href="sadashivtimetable.html">
+										<i class="fa fa-bullhorn" aria-hidden="true"></i> <span>sadashiva
+											Nagar</span>
+								</a></li>
+						<li class="sub-menu"><a href="kalyantimetable.html"> <i
+								class="fa fa-bullhorn" aria-hidden="true"></i> <span>Kalyan
+									Nagar</span>
+						</a></li>
+						<li class="sub-menu"><a href="mallesharamtimetable.html">
+								<i class="fa fa-bullhorn" aria-hidden="true"></i> <span>Malleshwaram</span>
+						</a></li>
+						</ul>
 						</li>
-						<li>
-						<li class="sub-menu">
-                    <a href="kalyantimetable.html">
-                       <i class="fa fa-bullhorn" aria-hidden="true"></i>
-                        <span>Kalyan Nagar</span>
-                    </a>
-                    
-                </li>
-						</li>
-                        <li>
-						<li class="sub-menu">
-                    <a href="mallesharamtimetable.html">
-                       <i class="fa fa-bullhorn" aria-hidden="true"></i>
-                        <span>Malleshwaram</span>
-                    </a>
-                    
-                </li>
-						</li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="banner.html">
-                         <i class="fa fa-glass"></i>
-                        <span>Banner</span>
-                    </a>
-                </li>
-				 <li>
-                    <a href="adds.html">
-                        <i class="fa fa-adn" aria-hidden="true"></i>
-                        <span>Adds</span>
-                    </a>
-                </li>
-				 <li>
-                    <a href="testimonials.html">
-                       <i class="fa fa-comments-o" aria-hidden="true"></i>
-                        <span>testimonials</span>
-                    </a>
-                </li>
-				 <li>
-                    <a href="career.html">
-                        <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>	
-                        <span>Career</span>
-                    </a>
-                </li>
-				 <li>
-                    <a href="feedback.html">
-                       <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                        <span>Feedback</span>
-                    </a>
-                </li>
-				 <li>
-                    <a href="registration.html">
-                       <i class="fa fa-registered" aria-hidden="true"></i>
-                        <span>Registration</span>
-                    </a>
-                </li>
-                
-                <li class="sub-menu">
+					<li><a href="adminbanner.html"> <i class="fa fa-glass"></i>
+							<span>Banner</span>
+					</a></li>
+					<li><a href="adminads.html"> <i class="fa fa-adn"
+							aria-hidden="true"></i> <span>Adds</span>
+					</a></li>
+
+
+					<li class="sub-menu"><a href="javascript:;"> <i
+							class="fa fa-book"></i> <span>Gallery</span>
+					</a>
+						<ul class="sub">
+							<li class="sub-menu"><a href="javascript:;"> <i
+									class="fa fa-book"></i> <span>Images</span>
+							</a>
+								<ul class="sub">
+									<li class="sub-menu"><a href="adminsadagallery.html">
+											<i class="fa fa-bullhorn" aria-hidden="true"></i> <span>sadashiva
+												Nagar</span>
+									</a></li>
+							<li class="sub-menu"><a href="adminkalagallery.html"> <i
+									class="fa fa-bullhorn" aria-hidden="true"></i> <span>Kalyan
+										Nagar</span>
+							</a></li>
+					<li class="sub-menu"><a href="adminmalleshgallery.html"> <i
+							class="fa fa-bullhorn" aria-hidden="true"></i> <span>Malleshwaram</span>
+					</a></li>
+					</ul>
+					</li>
+					<li class="sub-menu"><a href="javascript:;"> <i
+							class="fa fa-book"></i> <span>Videos</span>
+					</a>
+						<ul class="sub">
+							<li class="sub-menu"><a href="adminsadavideo.html"> <i
+									class="fa fa-bullhorn" aria-hidden="true"></i> <span>sadashiva
+										Nagar</span>
+							</a></li>
+					<li class="sub-menu"><a href="adminkalavideo.html"> <i
+							class="fa fa-bullhorn" aria-hidden="true"></i> <span>Kalyan
+								Nagar</span>
+					</a></li>
+					<li class="sub-menu"><a href="adminmalleshvideo.html"> <i
+							class="fa fa-bullhorn" aria-hidden="true"></i> <span>Malleshwaram</span>
+					</a></li>
+					</ul>
+					</li>
+					</ul>
+					
+					
+					<li><a href="admintestimonials.html"> <i
+							class="fa fa-comments-o" aria-hidden="true"></i> <span>testimonials</span>
+					</a></li>
+					<li><a href="admincareer.html"> <i
+							class="fa fa-caret-square-o-right" aria-hidden="true"></i> <span>Career</span>
+					</a></li>
+					<li><a href="adminfeedback.html"> <i
+							class="fa fa-commenting-o" aria-hidden="true"></i> <span>Feedback</span>
+					</a></li>
+					<li><a href="studentregbyadmin.html"> <i
+							class="fa fa-registered" aria-hidden="true"></i> <span>Registration</span>
+					</a></li>
+
+					<!-- <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-envelope"></i>
                         <span>Mail </span>
@@ -162,12 +166,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="mail.html">Inbox</a></li>
                         <li><a href="mail_compose.html">Compose Mail</a></li>
                     </ul>
-                </li>
-                
-            </ul>            </div>
-        <!-- sidebar menu end-->
-    </div>
-</aside>
+                </li> -->
+
+					</ul>
+				</div>
+				<!-- sidebar menu end-->
+			</div>
+		</aside>
 <!--sidebar end-->
 <!--main content start-->
 <section id="main-content">

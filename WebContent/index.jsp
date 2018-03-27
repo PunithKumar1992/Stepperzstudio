@@ -35,8 +35,10 @@ String imgpath;
 String img;
 String message[];
 String name[];
-int count;
-int adscount;
+//int count;
+int 
+
+count;
 String adstype[];
 String adsimages[];
 %>
@@ -109,7 +111,7 @@ String adsimages[];
 							<li><a class="page-scroll scroll" href="#home">Home</a></li>
 							<li><a class="page-scroll scroll" href="#about">About</a></li>
 							<li><a class="page-scroll scroll" href="#classes">Classes</a></li>
-							<li><a class="page-scroll scroll" href="#plans">Adds</a></li>
+							<li><a class="page-scroll scroll" href="#plans">Ads</a></li>
 							<li><a class="page-scroll scroll" href="#instructors">Time-Table</a></li>
 
 							<li><a class="page-scroll scroll" href="#gallery">Gallery</a></li>
@@ -143,7 +145,7 @@ audio.play();
 	<!-- //banner --> 
 
 <!-- about -->
-<section style="width:100%;">
+<section  style="width:100%;overflow-x:hidden; ">
 <div class="about" id="about">
       <div class="col-md-6 ab-w3-agile-info">
 	   <div class="ab-w3-agile-info-text">
@@ -233,10 +235,10 @@ Choreography is an artefact of personal manifestation.  Develop your own persona
 		
 		
 							      
-	<div class="services" id="classes">
-		<div class="container" style="margin-top:10%">
+	<div class="services" id="classes" style="overflow-x:hidden; ">
+		<div class="container" style="margin-top:3%">
               <br/><br/>
-		 <h3 class="title-w3"  style="margin-top: 15%;">Fitness Classes</h3>
+		 <h3 class="title-w3" >Fitness Classes</h3>
 		 <p class="sub-text">Choose Your Style</p>
 		     <div class="wthree-agile-classes-section">
 	               
@@ -286,15 +288,21 @@ Choreography is an artefact of personal manifestation.  Develop your own persona
 
 		 </div>	
    </div>
-   <!-- //classes-->
- <div class="main" id="plans" style="overflow-y:hidden; ">
-  <h3 class="title-w3">Adds</h3>
-		<div id="particles-js"></div> 
-	  <center>	<div class="priceing-table-main">
-<marquee onmouseover="this.stop();" onmouseout="this.start();">
-<% 
+  
+ <!-- //classes-->
+ 
+		<div class="services" id="plans">
+		<div class="container" >
+            
+		 <h3 class="title-w3" >Ads</h3>
+		 <p class="sub-text"></p>
+		
+		 
+		     <div class="wthree-agile-classes-section" style="margin-top: 3%;">
+	            
+	               <% 
 AdvertisementDaoimpl ads_list= new AdvertisementDaoimpl();
-adscount = ads_list.getadscount();
+int adscount = ads_list.getadscount();
 adstype = ads_list.getadstype();
 adsimages=ads_list.getadsimage();
 String adtype;
@@ -314,19 +322,66 @@ for(int i=0;i<adscount;i++)
 	else if(adstype[i].equals("hire") && adimg!=null)
 	{
 		action="career.html";
-	}
-	out.println("<a href="+action+"><img src="+adpath+"></a>");
-	
+	}					
+						out.println("<div class='col-lg-2 class-grid'>");
+						out.println("<div class='class-grid-img'>");
+						out.println("<a href="+action+"><img src="+adpath+" alt='stepperz'></a>");
+						    
+						out.println("</div>");
+						out.println("</div>");
+						
 }
-
 %>
-</marquee>
+				 </div>
+					
 
-</div>
-  </center>
-</div> 
+ 
+   </div>
+   				      
 
+   
+   <!-- -\\Classes -->
+	 <!-- // Time-Table -->
+		<div class="services" id="instructors">
+		<div class="container" style="background-color: #fff212e0;">
+              <br/><br/>
+		 <h3 class="title-w3">Time-Table</h3>
+		 <p class="sub-text"></p>
+		     <div class="wthree-agile-classes-section">
+	               
+				
+					<div class="col-lg-4 class-grid">
+						<div class="class-grid-img">
+					       <a href="sadashiv_timetable.html"> <img src="images/sadhashivnagartimeicon.png" alt="stepperz"></a>
+						    
+						</div>	
+					
+                   
+				    </div>
+					<div class="col-lg-4 class-grid">
+						<div class="class-grid-img">
+					      <a href="kalyan_timetable.html"> <img src="images/kalyannagartimeicon.png" alt="stepperz"></a>
+						    
+						</div>
+						
+                     
+					
+				    </div>
+					<div class="col-lg-4 class-grid">
+						<div class="class-grid-img ">
+					     <a href="malleshwaram_timetable.html"> <img src="images/malleshwaramtimeicon.png" alt="stepperz"></a>
+						    
+						</div>
+						
+	                     			
+				    </div>
+				<div class="clearfix"> </div>
+	         </div>
 
+		 </div>	
+   </div>
+   <!-- \\Time-Table -->
+	 <!-- //classes--
 	<!-- Modal -->
   <div class="modal fade" id="model1" role="dialog">
     <div class="modal-dialog">
@@ -386,41 +441,76 @@ for(int i=0;i<adscount;i++)
   </div>
   
 				<div class="clearfix"> </div>				
-		<!-- Time-Table -->
-	<div class="time-table" id="instructors" style="background-color:#00b8f1;padding:5em;">
-		<center><h3 class="title-w3" style="color:black">Time-Table</h3>
-			<br>
-		<div style="width:100%">
-         <a href="sadashiv_timetable.html"> <img src="images/sadhashivnagartimeicon.png" alt="stepperszstudio"></a>
-		 <a href="kalyan_timetable.html"> <img src="images/kalyannagartimeicon.png" alt="stepperszstudio"></a>
-		  <a href="malleshwaram_timetable.html"> <img src="images/malleshwaramtimeicon.png" alt="stepperszstudio"></a><br><br>
-		  
-		   </div></center>
+	
+	
+					<!-- //gallery -->
+		<div class="services" id="gallery">
+		<div class="container" style="background-color: #00b8f1d9;">
+              <br/><br/>
+		 <h3 class="title-w3"  style="margin-top: 4%;">Gallery</h3>
+		 <p class="sub-text"></p>
+		     <div class="wthree-agile-classes-section">
+	               
+				
+					<div class="col-lg-4 class-grid">
+						<div class="class-grid-img">
+					       <a href="SadashivNagarGal.html"> <img src="images/folder1.png" alt="stepperz"></a>
+						    
+						</div>	
+					
+                   
+				    </div>
+					<div class="col-lg-4 class-grid">
+						<div class="class-grid-img">
+					       <a href="KayanNagarGal.html"> <img src="images/folder2.png" alt="stepperz"></a>
+						    
+						</div>
+						
+                     
+					
+				    </div>
+				    <div class="col-lg-4 class-grid">
+						<div class="class-grid-img">
+					      <a href="MalleshwaramGal.html"> <img src="images/folder3.png" alt="stepperz"></a>
+						    
+						</div>
+						
+                     
+					
+				    </div>
+				    <div class="col-lg-4 class-grid">
+						<div class="class-grid-img">
+					       <a href="videosadashiv.html"><img src="images/sadashiv.png" alt="stepperz"></a>
+						    
+						</div>
+						
+                     
+					
+				    </div>
+				    <div class="col-lg-4 class-grid">
+						<div class="class-grid-img">
+					       <a href="videokalyan.html"> <img src="images/kalyan.png" alt="stepperz"></a>
+						    
+						</div>
+						
+                     
+					
+				    </div>
+					<div class="col-lg-4 class-grid">
+						<div class="class-grid-img ">
+					      <a href="videomalleshwaram.html"> <img src="images/malleshwaram.png" alt="stepperz"></a>
+						    
+						</div>
+						
+	                     			
+				    </div>
 				<div class="clearfix"> </div>
-				
-			
-	</div>
-	<!-- // Time-Table -->
-				
-					<!-- gallery -->
-	<div class="gallery" id="gallery" style="background-color:#f4eb41;padding:5em;">
-		<center><h3 class="title-w3" style="color:black">Gallery</h3>
-			<br>
-		<div style="width:100%">
-         <a href="SadashivNagarGal.html"> <img src="images/folder1.png" alt="stepperszstudio"></a>
-		 <a href="KayanNagarGal.html"> <img src="images/folder2.png" alt="stepperszstudio"></a>
-		  <a href="MalleshwaramGal.html"> <img src="images/folder3.png" alt="stepperszstudio"></a><br><br>
-		   <a href="videosadashiv.html"> <img src="images/sadashiv.png" alt="stepperszstudio"></a>
-		   <a href="videokalyan.html"> <img src="images/kalyan.png" alt="stepperszstudio"></a>
-		    <a href="videomalleshwaram.html"> <img src="images/malleshwaram.png" alt="stepperszstudio"></a>
-		   </div></center>
-				<div class="clearfix"> </div>
-				
-			
-	</div>
-	<!-- //gallery -->
-	 <!-- //classes-->
- <center>  <div class="testmonials" id="monials">
+	         </div>
+
+		 </div>	
+   </div>
+>
+ <center>  <div class="testmonials" id="monials" style="overflow-x:hidden; ">
 		<div id="particles-js1"></div>
 		   <div class="client-top">
 		  <h3 class="title-w3 three">What Our Happy Students Say</h3>
@@ -512,7 +602,7 @@ for(int i=0;i<adscount;i++)
 	<div class="clearfix"></div>
 </div>
 
-	<div class="contact">
+	<div class="contact" style="overflow-x:hidden; ">
 	<div id="particles-js2"></div>
 		<div class="contact-top">
 			<h3 class="title-w3 con">Drop Your Feedback</h3>
