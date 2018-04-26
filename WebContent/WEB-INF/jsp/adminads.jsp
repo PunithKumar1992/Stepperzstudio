@@ -204,7 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 
                                 <div class="col-md-4">
-                                    <input type="submit" class="btn btn-info" value="Add" style="margin-left: 30%;margin-top: 10%;">
+                                    <input type="submit" id="sub" class="btn btn-info" value="Add" style="margin-left: 30%;margin-top: 10%;">
                                 </div>
                         
                              

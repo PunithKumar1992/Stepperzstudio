@@ -1,7 +1,10 @@
 
 html{
  width:100%;
-height:100%; 
+ height:100%; 
+overflow-x: hidden;
+ 
+
 }
 body{
 	margin:0;
@@ -606,6 +609,7 @@ p.sub-text.one {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  HEIGHT: 496PX;
 }
 #particles-js2{
   width: 100%;
@@ -627,6 +631,7 @@ canvas.particles-js-canvas-el{
     -ms-background-size: cover;
     background-attachment: fixed;
 	 position:relative;
+	 background-size: 100%;
 }
 
 /*-- client --*/
@@ -976,7 +981,8 @@ h6.bed.four{
     -moz-background-size: cover;
     -o-background-size: cover;
 	position:relative;
-	padding-bottom: 3em;
+	padding-bottom: 40em;
+	background-size: 100%;
 }
 .contact-top {
     position: absolute;
@@ -1441,6 +1447,7 @@ section.social ul li {
 	.ab-w3-agile-part {
 		padding: 0;
 		padding: 3em 2em;
+		height: 368px;
 	}
 	canvas.particles-js-canvas-el {
 		height: 587px!important;
@@ -1456,6 +1463,9 @@ section.social ul li {
 	}
 	.img{
 	width:80%;
+	}
+	.contact{
+	height:546px;
 	}
 }
 @media(max-width:1080px){
@@ -1540,6 +1550,16 @@ section.social ul li {
 	.img{
 	width:70%;
 	}
+	.class-grid {
+    width: 31%;
+    margin-right: 1%;
+    text-align: center;
+    position: relative;
+    padding: 1em;
+    float:left;}
+    .container {
+    width: 1014px;
+}
 }
 @media(max-width:1024px){
 	.callbacks_tabs {
@@ -1582,6 +1602,15 @@ section.social ul li {
 	.img{
 	width:100%;
 	}
+	.navbar-brand > img {
+    display: block;
+    width: 70%;}
+    .navbar-right {
+    float: right !important;
+    margin-right: 51px;
+    margin-top: 4px;}
+    .class-grid {
+    width: 31%;}
 }
 @media(max-width:991px){
 	.agileits-banner-info p {
@@ -1667,6 +1696,8 @@ section.social ul li {
 	.img{
 	width:100%;
 	}
+	.class-grid {
+    width: 32%;}
 	
 }
 @media(max-width:800px){
@@ -1737,11 +1768,7 @@ section.social ul li {
 	p.sub-text {
 		letter-spacing: 7px;
 	}
-	.navbar-right {
-		float: right !important;
-		margin-right: 0px!important;
-		margin-top: 5px;
-	}
+	
 	.price-grid {
 		float: left;
 		width: 25%;
@@ -1750,8 +1777,44 @@ section.social ul li {
 	.img{
 	width:100%;
 	}
+	.navbar-brand > img {
+    display: block;
+    width: 56%;
+    margin-top: 11%;
+}
+.navbar-right {
+    float: right !important;
+    margin-right: 228px!important;
+    margin-top: 5px;
+}
+.agileits-banner-info p {
+    font-size: 1em;
+    letter-spacing: 8px;
+   
+    width: 54%;
+}
+.class-grid {
+    width: 44%;
+}
+.ab-w3-agile-info-text {
+    padding: 0em 1em 0em 2em;
+}
 }
 @media(max-width:768px){
+	.iconscircle-cross {
+    cursor: pointer;
+    right: 49px;
+    top: -24px;
+    position: absolute;
+    z-index: 1;
+    font-size: 35px;
+    color: #fff;
+}
+	.carouselGallery-modal-image img {
+    max-width: 100%;
+    width: 70%;
+}
+	.time1{width:100%;}
 	.ab-w3-agile-info-text {
 		padding: 3em 1em 0em 2em;
 	}
@@ -1793,7 +1856,32 @@ section.social ul li {
 	.img{
 	width:100%;
 	}
-	
+	.navbar-right {
+    float: right !important;
+    margin-right: 264px!important;
+    margin-top: 21px;
+}
+.agileits-banner-info p {
+    font-size: 1em;
+    letter-spacing: 8px;
+    width: 69%;
+   
+}
+.agileits-banner-info h3 {
+    font-size: 2.5em;
+    letter-spacing: 9px;
+    width:56%;
+    margin-left: 21%;
+   
+}
+.class-grid {
+    width: 87%;
+}
+.ab-w3-agile-info{
+	margin-top: -6%;
+}
+	.w3layouts-banner-top, .w3layouts-banner-top1, .w3layouts-banner-top2 
+	{min-height:383px;}
 }
 @media(max-width:767px){	 
 	.navbar {
@@ -1889,6 +1977,21 @@ section.social ul li {
 	.img{
 	width:100%;
 	}
+	.navbar-right {
+    float: right !important;
+    margin-right: 258px!important;
+    margin-top: 12px;}
+   .navbar-brand > img {
+    display: block;
+    width: 81%;
+    margin-top: -12%;
+}
+.container {
+    width: 679px;
+}
+.class-grid {
+    width: 95%;
+}
 }
 @media(max-width:736px){
 	.team-grid {
@@ -1914,21 +2017,33 @@ section.social ul li {
 	.img{
 	width:100%;
 	}
+	.contact-top {top:1%;}
+	.contact {
+    height: 424px;
+}
 }
 @media(max-width:667px){
 	#classes {
 		padding: 3em 0 2em 0;
 	}
+	
 	.cont-top h5 {
       font-size: 1.5em;
 	}
 	.img{
 	width:100%;
 	}
+	.navbar-toggle {margin-right:117px; }
+}
+ .d1{
+    width: 65%;
+    margin-left: 15%;
+}
+
 } 
 @media(max-width:640px){
 	.w3layouts-banner-top, .w3layouts-banner-top1, .w3layouts-banner-top2 {
-		min-height: 395px;
+		min-height: 332px;
 	}
 	.agileits-banner-info h3 {
 		font-size: 2em;
@@ -1970,8 +2085,21 @@ section.social ul li {
 	.img{
 	width:100%;
 	}
+	.container {
+    width: 603px;
+}
+.class-grid {
+    width: 46%;
+}
 }
 @media(max-width:600px){
+	
+	.carouselGallery-modal-image img {
+    max-width: 100%;
+    width: 56%;
+}.time1 {
+    width: 100%;
+}
 	.price-gd-top h4 {
 		font-size: 0.9em;
 	}
@@ -2005,6 +2133,8 @@ section.social ul li {
 	}
 	.ab-w3-agile-part p {
 		margin: 0;
+		text-align: justify;
+		font-family: 'Source Sans Pro', sans-serif;
 	}
 	.team-grids {
 		margin: 3em 0 0em 0;
@@ -2018,6 +2148,16 @@ section.social ul li {
 	.img{
 	width:100%;
 	}
+	.agileits-banner-info h3{
+	font-size: 2.0em;
+    letter-spacing: 9px;
+    width: 39%;
+    margin-left: 21%;
+    margin-top: -7%;
+	}
+	.w3layouts-banner-top, .w3layouts-banner-top1, .w3layouts-banner-top2 {
+    min-height: 296px;
+}
 }
 
 @media(max-width:480px){
@@ -2027,15 +2167,18 @@ section.social ul li {
 	.agileits-banner-info h3 {
 		font-size: 2em;
 		letter-spacing: 4px;
+		margin-left: 15%;
 	}
 	.agileits-banner-info p {
 		font-size: 0.85em;
 		letter-spacing: 5px;
 		margin: 1em auto;
-		width: 82%;
+		width: 44%;
+    margin-left: 14%;
 	}
 	.w3layouts-banner-top, .w3layouts-banner-top1, .w3layouts-banner-top2 {
-		min-height: 340px;
+		min-height: 260px;
+		margin-top: 14%;
 	}
 	.agileits-banner-info {
 		text-align: center;
@@ -2050,6 +2193,9 @@ section.social ul li {
 		letter-spacing: 2px;
 		margin: 0em 0 1em 0;
 		line-height: 2em;
+		text-align: justify;
+		margin-left: 0.25em;
+    margin-right: 1.25em;
 	}
 	.caption h5 {
 		font-size: 1.4em;
@@ -2082,10 +2228,10 @@ section.social ul li {
 		letter-spacing: 2px;
 	}
 	.gallery-grid {
-		padding: 0;
-		float: left;
-		width: 50%;
-	}
+    padding: 0;
+    float: left;
+    width: 45%;
+}
 	canvas.particles-js-canvas-el:nth-child(2){
 		     height: 535px!important;
 	}
@@ -2141,12 +2287,13 @@ section.social ul li {
 		margin-top: -9%;
 	}
 	.class-grid {
-		width: 49%;
+		width: 55%;
 		margin-right: 1%;
 		text-align: center;
 		position: relative;
 		float: left;
 		padding: 0 3px;
+		margin-left: -2%;
 	}
 	.price-gd-bottom {
 		padding: 0.5em 0em;
@@ -2167,6 +2314,26 @@ section.social ul li {
 	.img{
 	width:100%;
 	}
+	.navbar-brand > img {
+    display: block;
+    width: 73%;
+    margin-top: 12%;
+}
+.navbar-toggle {
+    margin-right: 296px;
+}
+p.sub-text {
+    letter-spacing: 7px;
+    margin-left: -40%;}
+    h3.title-w3{margin-left: -41%;}
+    .contact_form input[type='text'], .contact_form input[type="email"], .contact_form textarea {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 12px 8px;
+    height: 26px;
+    margin: 0 0 4px;
+}
+    
 }
 @media(max-width:414px){
 	.team-grid:nth-child(4), .team-grid:nth-child(3), .team-grid:nth-child(5), .team-grid:nth-child(6) {
@@ -2190,7 +2357,9 @@ section.social ul li {
 		font-size: 0.83em;
 		letter-spacing: 4px;
 		margin: 1em auto;
-		width: 82%;
+		width: 40%;
+		margin-left: 12%;
+		
 	}
 	.ih-item.circle.effect10.bottom_to_top .info h3 {
 		margin: 6em 0 1em 0;
@@ -2207,7 +2376,7 @@ section.social ul li {
 		padding: 8em 0 0em;
 	}
 	.w3layouts-banner-top, .w3layouts-banner-top1, .w3layouts-banner-top2 {
-		min-height: 300px;
+		min-height: 203px;
 	}
 	.thim-click-to-bottom {
 		position: absolute;
@@ -2217,6 +2386,13 @@ section.social ul li {
 	.message {
 		margin-bottom: 20px;
 	}
+	h3.title-w3{
+	margin-left: -46%;
+	}
+	p.sub-text {
+    letter-spacing: 7px;
+    margin-left: -47%;
+}
 	.team-grid:nth-child(1),.team-grid:nth-child(3),.team-grid:nth-child(5) {
 		padding-left:0;
 	}
@@ -2234,14 +2410,37 @@ section.social ul li {
 	.img{
 	width:100%;
 	}
+	.navbar-toggle {
+    margin-right: 353px;
+}
+h3.title-w3.three {
+    line-height: 1.6em;
+    margin-top: -22%;
+    margin-left: -8%;
+}
+.callbacks_container {
+    position: relative;
+    float: left;
+    width: 100%;
+    MARGIN-TOP: -4%;
+    OVERFLOW-Y: SCROLL;
+    HEIGHT: 238PX;
+}
+h3.title-w3 {
+    margin-left: -29%;
+}
 }
 @media(max-width:375px){
 	.agileits-banner-info p {
 		font-size: 0.8em;
 		letter-spacing:3px;
 		margin: 1em auto;
-		width: 86%;
+		width: 48%;
+    margin-left: 5%;
 	}
+	h3.title-w3 {
+    margin-left: -46%;
+}
 	.w3layouts-banner-top, .w3layouts-banner-top1, .w3layouts-banner-top2 {
 		min-height: 184px;
 	}
@@ -2363,6 +2562,7 @@ section.social ul li {
 	.agileits-banner-info h3 {
 		font-size: 1.5em;
 		letter-spacing: 2px;
+		MARGIN-LEFT: 2%;
 	}
 	.class-grid-img:hover .caption {
 		display: block;
@@ -2378,6 +2578,7 @@ section.social ul li {
 	h3.title-w3.three {
 		line-height: 1.4em;
 		letter-spacing: 2px;
+		margin-top: -33%;
 	}
 	p.sub-text {
 		letter-spacing: 5px;
@@ -2386,7 +2587,8 @@ section.social ul li {
 		font-size: 0.8em;
 		letter-spacing: 2px;
 		margin: 1em auto;
-		width: 86%;
+		width: 35%;
+    margin-left: 5%;
 	}
 	.callbacks_tabs a:after {
 		height: 10px;
@@ -2395,5 +2597,35 @@ section.social ul li {
 	.img{
 	width:100%;
 	}
+	.navbar-toggle {
+    margin-right: 381px;
+}
+.ab-w3-agile-info p{
+	margin-left: 0.25em;
+    margin-right: 1.25em;
+	
+}
+.w3layouts-banner-top{
+	margin-top:22%; 
+}
+h3.title-w3 {
+    margin-left: -22%;
+    margin-top: -3%;
+}
+.agileits-clients {
+    margin-top: 5em;
+    overflow: scroll;
+    height: 192PX;
+}
+.callbacks_container {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin-top: -32%;
+}
+.carouselGallery-modal-image img {
+    max-width: 100%;
+    width: 100%;
+}
 }
 /*-- //responsive-design --*/

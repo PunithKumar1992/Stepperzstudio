@@ -3,9 +3,11 @@
 <%@ page import="com.appfone.stepperz.Daoimpl.AdvertisementDaoimpl" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
-<html lang="en" style="overflow-x:hidden;">
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
 <title>Stepperz | Dance Aerobics N Yoga Studio</title>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
@@ -47,7 +49,7 @@ String adsimages[];
 	<div id="home" class="w3ls-banner"> 
 
 		<!-- banner-text -->
-		<class="slider">
+		<div class="slider">
 			<div class="callbacks_container">
 				<ul class="rsldes callbacks callbacks1" id="slider4">
 					
@@ -118,21 +120,7 @@ String adsimages[];
 							<li><a href="career.html">Career</a></li>
 							<li><a href="regestration.html">Regestration</a></li>
 							<li><a class="page-scroll scroll" href="#contact">Contact</a></li>
-							 <div id="player">
-    <audio id="audio" autoplay hidden>
-     <source src="audio/homepage.mp3" type="audio/mp3">
-                If you're reading this, audio isn't supported. 
-    </audio>
-</div>
-		
-<script>		
-      var audio = document.getElementById('audio');
-audio.play();
- 
-// Sometime Later
-audio.src = 'audio/homepage.mp3';
-audio.play();
-</script>
+							 
 		</ul>
 					</div>
 					<!-- /.navbar-collapse -->
@@ -145,7 +133,22 @@ audio.play();
 	<!-- //banner --> 
 
 <!-- about -->
-<section  style="width:100%;overflow-x:hidden; ">
+<section  style="width:100%; ">
+<div id="player">
+    <audio id="audio" autoplay hidden>
+     <source src="audio/homepage.mp3" type="audio/mp3">
+                <h3>If you're reading this, audio isn't supported. </h3>
+    </audio>
+</div>
+		
+<script>		
+      var audio = document.getElementById('audio');
+audio.play();
+ 
+// Sometime Later
+audio.src = 'audio/homepage.mp3';
+audio.play();
+</script>
 <div class="about" id="about">
       <div class="col-md-6 ab-w3-agile-info">
 	   <div class="ab-w3-agile-info-text">
@@ -180,7 +183,7 @@ audio.play();
           <p style="background-color:lightblue;border-bottom:black;"><b>stepperz studio is on a mission to bring the passion of fitness to the heart of Bengaluru.  Fitness has a major impact on the lives of people of all ages and can influence their personal legacies inside and outside of the gym. stepperz studio will provide a workout studio with daily classes with custom designed workouts for people of all ages.  stepperz studio is on a mission to provide a safe and encouraging place for young athletes, young professionals, adults, and the older age group to get & stay fit, and push themselves to unimaginable places both inside and outside of the stepperz studio.</b></p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+s          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
       
@@ -216,7 +219,7 @@ stepperz studio is on a mission to bring the passion of fitness to the heart of 
 																	<button type="button" class="close" data-dismiss="modal">&times;</button>
 																	<img src="images/malursrinivas1.png" alt=" " class="img-responsive">
 																	
-																	<p style="background-color:#dce7ef;page-border:black;"><b>Master Malur Srinivas would not only want to create new dancers for the industry, but also wants to create choreographers. One of the missions in master’s vision is to give an opportunity to aspiring choreographers to make a career out of it. With all the experience he has bagged over the years, he likes to train you on each and every aspect of choreography: blending of styles, facing the camera, usage of stage, conceptualization, dancing disciplines and the list continues.
+																	<p style="background-color:#dce7ef;page-border:black;"><b>Master Malur Srinivas would not only want to create new dancers for the industry, but also wants to create choreographers. One of the missions in masterâs vision is to give an opportunity to aspiring choreographers to make a career out of it. With all the experience he has bagged over the years, he likes to train you on each and every aspect of choreography: blending of styles, facing the camera, usage of stage, conceptualization, dancing disciplines and the list continues.
 Choreography is an artefact of personal manifestation.  Develop your own personal style in a well-planned course and take advantage of the discussions and endeavours from the master.  Enjoy the role of choreographer and learn from the experience of being part of someone else's idea of dance in a matter of 3 months.  Receive a certificate in recognition of your efforts.</b></p>
 																</div>
 																<div class="modal-footer">
@@ -235,7 +238,7 @@ Choreography is an artefact of personal manifestation.  Develop your own persona
 		
 		
 							      
-	<div class="services" id="classes" style="overflow-x:hidden; ">
+	<div class="services" id="classes">
 		<div class="container" style="margin-top:3%">
               <br/><br/>
 		 <h3 class="title-w3" >Fitness Classes</h3>
@@ -253,7 +256,7 @@ Choreography is an artefact of personal manifestation.  Develop your own persona
 							 </div>
 							</div>
 						</div>	
-					<p>Stepperz provide a blend of rhythmic aerobic exercises to improve your endurance and stamina levels.<br><br></p>
+					<p class="d1">Stepperz provide a blend of rhythmic aerobic exercises to improve your endurance and stamina levels.<br><br></p>
                     <h2 style=" color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;" > AEROBICS</h2>
 				    </div>
 					<div class="col-lg-4 class-grid">
@@ -266,7 +269,7 @@ Choreography is an artefact of personal manifestation.  Develop your own persona
 							    </div>
 							</div>
 						</div>
-						<p>If you like to step up, here's your crack. It doesn't matter if you are a 5 year old or 80 year old.<br><br></p>
+						<p class="d1">If you like to step up, here's your crack. It doesn't matter if you are a 5 year old or 80 year old.<br><br></p>
                       <h2 style=" color: white; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"> DANCE</h2>
 					
 				    </div>
@@ -280,7 +283,7 @@ Choreography is an artefact of personal manifestation.  Develop your own persona
 								</div>
 							</div>
 						</div>
-						<p>We offer Ashtanga yoga classes of traditional character and uncompromising excellence, which is opposing to Power yoga followed in present days.</p>
+						<p class="d1">We offer Ashtanga yoga classes of traditional character and uncompromising excellence, which is opposing to Power yoga followed in present days.</p>
 	                     <h2 style=" color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"> YOGA</h2>		
 				    </div>
 				<div class="clearfix"> </div>
@@ -509,8 +512,8 @@ for(int i=0;i<adscount;i++)
 
 		 </div>	
    </div>
->
- <center>  <div class="testmonials" id="monials" style="overflow-x:hidden; ">
+
+ <center>  <div class="testmonials" id="monials">
 		<div id="particles-js1"></div>
 		   <div class="client-top">
 		  <h3 class="title-w3 three">What Our Happy Students Say</h3>
@@ -539,13 +542,7 @@ for(int i=0;i<adscount;i++)
 							out.println("</div>");
 							out.println("</li>");
 							}
-							%>
-							
-							
-                       
-                         
-						
-							
+							%>					
 								<div class="clearfix"></div>
 								</div>
 							
@@ -592,7 +589,7 @@ for(int i=0;i<adscount;i++)
 <div style="background-color: #00aaff;">
 
 <h3 style="color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map</h3>
-<p style="padding-left: 5%;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.132955095439!2d77.57549181482257!3d13.027204190819345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17c46ab6a80f%3A0x4f50148657a96800!2sstepperzstudio!5e0!3m2!1sen!2sin!4v1506323952575" frameborder="0" style="width:95%;" allowfullscreen></iframe></p>
+<p style="padding-left: 5%;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.132955095439!2d77.57549181482257!3d13.027204190819345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17c46ab6a80f%3A0x4f50148657a96800!2sstepperzstudio!5e0!3m2!1sen!2sin!4v1506323952575"  style="width:95%;" allowfullscreen></iframe></p>
 </div>
 </div>
 </div>	 
@@ -602,16 +599,11 @@ for(int i=0;i<adscount;i++)
 	<div class="clearfix"></div>
 </div>
 
-	<div class="contact" style="overflow-x:hidden; ">
+	<div class="contact">
 	<div id="particles-js2"></div>
 		<div class="contact-top">
-			<h3 class="title-w3 con">Drop Your Feedback</h3>
-			<p class="sub-text"></p>
-
-
-
-
-
+			<h3 class="title-w3 con"> Feedback</h3>
+		
 			<form action="feedback.html" method="post" class="contact_form slideanim" onsubmit="return FormValidation();" onchange="return FormValidation();">
 
 				<div class="message">
@@ -622,7 +614,7 @@ for(int i=0;i<adscount;i++)
 					</div>
 
 					<div class="col-md-6 col-sm-6 grid_6 c1">
-						<textarea name="message" placeholder="Message" id="msg" required=""></textarea>
+						<textarea name="message" placeholder="Message" id="msg" required></textarea>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -630,10 +622,7 @@ for(int i=0;i<adscount;i++)
 				<input type="submit" value="SEND MESSAGE">
 			</form>
 	
-	
-	
-	
-	
+
 					<section class="social">
                         <ul>
 						
@@ -652,14 +641,13 @@ for(int i=0;i<adscount;i++)
 		</div>
 	</div>
 	<!-- //Contact -->
-
-
 <!-- footer -->
 			<div class="copy-right">
 				<p>&copy; 2017 Stepperz. All rights reserved | Designed by <a href="http://appfonehub.com/">Appfone Hub Pvt Ltd.</a></p>
 			</div>
 			
 <!-- //footer -->
+
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 <script src="js/jquery-2.2.3.min.js"></script> 
@@ -901,11 +889,5 @@ function FormValidation()
    
 }
 </script>
-
-
-
-
-
-
 </body>
 </html>

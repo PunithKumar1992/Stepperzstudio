@@ -168,8 +168,7 @@ box-shadow: 0 0 0 4px rgba(255,255,255,1);
     // max-height - set by javascript
 	    max-height: 223px;
     width: 750px;
-    overflow-x: hidden;
-    overflow-y: auto;
+   
 }
 
 .carouselGallery-modal .container{
@@ -195,10 +194,10 @@ box-shadow: 0 0 0 4px rgba(255,255,255,1);
 }
 
 
-.carouselGallery-modal-image img{
+/* .carouselGallery-modal-image img{
     max-width: 100%;
     width: 100%;
-}
+} */
 .carouselGallery-modal-location{
     
 }
@@ -218,8 +217,8 @@ box-shadow: 0 0 0 4px rgba(255,255,255,1);
 
 .carouselGallery-modal .iconscircle-cross{
     cursor: pointer;
-    right: -30px;
-    top:-55px;
+    right: 233px;
+    top:-24px;
     position: absolute;
     z-index: 1;
     font-size: 35px;
@@ -366,6 +365,15 @@ box-shadow: 0 0 0 4px rgba(255,255,255,1);
 		padding-right: 0;
 		margin-top: 2em;
 	}
+	/* .iconscircle-cross {
+    cursor: pointer;
+    right: 197px;
+    top: -35px;
+    position: absolute;
+    z-index: 1;
+    font-size: 35px;
+    color: #fff;
+} */
 	
 	.carouselGallery-item-meta {
 		font-size: 1.2em;
@@ -378,15 +386,22 @@ box-shadow: 0 0 0 4px rgba(255,255,255,1);
 	.carouselGallery-wrapper > div {
 		width: 83%;
 	}
+	.carouselGallery-modal-image img {
+    /* max-width: 100%; */
+    width: 31%;
+}
 }
 @media (max-width:320px){
 	.carouselGallery-item-meta {
 		font-size: 14px;
 	}
 	.carouselGallery-modal .iconscircle-cross {
-		right: -15px;
+		right: 75px;
 		top: -40px;
 		font-size: 25px;
 	}
+	.carouselGallery-modal-image {
+    width: 22%;
+}
 }
  
